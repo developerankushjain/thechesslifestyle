@@ -284,6 +284,7 @@ section h2 {
 }
 
 .enrol-form input,
+.enrol-form select,
 .enrol-form textarea {
   width: 100%;
   padding: 1rem 1.2rem;
@@ -293,9 +294,18 @@ section h2 {
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   transition: all 0.3s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.enrol-form select option {
+  background: var(--bg-dark);
+  color: var(--text-main);
 }
 
 .enrol-form input:focus,
+.enrol-form select:focus,
 .enrol-form textarea:focus {
   outline: none;
   border-color: var(--primary);

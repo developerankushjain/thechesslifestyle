@@ -188,8 +188,23 @@
               <div class="form-group">
                 <input type="text" name="Age or Class" placeholder="Age / Class" required>
               </div>
+              <div class="form-group split">
+                <input type="text" name="Father's Name" placeholder="Father's Name (If applicable)">
+                <input type="text" name="Father's Profession" placeholder="Father's Profession">
+              </div>
+              <div class="form-group split">
+                <input type="text" name="Mother's Name" placeholder="Mother's Name (If applicable)">
+                <input type="text" name="Mother's Profession" placeholder="Mother's Profession">
+              </div>
               <div class="form-group">
-                <input type="text" name="Parent or Guardian Name" placeholder="Parent Name (If applicable)">
+                <select name="Chess Experience Level" class="form-select" required>
+                  <option value="" disabled selected>Select Chess Experience Level...</option>
+                  <option value="I don't know how pieces move">I don't know how pieces move</option>
+                  <option value="I know how pieces move but I don't know any chess openings">I know how pieces move but I don't know any chess openings</option>
+                  <option value="I know about opening principles">I know about opening principles</option>
+                  <option value="I play on chess.com with rating below 1200">I play on chess.com with rating below 1200</option>
+                  <option value="I play on chess.com with rating above 1200">I play on chess.com with rating above 1200</option>
+                </select>
               </div>
               <div class="form-group split">
                 <input type="tel" name="Phone Number" placeholder="Contact Number" required>
