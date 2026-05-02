@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Elite 18 Chess Showcase | TheChessLifestyle</title>
+    <meta name="description" content="Register for the Elite 18 Chess Showcase. Unleash your inner grandmaster. Strictly limited to 18 competitors.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css">
+    <style>
+      .tournament-hero {
+        padding: 150px 5% 5rem;
+        text-align: center;
+        background: radial-gradient(circle at center, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+      }
+      .tournament-title {
+        font-size: 4rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .tournament-subtitle {
+        font-size: 1.5rem;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 3rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto 4rem auto;
+      }
+      .detail-card {
+        background: var(--bg-card);
+        border: 1px solid var(--glass-border);
+        padding: 2rem;
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s, border-color 0.3s;
+      }
+      .detail-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-5px);
+      }
+      .detail-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+      }
+      .detail-card h3 {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+      .detail-card p {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+      .prizes-section {
+        max-width: 800px;
+        margin: 0 auto 4rem auto;
+        background: rgba(0,0,0,0.5);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        padding: 3rem 2rem;
+      }
+      .prizes-title {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .prizes-flex {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .prize-item {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255,255,255,0.03);
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.1);
+        min-width: 150px;
+      }
+      .prize-item.first { border-color: #ffd700; box-shadow: 0 0 20px rgba(255,215,0,0.2); }
+      .prize-item.second { border-color: #c0c0c0; }
+      .prize-item.third { border-color: #cd7f32; }
+      .prize-rank { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-muted); }
+      .prize-amount { font-size: 2rem; font-weight: 900; font-family: 'Outfit'; }
+      .prize-item.first .prize-amount { color: #ffd700; }
+      .prize-item.second .prize-amount { color: #c0c0c0; }
+      .prize-item.third .prize-amount { color: #cd7f32; }
+
+      .registration-container {
+        max-width: 700px;
+        margin: 0 auto;
+        background: var(--bg-card);
+        border: 1px solid var(--primary);
+        border-radius: 24px;
+        padding: 4rem;
+        box-shadow: 0 10px 40px rgba(245, 158, 11, 0.15);
+      }
+      .registration-container h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+      }
+      .registration-container p.lead {
+        text-align: center;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+      }
+      #success-message {
+        display: none;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid #10b981;
+        color: #10b981;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 2rem;
+      }
+      #success-message h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .perk-banner {
+        display: inline-block;
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        margin-bottom: 3rem;
+        color: var(--primary);
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      
+      @media (max-width: 768px) {
+        .tournament-title { font-size: 2.5rem; }
+        .tournament-subtitle { font-size: 1.2rem; }
+        .registration-container { padding: 2rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow-tracker" id="cursor-glow"></div>
+
+    <nav class="navbar">
+      <div class="logo"><a href="/" style="color: white; text-decoration: none;">TheChessLifestyle</a></div>
+      <ul class="nav-links">
+        <li><a href="/#philosophy">Our Philosophy</a></li>
+        <li><a href="/#benefits">Benefits</a></li>
+        <li><a href="/#why-us">Why Choose Us</a></li>
+        <li><a href="/tournaments/" class="highlight" style="font-weight: 700; color: #f59e0b;">Elite 18 Tournament</a></li>
+        <li><a href="/#enrol" class="btn-primary pulse-main">Enrol now for trial class</a></li>
+      </ul>
+      <div class="mobile-menu-toggle">&#9776;</div>
+    </nav>
+
+    <main>
+      <section class="tournament-hero">
+        <div class="perk-banner">ORGANIZED BY THECHESSLIFESTYLE.COM</div>
+        <h1 class="tournament-title">Elite 18 <br> <span class="highlight">Chess Showcase</span></h1>
+        <div class="tournament-subtitle">Unleash Your Inner Grandmaster</div>
+        
+        <div class="details-grid">
+          <div class="detail-card tilt-card mobile-glow">
+            <div class="detail-icon">📅</div>
+            <h3>Date & Time</h3>
+            <p>May 10th, 2026</p>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 0.5rem;">5:00 PM to 8:00 PM</p>
+          </div>
+          <div class="detail-card tilt-card mobile-glow">
+            <div class="detail-icon">📍</div>
+            <h3>Venue</h3>
+            <p>U308, Amrapali Zodiac</p>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 0.5rem;">Sector 120, Noida</p>
+          </div>
+          <div class="detail-card tilt-card mobile-glow">
+            <div class="detail-icon">🎟️</div>
+            <h3>Entry Fee</h3>
+            <p>₹299/-</p>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 0.5rem;">Limited to 18 Competitors</p>
+          </div>
+        </div>
+
+        <div class="prizes-section scroll-reveal">
+          <h2 class="prizes-title">Cash Prizes</h2>
+          <div class="prizes-flex">
+            <div class="prize-item second">
+              <div class="prize-rank">2nd Prize</div>
+              <div class="prize-amount">₹1000/-</div>
+            </div>
+            <div class="prize-item first">
+              <div class="prize-rank">1st Prize</div>
+              <div class="prize-amount">₹1500/-</div>
+            </div>
+            <div class="prize-item third">
+              <div class="prize-rank">3rd Prize</div>
+              <div class="prize-amount">₹500/-</div>
+            </div>
+          </div>
+          <div style="margin-top: 2rem; color: var(--text-muted); font-style: italic;">
+            ☕ Complimentary Beverages Will Be Provided.
+          </div>
+        </div>
+
+        <div class="registration-container scroll-reveal" id="register">
+          <h2>Secure Your Spot</h2>
+          <p class="lead">Exclusively for 18 competitors. Register today before slots fill up!</p>
+          
+          <div id="success-message">
+            <h3>🎉 Registration Received!</h3>
+            <p>Your participant form has been submitted successfully and you will be contacted shortly by our team to make the payment and complete the registration.</p>
+          </div>
+
+          <form id="reg-form" class="enrol-form" action="https://formsubmit.co/teacherankushjain@gmail.com" method="POST">
+            <!-- Honeypot -->
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Tournament Registration: Elite 18 Showcase">
+
+            <div class="form-group">
+              <input type="text" name="Participant Name" placeholder="Participant Full Name" required>
+            </div>
+            <div class="form-group split">
+              <input type="number" name="Age" placeholder="Age" required min="5" max="99">
+              <input type="text" name="FIDE Rating" placeholder="FIDE/Chess.com Rating (if any)">
+            </div>
+            <div class="form-group split">
+              <input type="tel" name="Phone Number" placeholder="Contact Number" required>
+              <input type="email" name="Email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+              <textarea name="Message" rows="2" placeholder="Any additional comments or questions?"></textarea>
+            </div>
+            <button type="submit" class="btn-primary pulse-main submit-btn">Submit Registration Form</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h2 class="logo">TheChessLifestyle</h2>
+          <p class="footer-tagline">Chess for Mental & Cognitive Health.</p>
+          <div class="socials">
+            <span class="social-icon">IG</span>
+            <span class="social-icon">FB</span>
+            <span class="social-icon">IN</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/#philosophy">Our Philosophy</a></li>
+            <li><a href="/#benefits">Mental Benefits</a></li>
+            <li><a href="/#why-us">Why Us</a></li>
+            <li><a href="/#testimonials">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="/terms.html">Terms and Conditions</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/refund.html">Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col contact-info">
+          <h3>Contact Us</h3>
+          <p>📍 Sector 120, Noida, UP</p>
+          <p>📞 <a href="tel:+917206789979">7206789979</a></p>
+          <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>All copyrights reserved. &copy; 2026 TheChessLifestyle Noida.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="../main.js"></script>
+    <script>
+      // Form AJAX submission handling
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('reg-form');
+        const successMsg = document.getElementById('success-message');
+
+        if(form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect data
+            const formData = new FormData(form);
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Submitting...';
+            btn.disabled = true;
+
+            fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                  'Accept': 'application/json'
+              }
+            }).then(response => {
+              if (response.ok) {
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+                // Scroll to success message
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              } else {
+                alert("Oops! There was a problem submitting your form. Please try again or contact us directly.");
+                btn.innerText = originalText;
+                btn.disabled = false;
+              }
+            }).catch(error => {
+              alert("Oops! There was a problem submitting your form. Please try again or contact us directly.");
+              btn.innerText = originalText;
+              btn.disabled = false;
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
