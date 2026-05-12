@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>graphify - /Users/apple/Desktop/Projects/thechesslifestyle/graphify-out/graph.html</title>
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; height: 100vh; overflow: hidden; }
+  #graph { flex: 1; }
+  #sidebar { width: 280px; background: #1a1a2e; border-left: 1px solid #2a2a4e; display: flex; flex-direction: column; overflow: hidden; }
+  #search-wrap { padding: 12px; border-bottom: 1px solid #2a2a4e; }
+  #search { width: 100%; background: #0f0f1a; border: 1px solid #3a3a5e; color: #e0e0e0; padding: 7px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  #search:focus { border-color: #4E79A7; }
+  #search-results { max-height: 140px; overflow-y: auto; padding: 4px 12px; border-bottom: 1px solid #2a2a4e; display: none; }
+  .search-item { padding: 4px 6px; cursor: pointer; border-radius: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .search-item:hover { background: #2a2a4e; }
+  #info-panel { padding: 14px; border-bottom: 1px solid #2a2a4e; min-height: 140px; }
+  #info-panel h3 { font-size: 13px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  #info-content { font-size: 13px; color: #ccc; line-height: 1.6; }
+  #info-content .field { margin-bottom: 5px; }
+  #info-content .field b { color: #e0e0e0; }
+  #info-content .empty { color: #555; font-style: italic; }
+  .neighbor-link { display: block; padding: 2px 6px; margin: 2px 0; border-radius: 3px; cursor: pointer; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid #333; }
+  .neighbor-link:hover { background: #2a2a4e; }
+  #neighbors-list { max-height: 160px; overflow-y: auto; margin-top: 4px; }
+  #legend-wrap { flex: 1; overflow-y: auto; padding: 12px; }
+  #legend-wrap h3 { font-size: 13px; color: #aaa; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; border-radius: 4px; font-size: 12px; }
+  .legend-item:hover { background: #2a2a4e; padding-left: 4px; }
+  .legend-item.dimmed { opacity: 0.35; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { color: #666; font-size: 11px; }
+  #stats { padding: 10px 14px; border-top: 1px solid #2a2a4e; font-size: 11px; color: #555; }
+  #legend-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 4px 0; }
+  #legend-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; color: #aaa; user-select: none; }
+  #legend-controls label:hover { color: #e0e0e0; }
+  .legend-cb, #select-all-cb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1.5px solid #3a3a5e; border-radius: 3px; background: #0f0f1a; cursor: pointer; position: relative; flex-shrink: 0; }
+  .legend-cb:checked, #select-all-cb:checked { background: #4E79A7; border-color: #4E79A7; }
+  .legend-cb:checked::after, #select-all-cb:checked::after { content: ''; position: absolute; left: 3.5px; top: 1px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #select-all-cb:indeterminate { background: #4E79A7; border-color: #4E79A7; }
+  #select-all-cb:indeterminate::after { content: ''; position: absolute; left: 2px; top: 5px; width: 8px; height: 2px; background: #fff; border: none; transform: none; }
+</style>
+</head>
+<body>
+<div id="graph"></div>
+<div id="sidebar">
+  <div id="search-wrap">
+    <input id="search" type="text" placeholder="Search nodes..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div id="info-panel">
+    <h3>Node Info</h3>
+    <div id="info-content"><span class="empty">Click a node to inspect it</span></div>
+  </div>
+  <div id="legend-wrap">
+    <h3>Communities</h3>
+    <div id="legend-controls">
+      <label><input type="checkbox" id="select-all-cb" checked onchange="toggleAllCommunities(!this.checked)">Select All</label>
+    </div>
+    <div id="legend"></div>
+  </div>
+  <div id="stats">68 nodes &middot; 56 edges &middot; 20 communities</div>
+</div>
+<script>
+const RAW_NODES = [{"id": "generate_pages_js", "label": "generate-pages.js", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 28.0, "font": {"size": 12, "color": "#ffffff"}, "title": "generate-pages.js", "community": 2, "community_name": "Landing Page JS Internals", "source_file": "generate-pages.js", "file_type": "code", "degree": 6}, {"id": "thechesslifestyle_generate_pages_fs", "label": "fs", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "fs", "community": 2, "community_name": "Landing Page JS Internals", "source_file": "generate-pages.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_generate_pages_path", "label": "path", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "path", "community": 2, "community_name": "Landing Page JS Internals", "source_file": "generate-pages.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_generate_pages_pages", "label": "pages", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "pages", "community": 2, "community_name": "Landing Page JS Internals", "source_file": "generate-pages.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_generate_pages_geopages", "label": "geoPages", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "geoPages", "community": 2, "community_name": "Landing Page JS Internals", "source_file": "generate-pages.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_generate_pages_buildpage", "label": "buildPage()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "buildPage()", "community": 2, "community_name": "Landing Page JS Internals", "source_file": "generate-pages.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_generate_pages_dir", "label": "dir", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "dir", "community": 2, "community_name": "Landing Page JS Internals", "source_file": "generate-pages.js", "file_type": "code", "degree": 1}, {"id": "generate_pages_py", "label": "generate-pages.py", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "generate-pages.py", "community": 10, "community_name": "Vite Build Config", "source_file": "generate-pages.py", "file_type": "code", "degree": 0}, {"id": "vite_config_js", "label": "vite.config.js", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "vite.config.js", "community": 11, "community_name": "Terms Page", "source_file": "vite.config.js", "file_type": "code", "degree": 0}, {"id": "main_js", "label": "main.js", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 40.0, "font": {"size": 12, "color": "#ffffff"}, "title": "main.js", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 10}, {"id": "thechesslifestyle_main_togglebtn", "label": "toggleBtn", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "toggleBtn", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_navlinks", "label": "navLinks", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "navLinks", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_scrollelements", "label": "scrollElements", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "scrollElements", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_revealoptions", "label": "revealOptions", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "revealOptions", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_revealobserver", "label": "revealObserver", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "revealObserver", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_glowtracker", "label": "glowTracker", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "glowTracker", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_tiltcards", "label": "tiltCards", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "tiltCards", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_rect", "label": "rect", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "rect", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_floaters", "label": "floaters", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "floaters", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_main_speed", "label": "speed", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "speed", "community": 1, "community_name": "SEO Landing Pages & FIDE USP", "source_file": "main.js", "file_type": "code", "degree": 1}, {"id": "lp_js", "label": "lp.js", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 28.0, "font": {"size": 12, "color": "#ffffff"}, "title": "lp.js", "community": 3, "community_name": "Landing Page Shared Scripts", "source_file": "lp.js", "file_type": "code", "degree": 6}, {"id": "thechesslifestyle_lp_item", "label": "item", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "item", "community": 3, "community_name": "Landing Page Shared Scripts", "source_file": "lp.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_lp_isopen", "label": "isOpen", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "isOpen", "community": 3, "community_name": "Landing Page Shared Scripts", "source_file": "lp.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_lp_observer", "label": "observer", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "observer", "community": 3, "community_name": "Landing Page Shared Scripts", "source_file": "lp.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_lp_glow", "label": "glow", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "glow", "community": 3, "community_name": "Landing Page Shared Scripts", "source_file": "lp.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_lp_toggle", "label": "toggle", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "toggle", "community": 3, "community_name": "Landing Page Shared Scripts", "source_file": "lp.js", "file_type": "code", "degree": 1}, {"id": "thechesslifestyle_lp_navlinks", "label": "navLinks", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "navLinks", "community": 3, "community_name": "Landing Page Shared Scripts", "source_file": "lp.js", "file_type": "code", "degree": 1}, {"id": "src_main_js", "label": "main.js", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "main.js", "community": 5, "community_name": "Tournaments & Events", "source_file": "src/main.js", "file_type": "code", "degree": 3}, {"id": "src_counter_js", "label": "counter.js", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 16.0, "font": {"size": 12, "color": "#ffffff"}, "title": "counter.js", "community": 5, "community_name": "Tournaments & Events", "source_file": "src/counter.js", "file_type": "code", "degree": 2}, {"id": "src_counter_setupcounter", "label": "setupCounter()", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 16.0, "font": {"size": 12, "color": "#ffffff"}, "title": "setupCounter()", "community": 5, "community_name": "Tournaments & Events", "source_file": "src/counter.js", "file_type": "code", "degree": 2}, {"id": "vite_config", "label": "Vite Build Config", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 25.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Vite Build Config", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "vite.config.js", "file_type": "code", "degree": 5}, {"id": "main_js_entry", "label": "Main JS Entry Point", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Main JS Entry Point", "community": 4, "community_name": "Vite Dev Scaffold", "source_file": "main.js", "file_type": "code", "degree": 3}, {"id": "lp_js_shared", "label": "Landing Page Shared JS", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Landing Page Shared JS", "community": 4, "community_name": "Vite Dev Scaffold", "source_file": "lp.js", "file_type": "code", "degree": 3}, {"id": "lp_faq_accordion", "label": "FAQ Accordion Interaction", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "FAQ Accordion Interaction", "community": 4, "community_name": "Vite Dev Scaffold", "source_file": "lp.js", "file_type": "rationale", "degree": 1}, {"id": "lp_scroll_reveal", "label": "Scroll Reveal Animation", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 16.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Scroll Reveal Animation", "community": 4, "community_name": "Vite Dev Scaffold", "source_file": "lp.js", "file_type": "rationale", "degree": 2}, {"id": "lp_mouse_glow", "label": "Mouse Glow Cursor Tracker", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 16.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Mouse Glow Cursor Tracker", "community": 4, "community_name": "Vite Dev Scaffold", "source_file": "lp.js", "file_type": "rationale", "degree": 2}, {"id": "homepage", "label": "Homepage", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 28.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Homepage", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "index.html", "file_type": "document", "degree": 6}, {"id": "homepage_hero", "label": "Homepage Hero Section", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Homepage Hero Section", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "index.html", "file_type": "rationale", "degree": 1}, {"id": "homepage_fide_trust_bar", "label": "FIDE Trust Bar", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "FIDE Trust Bar", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "index.html", "file_type": "rationale", "degree": 1}, {"id": "homepage_enrol_form", "label": "Trial Class Enrollment Form", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Trial Class Enrollment Form", "community": 8, "community_name": "Hero Section & King Image", "source_file": "index.html", "file_type": "rationale", "degree": 3}, {"id": "homepage_class_preference_field", "label": "Online vs Offline Class Preference Field", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Online vs Offline Class Preference Field", "community": 8, "community_name": "Hero Section & King Image", "source_file": "index.html", "file_type": "rationale", "degree": 1}, {"id": "homepage_benefits_section", "label": "Chess Cognitive Benefits Section", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 16.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Chess Cognitive Benefits Section", "community": 7, "community_name": "Cognitive Benefits Visual Section", "source_file": "index.html", "file_type": "rationale", "degree": 2}, {"id": "homepage_why_us_section", "label": "Why Choose Us Section \u2014 FIDE Coaches", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Why Choose Us Section \u2014 FIDE Coaches", "community": 9, "community_name": "Why Choose Us Section", "source_file": "index.html", "file_type": "rationale", "degree": 1}, {"id": "terms_page", "label": "Terms and Conditions Page", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Terms and Conditions Page", "community": 12, "community_name": "Refund Policy", "source_file": "terms.html", "file_type": "document", "degree": 0}, {"id": "refund_page", "label": "Refund Policy Page", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Refund Policy Page", "community": 13, "community_name": "Privacy Policy", "source_file": "refund.html", "file_type": "document", "degree": 0}, {"id": "privacy_page", "label": "Privacy Policy Page", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Privacy Policy Page", "community": 14, "community_name": "Google Search Console Verification", "source_file": "privacy.html", "file_type": "document", "degree": 0}, {"id": "chess_home_tutor_noida_page", "label": "Chess Home Tutor Noida Landing Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 16.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Chess Home Tutor Noida Landing Page", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "chess-home-tutor-noida/index.html", "file_type": "document", "degree": 2}, {"id": "chess_classes_noida_page", "label": "Chess Classes Noida SEO Landing Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Chess Classes Noida SEO Landing Page", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "chess-classes-noida/index.html", "file_type": "document", "degree": 3}, {"id": "google_verification_file", "label": "Google Search Console Verification File", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Google Search Console Verification File", "community": 15, "community_name": "Favicon Brand Icon", "source_file": "public/google87cdefbbc8722873.html", "file_type": "document", "degree": 0}, {"id": "packages_page", "label": "Pricing Packages Page", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Pricing Packages Page", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "packages/index.html", "file_type": "document", "degree": 1}, {"id": "formsubmit_integration", "label": "FormSubmit Email Integration", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "FormSubmit Email Integration", "community": 8, "community_name": "Hero Section & King Image", "source_file": "index.html", "file_type": "rationale", "degree": 1}, {"id": "fide_rated_coach_concept", "label": "Indian FIDE Rated Coach \u2014 Core USP", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 22.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Indian FIDE Rated Coach \u2014 Core USP", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "index.html", "file_type": "rationale", "degree": 4}, {"id": "online_chess_classes_concept", "label": "Online Chess Classes \u2014 Primary SEO Target", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Online Chess Classes \u2014 Primary SEO Target", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "index.html", "file_type": "rationale", "degree": 3}, {"id": "noida_local_seo_concept", "label": "Noida Local SEO Strategy", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Noida Local SEO Strategy", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "chess-classes-noida/index.html", "file_type": "rationale", "degree": 3}, {"id": "tournaments_page", "label": "Elite 18 Showcase Tournament Page", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 19.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Elite 18 Showcase Tournament Page", "community": 6, "community_name": "Trial Class Enrollment Flow", "source_file": "tournaments/index.html", "file_type": "document", "degree": 3}, {"id": "elite_18_showcase", "label": "Elite 18 Chess Showcase Event", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Elite 18 Chess Showcase Event", "community": 6, "community_name": "Trial Class Enrollment Flow", "source_file": "tournaments/index.html", "file_type": "rationale", "degree": 1}, {"id": "tournament_registration_form", "label": "Tournament Registration Form", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Tournament Registration Form", "community": 6, "community_name": "Trial Class Enrollment Flow", "source_file": "tournaments/index.html", "file_type": "rationale", "degree": 1}, {"id": "img_academy_glow", "label": "Academy Glow \u2014 Ambiance Visual (Antique Clock & Board)", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Academy Glow \u2014 Ambiance Visual (Antique Clock &amp; Board)", "community": 6, "community_name": "Trial Class Enrollment Flow", "source_file": "public/academy_glow_1775632640782.png", "file_type": "image", "degree": 1}, {"id": "img_abstract_mind", "label": "Abstract Mind \u2014 Geometric Chess Cognition Graphic", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Abstract Mind \u2014 Geometric Chess Cognition Graphic", "community": 7, "community_name": "Cognitive Benefits Visual Section", "source_file": "public/abstract_mind_1775632559604.png", "file_type": "image", "degree": 1}, {"id": "img_favicon", "label": "Favicon \u2014 Site Brand Icon", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Favicon \u2014 Site Brand Icon", "community": 16, "community_name": "UI Icons Sprite", "source_file": "public/favicon.png", "file_type": "image", "degree": 0}, {"id": "img_glowing_king", "label": "Glowing Gold King \u2014 Hero Section Image", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 16.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Glowing Gold King \u2014 Hero Section Image", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "public/glowing_king_hero_1775631608464.png", "file_type": "image", "degree": 2}, {"id": "img_pawns_ascent", "label": "Pawns Ascending to Queen \u2014 Benefits Section Graphic", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Pawns Ascending to Queen \u2014 Benefits Section Graphic", "community": 7, "community_name": "Cognitive Benefits Visual Section", "source_file": "public/pawns_ascent_1775632592436.png", "file_type": "image", "degree": 1}, {"id": "img_strategic_knight", "label": "Strategic Knight \u2014 Why Choose Us Section Image", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Strategic Knight \u2014 Why Choose Us Section Image", "community": 9, "community_name": "Why Choose Us Section", "source_file": "public/strategic_knight_1775631654015.png", "file_type": "image", "degree": 1}, {"id": "svg_icons", "label": "UI Icons SVG Sprite", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "UI Icons SVG Sprite", "community": 17, "community_name": "SVG Favicon", "source_file": "public/icons.svg", "file_type": "image", "degree": 0}, {"id": "svg_favicon", "label": "SVG Favicon", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "SVG Favicon", "community": 18, "community_name": "Scaffold Hero Asset", "source_file": "public/favicon.svg", "file_type": "image", "degree": 0}, {"id": "asset_js_logo", "label": "JavaScript Logo Asset (Dev scaffold)", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "JavaScript Logo Asset (Dev scaffold)", "community": 5, "community_name": "Tournaments & Events", "source_file": "src/assets/javascript.svg", "file_type": "image", "degree": 1}, {"id": "asset_hero_png", "label": "Hero Asset (Vite scaffold leftover)", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Hero Asset (Vite scaffold leftover)", "community": 19, "community_name": "Community 19", "source_file": "src/assets/hero.png", "file_type": "image", "degree": 0}, {"id": "asset_vite_logo", "label": "Vite Logo Asset (Dev scaffold)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 13.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Vite Logo Asset (Dev scaffold)", "community": 0, "community_name": "Homepage JS & Animations", "source_file": "src/assets/vite.svg", "file_type": "image", "degree": 1}];
+const RAW_EDGES = [{"from": "generate_pages_js", "to": "thechesslifestyle_generate_pages_fs", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "generate_pages_js", "to": "thechesslifestyle_generate_pages_path", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "generate_pages_js", "to": "thechesslifestyle_generate_pages_pages", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "generate_pages_js", "to": "thechesslifestyle_generate_pages_geopages", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "generate_pages_js", "to": "thechesslifestyle_generate_pages_buildpage", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "generate_pages_js", "to": "thechesslifestyle_generate_pages_dir", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_togglebtn", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_navlinks", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_scrollelements", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_revealoptions", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_revealobserver", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_glowtracker", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_tiltcards", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_rect", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_floaters", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js", "to": "thechesslifestyle_main_speed", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js", "to": "thechesslifestyle_lp_item", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js", "to": "thechesslifestyle_lp_isopen", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js", "to": "thechesslifestyle_lp_observer", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js", "to": "thechesslifestyle_lp_glow", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js", "to": "thechesslifestyle_lp_toggle", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js", "to": "thechesslifestyle_lp_navlinks", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "src_main_js", "to": "src_counter_js", "label": "imports_from", "title": "imports_from [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "src_main_js", "to": "src_counter_setupcounter", "label": "imports", "title": "imports [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "asset_js_logo", "to": "src_main_js", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "src_counter_js", "to": "src_counter_setupcounter", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vite_config", "to": "homepage", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vite_config", "to": "packages_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vite_config", "to": "chess_classes_noida_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vite_config", "to": "chess_home_tutor_noida_page", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "asset_vite_logo", "to": "vite_config", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "main_js_entry", "to": "homepage", "label": "implements", "title": "implements [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js_entry", "to": "lp_scroll_reveal", "label": "implements", "title": "implements [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "main_js_entry", "to": "lp_mouse_glow", "label": "implements", "title": "implements [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js_shared", "to": "lp_faq_accordion", "label": "implements", "title": "implements [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js_shared", "to": "lp_scroll_reveal", "label": "implements", "title": "implements [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "lp_js_shared", "to": "lp_mouse_glow", "label": "implements", "title": "implements [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "homepage", "to": "homepage_fide_trust_bar", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "homepage", "to": "homepage_enrol_form", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "homepage", "to": "fide_rated_coach_concept", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "homepage", "to": "online_chess_classes_concept", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "img_glowing_king", "to": "homepage_hero", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "homepage_enrol_form", "to": "homepage_class_preference_field", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "homepage_enrol_form", "to": "formsubmit_integration", "label": "implements", "title": "implements [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "img_abstract_mind", "to": "homepage_benefits_section", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "img_pawns_ascent", "to": "homepage_benefits_section", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "img_strategic_knight", "to": "homepage_why_us_section", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "chess_home_tutor_noida_page", "to": "noida_local_seo_concept", "label": "rationale_for", "title": "rationale_for [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "chess_classes_noida_page", "to": "noida_local_seo_concept", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "chess_classes_noida_page", "to": "fide_rated_coach_concept", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "online_chess_classes_concept", "to": "fide_rated_coach_concept", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "img_glowing_king", "to": "fide_rated_coach_concept", "label": "rationale_for", "title": "rationale_for [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "noida_local_seo_concept", "to": "online_chess_classes_concept", "label": "semantically_similar_to", "title": "semantically_similar_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "tournaments_page", "to": "elite_18_showcase", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "tournaments_page", "to": "tournament_registration_form", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "img_academy_glow", "to": "tournaments_page", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}];
+const LEGEND = [{"cid": 0, "color": "#4E79A7", "label": "Homepage JS &amp; Animations", "count": 12}, {"cid": 1, "color": "#F28E2B", "label": "SEO Landing Pages &amp; FIDE USP", "count": 11}, {"cid": 2, "color": "#E15759", "label": "Landing Page JS Internals", "count": 7}, {"cid": 3, "color": "#76B7B2", "label": "Landing Page Shared Scripts", "count": 7}, {"cid": 4, "color": "#59A14F", "label": "Vite Dev Scaffold", "count": 5}, {"cid": 5, "color": "#EDC948", "label": "Tournaments &amp; Events", "count": 4}, {"cid": 6, "color": "#B07AA1", "label": "Trial Class Enrollment Flow", "count": 4}, {"cid": 7, "color": "#FF9DA7", "label": "Cognitive Benefits Visual Section", "count": 3}, {"cid": 8, "color": "#9C755F", "label": "Hero Section &amp; King Image", "count": 3}, {"cid": 9, "color": "#BAB0AC", "label": "Why Choose Us Section", "count": 2}, {"cid": 10, "color": "#4E79A7", "label": "Vite Build Config", "count": 1}, {"cid": 11, "color": "#F28E2B", "label": "Terms Page", "count": 1}, {"cid": 12, "color": "#E15759", "label": "Refund Policy", "count": 1}, {"cid": 13, "color": "#76B7B2", "label": "Privacy Policy", "count": 1}, {"cid": 14, "color": "#59A14F", "label": "Google Search Console Verification", "count": 1}, {"cid": 15, "color": "#EDC948", "label": "Favicon Brand Icon", "count": 1}, {"cid": 16, "color": "#B07AA1", "label": "UI Icons Sprite", "count": 1}, {"cid": 17, "color": "#FF9DA7", "label": "SVG Favicon", "count": 1}, {"cid": 18, "color": "#9C755F", "label": "Scaffold Hero Asset", "count": 1}, {"cid": 19, "color": "#BAB0AC", "label": "Community 19", "count": 1}];
+
+// HTML-escape helper — prevents XSS when injecting graph data into innerHTML
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Build vis datasets
+const nodesDS = new vis.DataSet(RAW_NODES.map(n => ({
+  id: n.id, label: n.label, color: n.color, size: n.size,
+  font: n.font, title: n.title,
+  _community: n.community, _community_name: n.community_name,
+  _source_file: n.source_file, _file_type: n.file_type, _degree: n.degree,
+})));
+
+const edgesDS = new vis.DataSet(RAW_EDGES.map((e, i) => ({
+  id: i, from: e.from, to: e.to,
+  label: '',
+  title: e.title,
+  dashes: e.dashes,
+  width: e.width,
+  color: e.color,
+  arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+})));
+
+const container = document.getElementById('graph');
+const network = new vis.Network(container, { nodes: nodesDS, edges: edgesDS }, {
+  physics: {
+    enabled: true,
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -60,
+      centralGravity: 0.005,
+      springLength: 120,
+      springConstant: 0.08,
+      damping: 0.4,
+      avoidOverlap: 0.8,
+    },
+    stabilization: { iterations: 200, fit: true },
+  },
+  interaction: {
+    hover: true,
+    tooltipDelay: 100,
+    hideEdgesOnDrag: true,
+    navigationButtons: false,
+    keyboard: false,
+  },
+  nodes: { shape: 'dot', borderWidth: 1.5 },
+  edges: { smooth: { type: 'continuous', roundness: 0.2 }, selectionWidth: 3 },
+});
+
+network.once('stabilizationIterationsDone', () => {
+  network.setOptions({ physics: { enabled: false } });
+});
+
+function showInfo(nodeId) {
+  const n = nodesDS.get(nodeId);
+  if (!n) return;
+  const neighborIds = network.getConnectedNodes(nodeId);
+  const neighborItems = neighborIds.map(nid => {
+    const nb = nodesDS.get(nid);
+    const color = nb ? nb.color.background : '#555';
+    return `<span class="neighbor-link" style="border-left-color:${esc(color)}" onclick="focusNode(${JSON.stringify(nid)})">${esc(nb ? nb.label : nid)}</span>`;
+  }).join('');
+  document.getElementById('info-content').innerHTML = `
+    <div class="field"><b>${esc(n.label)}</b></div>
+    <div class="field">Type: ${esc(n._file_type || 'unknown')}</div>
+    <div class="field">Community: ${esc(n._community_name)}</div>
+    <div class="field">Source: ${esc(n._source_file || '-')}</div>
+    <div class="field">Degree: ${n._degree}</div>
+    ${neighborIds.length ? `<div class="field" style="margin-top:8px;color:#aaa;font-size:11px">Neighbors (${neighborIds.length})</div><div id="neighbors-list">${neighborItems}</div>` : ''}
+  `;
+}
+
+function focusNode(nodeId) {
+  network.focus(nodeId, { scale: 1.4, animation: true });
+  network.selectNodes([nodeId]);
+  showInfo(nodeId);
+}
+
+// Track hovered node — hover detection is more reliable than click params
+let hoveredNodeId = null;
+network.on('hoverNode', params => {
+  hoveredNodeId = params.node;
+  container.style.cursor = 'pointer';
+});
+network.on('blurNode', () => {
+  hoveredNodeId = null;
+  container.style.cursor = 'default';
+});
+container.addEventListener('click', () => {
+  if (hoveredNodeId !== null) {
+    showInfo(hoveredNodeId);
+    network.selectNodes([hoveredNodeId]);
+  }
+});
+network.on('click', params => {
+  if (params.nodes.length > 0) {
+    showInfo(params.nodes[0]);
+  } else if (hoveredNodeId === null) {
+    document.getElementById('info-content').innerHTML = '<span class="empty">Click a node to inspect it</span>';
+  }
+});
+
+const searchInput = document.getElementById('search');
+const searchResults = document.getElementById('search-results');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  searchResults.innerHTML = '';
+  if (!q) { searchResults.style.display = 'none'; return; }
+  const matches = RAW_NODES.filter(n => n.label.toLowerCase().includes(q)).slice(0, 20);
+  if (!matches.length) { searchResults.style.display = 'none'; return; }
+  searchResults.style.display = 'block';
+  matches.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'search-item';
+    el.textContent = n.label;
+    el.style.borderLeft = `3px solid ${n.color.background}`;
+    el.style.paddingLeft = '8px';
+    el.onclick = () => {
+      network.focus(n.id, { scale: 1.5, animation: true });
+      network.selectNodes([n.id]);
+      showInfo(n.id);
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+    };
+    searchResults.appendChild(el);
+  });
+});
+document.addEventListener('click', e => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput)
+    searchResults.style.display = 'none';
+});
+
+const hiddenCommunities = new Set();
+
+const selectAllCb = document.getElementById('select-all-cb');
+
+function updateSelectAllState() {
+  const total = LEGEND.length;
+  const hidden = hiddenCommunities.size;
+  selectAllCb.checked = hidden === 0;
+  selectAllCb.indeterminate = hidden > 0 && hidden < total;
+}
+
+function toggleAllCommunities(hide) {
+  document.querySelectorAll('.legend-item').forEach(item => {
+    hide ? item.classList.add('dimmed') : item.classList.remove('dimmed');
+  });
+  document.querySelectorAll('.legend-cb').forEach(cb => {
+    cb.checked = !hide;
+  });
+  LEGEND.forEach(c => {
+    if (hide) hiddenCommunities.add(c.cid); else hiddenCommunities.delete(c.cid);
+  });
+  const updates = RAW_NODES.map(n => ({ id: n.id, hidden: hide }));
+  nodesDS.update(updates);
+  updateSelectAllState();
+}
+
+const legendEl = document.getElementById('legend');
+LEGEND.forEach(c => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'legend-cb';
+  cb.checked = true;
+  cb.addEventListener('change', (e) => {
+    e.stopPropagation();
+    if (cb.checked) {
+      hiddenCommunities.delete(c.cid);
+      item.classList.remove('dimmed');
+    } else {
+      hiddenCommunities.add(c.cid);
+      item.classList.add('dimmed');
+    }
+    const updates = RAW_NODES
+      .filter(n => n.community === c.cid)
+      .map(n => ({ id: n.id, hidden: !cb.checked }));
+    nodesDS.update(updates);
+    updateSelectAllState();
+  });
+  item.innerHTML = `<div class="legend-dot" style="background:${c.color}"></div>
+    <span class="legend-label">${c.label}</span>
+    <span class="legend-count">${c.count}</span>`;
+  item.prepend(cb);
+  item.onclick = (e) => {
+    if (e.target === cb) return;
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  };
+  legendEl.appendChild(item);
+});
+</script>
+<script>
+// Render hyperedges as shaded regions
+const hyperedges = [{"id": "noida_seo_cluster", "label": "Noida Local SEO Pages Cluster", "nodes": ["chess_classes_noida_page", "chess_home_tutor_noida_page", "noida_local_seo_concept"], "relation": "form", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "chess-classes-noida/index.html"}, {"id": "trial_class_flow", "label": "Trial Class Registration Flow", "nodes": ["homepage_enrol_form", "homepage_class_preference_field", "formsubmit_integration"], "relation": "participate_in", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "index.html"}, {"id": "chess_imagery_cluster", "label": "Chess Visual Assets Cluster", "nodes": ["img_glowing_king", "img_abstract_mind", "img_pawns_ascent", "img_strategic_knight", "img_academy_glow"], "relation": "form", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "public/"}];
+// afterDrawing passes ctx already transformed to network coordinate space.
+// Draw node positions raw — no manual pan/zoom/DPR math needed.
+network.on('afterDrawing', function(ctx) {
+    hyperedges.forEach(h => {
+        const positions = h.nodes
+            .map(nid => network.getPositions([nid])[nid])
+            .filter(p => p !== undefined);
+        if (positions.length < 2) return;
+        ctx.save();
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = '#6366f1';
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        // Centroid and expanded hull in network coordinates
+        const cx = positions.reduce((s, p) => s + p.x, 0) / positions.length;
+        const cy = positions.reduce((s, p) => s + p.y, 0) / positions.length;
+        const expanded = positions.map(p => ({
+            x: cx + (p.x - cx) * 1.15,
+            y: cy + (p.y - cy) * 1.15
+        }));
+        ctx.moveTo(expanded[0].x, expanded[0].y);
+        expanded.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 0.4;
+        ctx.stroke();
+        // Label
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = '#4f46e5';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(h.label, cx, cy - 5);
+        ctx.restore();
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1423 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "noida_seo_cluster",
+        "label": "Noida Local SEO Pages Cluster",
+        "nodes": [
+          "chess_classes_noida_page",
+          "chess_home_tutor_noida_page",
+          "noida_local_seo_concept"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "chess-classes-noida/index.html"
+      },
+      {
+        "id": "trial_class_flow",
+        "label": "Trial Class Registration Flow",
+        "nodes": [
+          "homepage_enrol_form",
+          "homepage_class_preference_field",
+          "formsubmit_integration"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "index.html"
+      },
+      {
+        "id": "chess_imagery_cluster",
+        "label": "Chess Visual Assets Cluster",
+        "nodes": [
+          "img_glowing_king",
+          "img_abstract_mind",
+          "img_pawns_ascent",
+          "img_strategic_knight",
+          "img_academy_glow"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "public/"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "generate-pages.js",
+      "file_type": "code",
+      "source_file": "generate-pages.js",
+      "source_location": "L1",
+      "id": "generate_pages_js",
+      "community": 2,
+      "norm_label": "generate-pages.js"
+    },
+    {
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "generate-pages.js",
+      "source_location": "L1",
+      "id": "thechesslifestyle_generate_pages_fs",
+      "community": 2,
+      "norm_label": "fs"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "generate-pages.js",
+      "source_location": "L2",
+      "id": "thechesslifestyle_generate_pages_path",
+      "community": 2,
+      "norm_label": "path"
+    },
+    {
+      "label": "pages",
+      "file_type": "code",
+      "source_file": "generate-pages.js",
+      "source_location": "L4",
+      "id": "thechesslifestyle_generate_pages_pages",
+      "community": 2,
+      "norm_label": "pages"
+    },
+    {
+      "label": "geoPages",
+      "file_type": "code",
+      "source_file": "generate-pages.js",
+      "source_location": "L69",
+      "id": "thechesslifestyle_generate_pages_geopages",
+      "community": 2,
+      "norm_label": "geopages"
+    },
+    {
+      "label": "buildPage()",
+      "file_type": "code",
+      "source_file": "generate-pages.js",
+      "source_location": "L110",
+      "id": "thechesslifestyle_generate_pages_buildpage",
+      "community": 2,
+      "norm_label": "buildpage()"
+    },
+    {
+      "label": "dir",
+      "file_type": "code",
+      "source_file": "generate-pages.js",
+      "source_location": "L302",
+      "id": "thechesslifestyle_generate_pages_dir",
+      "community": 2,
+      "norm_label": "dir"
+    },
+    {
+      "label": "generate-pages.py",
+      "file_type": "code",
+      "source_file": "generate-pages.py",
+      "source_location": "L1",
+      "id": "generate_pages_py",
+      "community": 10,
+      "norm_label": "generate-pages.py"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "vite.config.js",
+      "source_location": "L1",
+      "id": "vite_config_js",
+      "community": 11,
+      "norm_label": "vite.config.js"
+    },
+    {
+      "label": "main.js",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L1",
+      "id": "main_js",
+      "community": 1,
+      "norm_label": "main.js"
+    },
+    {
+      "label": "toggleBtn",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L5",
+      "id": "thechesslifestyle_main_togglebtn",
+      "community": 1,
+      "norm_label": "togglebtn"
+    },
+    {
+      "label": "navLinks",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L6",
+      "id": "thechesslifestyle_main_navlinks",
+      "community": 1,
+      "norm_label": "navlinks"
+    },
+    {
+      "label": "scrollElements",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L21",
+      "id": "thechesslifestyle_main_scrollelements",
+      "community": 1,
+      "norm_label": "scrollelements"
+    },
+    {
+      "label": "revealOptions",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L22",
+      "id": "thechesslifestyle_main_revealoptions",
+      "community": 1,
+      "norm_label": "revealoptions"
+    },
+    {
+      "label": "revealObserver",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L24",
+      "id": "thechesslifestyle_main_revealobserver",
+      "community": 1,
+      "norm_label": "revealobserver"
+    },
+    {
+      "label": "glowTracker",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L38",
+      "id": "thechesslifestyle_main_glowtracker",
+      "community": 1,
+      "norm_label": "glowtracker"
+    },
+    {
+      "label": "tiltCards",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L49",
+      "id": "thechesslifestyle_main_tiltcards",
+      "community": 1,
+      "norm_label": "tiltcards"
+    },
+    {
+      "label": "rect",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L53",
+      "id": "thechesslifestyle_main_rect",
+      "community": 1,
+      "norm_label": "rect"
+    },
+    {
+      "label": "floaters",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L80",
+      "id": "thechesslifestyle_main_floaters",
+      "community": 1,
+      "norm_label": "floaters"
+    },
+    {
+      "label": "speed",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": "L84",
+      "id": "thechesslifestyle_main_speed",
+      "community": 1,
+      "norm_label": "speed"
+    },
+    {
+      "label": "lp.js",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": "L1",
+      "id": "lp_js",
+      "community": 3,
+      "norm_label": "lp.js"
+    },
+    {
+      "label": "item",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": "L5",
+      "id": "thechesslifestyle_lp_item",
+      "community": 3,
+      "norm_label": "item"
+    },
+    {
+      "label": "isOpen",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": "L6",
+      "id": "thechesslifestyle_lp_isopen",
+      "community": 3,
+      "norm_label": "isopen"
+    },
+    {
+      "label": "observer",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": "L13",
+      "id": "thechesslifestyle_lp_observer",
+      "community": 3,
+      "norm_label": "observer"
+    },
+    {
+      "label": "glow",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": "L19",
+      "id": "thechesslifestyle_lp_glow",
+      "community": 3,
+      "norm_label": "glow"
+    },
+    {
+      "label": "toggle",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": "L28",
+      "id": "thechesslifestyle_lp_toggle",
+      "community": 3,
+      "norm_label": "toggle"
+    },
+    {
+      "label": "navLinks",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": "L29",
+      "id": "thechesslifestyle_lp_navlinks",
+      "community": 3,
+      "norm_label": "navlinks"
+    },
+    {
+      "label": "main.js",
+      "file_type": "code",
+      "source_file": "src/main.js",
+      "source_location": "L1",
+      "id": "src_main_js",
+      "community": 5,
+      "norm_label": "main.js"
+    },
+    {
+      "label": "counter.js",
+      "file_type": "code",
+      "source_file": "src/counter.js",
+      "source_location": "L1",
+      "id": "src_counter_js",
+      "community": 5,
+      "norm_label": "counter.js"
+    },
+    {
+      "label": "setupCounter()",
+      "file_type": "code",
+      "source_file": "src/counter.js",
+      "source_location": "L1",
+      "id": "src_counter_setupcounter",
+      "community": 5,
+      "norm_label": "setupcounter()"
+    },
+    {
+      "label": "Vite Build Config",
+      "file_type": "code",
+      "source_file": "vite.config.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "vite build config",
+      "id": "vite_config"
+    },
+    {
+      "label": "Main JS Entry Point",
+      "file_type": "code",
+      "source_file": "main.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "main js entry point",
+      "id": "main_js_entry"
+    },
+    {
+      "label": "Landing Page Shared JS",
+      "file_type": "code",
+      "source_file": "lp.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "landing page shared js",
+      "id": "lp_js_shared"
+    },
+    {
+      "label": "FAQ Accordion Interaction",
+      "file_type": "rationale",
+      "source_file": "lp.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "faq accordion interaction",
+      "id": "lp_faq_accordion"
+    },
+    {
+      "label": "Scroll Reveal Animation",
+      "file_type": "rationale",
+      "source_file": "lp.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "scroll reveal animation",
+      "id": "lp_scroll_reveal"
+    },
+    {
+      "label": "Mouse Glow Cursor Tracker",
+      "file_type": "rationale",
+      "source_file": "lp.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 4,
+      "norm_label": "mouse glow cursor tracker",
+      "id": "lp_mouse_glow"
+    },
+    {
+      "label": "Homepage",
+      "file_type": "document",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "homepage",
+      "id": "homepage"
+    },
+    {
+      "label": "Homepage Hero Section",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "homepage hero section",
+      "id": "homepage_hero"
+    },
+    {
+      "label": "FIDE Trust Bar",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "fide trust bar",
+      "id": "homepage_fide_trust_bar"
+    },
+    {
+      "label": "Trial Class Enrollment Form",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "trial class enrollment form",
+      "id": "homepage_enrol_form"
+    },
+    {
+      "label": "Online vs Offline Class Preference Field",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "online vs offline class preference field",
+      "id": "homepage_class_preference_field"
+    },
+    {
+      "label": "Chess Cognitive Benefits Section",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "chess cognitive benefits section",
+      "id": "homepage_benefits_section"
+    },
+    {
+      "label": "Why Choose Us Section \u2014 FIDE Coaches",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "why choose us section \u2014 fide coaches",
+      "id": "homepage_why_us_section"
+    },
+    {
+      "label": "Terms and Conditions Page",
+      "file_type": "document",
+      "source_file": "terms.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 12,
+      "norm_label": "terms and conditions page",
+      "id": "terms_page"
+    },
+    {
+      "label": "Refund Policy Page",
+      "file_type": "document",
+      "source_file": "refund.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 13,
+      "norm_label": "refund policy page",
+      "id": "refund_page"
+    },
+    {
+      "label": "Privacy Policy Page",
+      "file_type": "document",
+      "source_file": "privacy.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "privacy policy page",
+      "id": "privacy_page"
+    },
+    {
+      "label": "Chess Home Tutor Noida Landing Page",
+      "file_type": "document",
+      "source_file": "chess-home-tutor-noida/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "chess home tutor noida landing page",
+      "id": "chess_home_tutor_noida_page"
+    },
+    {
+      "label": "Chess Classes Noida SEO Landing Page",
+      "file_type": "document",
+      "source_file": "chess-classes-noida/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "chess classes noida seo landing page",
+      "id": "chess_classes_noida_page"
+    },
+    {
+      "label": "Google Search Console Verification File",
+      "file_type": "document",
+      "source_file": "public/google87cdefbbc8722873.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 15,
+      "norm_label": "google search console verification file",
+      "id": "google_verification_file"
+    },
+    {
+      "label": "Pricing Packages Page",
+      "file_type": "document",
+      "source_file": "packages/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "pricing packages page",
+      "id": "packages_page"
+    },
+    {
+      "label": "FormSubmit Email Integration",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "formsubmit email integration",
+      "id": "formsubmit_integration"
+    },
+    {
+      "label": "Indian FIDE Rated Coach \u2014 Core USP",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "indian fide rated coach \u2014 core usp",
+      "id": "fide_rated_coach_concept"
+    },
+    {
+      "label": "Online Chess Classes \u2014 Primary SEO Target",
+      "file_type": "rationale",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "online chess classes \u2014 primary seo target",
+      "id": "online_chess_classes_concept"
+    },
+    {
+      "label": "Noida Local SEO Strategy",
+      "file_type": "rationale",
+      "source_file": "chess-classes-noida/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "noida local seo strategy",
+      "id": "noida_local_seo_concept"
+    },
+    {
+      "label": "Elite 18 Showcase Tournament Page",
+      "file_type": "document",
+      "source_file": "tournaments/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 6,
+      "norm_label": "elite 18 showcase tournament page",
+      "id": "tournaments_page"
+    },
+    {
+      "label": "Elite 18 Chess Showcase Event",
+      "file_type": "rationale",
+      "source_file": "tournaments/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 6,
+      "norm_label": "elite 18 chess showcase event",
+      "id": "elite_18_showcase"
+    },
+    {
+      "label": "Tournament Registration Form",
+      "file_type": "rationale",
+      "source_file": "tournaments/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 6,
+      "norm_label": "tournament registration form",
+      "id": "tournament_registration_form"
+    },
+    {
+      "label": "Academy Glow \u2014 Ambiance Visual (Antique Clock & Board)",
+      "file_type": "image",
+      "source_file": "public/academy_glow_1775632640782.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 6,
+      "norm_label": "academy glow \u2014 ambiance visual (antique clock & board)",
+      "id": "img_academy_glow"
+    },
+    {
+      "label": "Abstract Mind \u2014 Geometric Chess Cognition Graphic",
+      "file_type": "image",
+      "source_file": "public/abstract_mind_1775632559604.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "abstract mind \u2014 geometric chess cognition graphic",
+      "id": "img_abstract_mind"
+    },
+    {
+      "label": "Favicon \u2014 Site Brand Icon",
+      "file_type": "image",
+      "source_file": "public/favicon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 16,
+      "norm_label": "favicon \u2014 site brand icon",
+      "id": "img_favicon"
+    },
+    {
+      "label": "Glowing Gold King \u2014 Hero Section Image",
+      "file_type": "image",
+      "source_file": "public/glowing_king_hero_1775631608464.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "glowing gold king \u2014 hero section image",
+      "id": "img_glowing_king"
+    },
+    {
+      "label": "Pawns Ascending to Queen \u2014 Benefits Section Graphic",
+      "file_type": "image",
+      "source_file": "public/pawns_ascent_1775632592436.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "pawns ascending to queen \u2014 benefits section graphic",
+      "id": "img_pawns_ascent"
+    },
+    {
+      "label": "Strategic Knight \u2014 Why Choose Us Section Image",
+      "file_type": "image",
+      "source_file": "public/strategic_knight_1775631654015.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 9,
+      "norm_label": "strategic knight \u2014 why choose us section image",
+      "id": "img_strategic_knight"
+    },
+    {
+      "label": "UI Icons SVG Sprite",
+      "file_type": "image",
+      "source_file": "public/icons.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 17,
+      "norm_label": "ui icons svg sprite",
+      "id": "svg_icons"
+    },
+    {
+      "label": "SVG Favicon",
+      "file_type": "image",
+      "source_file": "public/favicon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 18,
+      "norm_label": "svg favicon",
+      "id": "svg_favicon"
+    },
+    {
+      "label": "JavaScript Logo Asset (Dev scaffold)",
+      "file_type": "image",
+      "source_file": "src/assets/javascript.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 5,
+      "norm_label": "javascript logo asset (dev scaffold)",
+      "id": "asset_js_logo"
+    },
+    {
+      "label": "Hero Asset (Vite scaffold leftover)",
+      "file_type": "image",
+      "source_file": "src/assets/hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 19,
+      "norm_label": "hero asset (vite scaffold leftover)",
+      "id": "asset_hero_png"
+    },
+    {
+      "label": "Vite Logo Asset (Dev scaffold)",
+      "file_type": "image",
+      "source_file": "src/assets/vite.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 0,
+      "norm_label": "vite logo asset (dev scaffold)",
+      "id": "asset_vite_logo"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "generate-pages.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "generate_pages_js",
+      "target": "thechesslifestyle_generate_pages_fs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "generate-pages.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "generate_pages_js",
+      "target": "thechesslifestyle_generate_pages_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "generate-pages.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "generate_pages_js",
+      "target": "thechesslifestyle_generate_pages_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "generate-pages.js",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "generate_pages_js",
+      "target": "thechesslifestyle_generate_pages_geopages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "generate-pages.js",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "generate_pages_js",
+      "target": "thechesslifestyle_generate_pages_buildpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "generate-pages.js",
+      "source_location": "L302",
+      "weight": 1.0,
+      "source": "generate_pages_js",
+      "target": "thechesslifestyle_generate_pages_dir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_togglebtn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_navlinks"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_scrollelements"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_revealoptions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_revealobserver"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_glowtracker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_tiltcards"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_rect"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L80",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_floaters"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "main.js",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "main_js",
+      "target": "thechesslifestyle_main_speed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lp.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lp_js",
+      "target": "thechesslifestyle_lp_item"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lp.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lp_js",
+      "target": "thechesslifestyle_lp_isopen"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lp.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lp_js",
+      "target": "thechesslifestyle_lp_observer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lp.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lp_js",
+      "target": "thechesslifestyle_lp_glow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lp.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lp_js",
+      "target": "thechesslifestyle_lp_toggle"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lp.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lp_js",
+      "target": "thechesslifestyle_lp_navlinks"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_main_js",
+      "target": "src_counter_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_main_js",
+      "target": "src_counter_setupcounter"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/assets/javascript.svg",
+      "source_location": null,
+      "weight": 0.65,
+      "source": "asset_js_logo",
+      "target": "src_main_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/counter.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_counter_js",
+      "target": "src_counter_setupcounter"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vite.config.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "vite_config",
+      "target": "homepage"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vite.config.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "vite_config",
+      "target": "packages_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vite.config.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "vite_config",
+      "target": "chess_classes_noida_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "vite.config.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "vite_config",
+      "target": "chess_home_tutor_noida_page"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/assets/vite.svg",
+      "source_location": null,
+      "weight": 0.65,
+      "source": "asset_vite_logo",
+      "target": "vite_config"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "main_js_entry",
+      "target": "homepage"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "main_js_entry",
+      "target": "lp_scroll_reveal"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "main.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "main_js_entry",
+      "target": "lp_mouse_glow"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lp.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lp_js_shared",
+      "target": "lp_faq_accordion"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lp.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lp_js_shared",
+      "target": "lp_scroll_reveal"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lp.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "lp_js_shared",
+      "target": "lp_mouse_glow"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "homepage",
+      "target": "homepage_fide_trust_bar"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "homepage",
+      "target": "homepage_enrol_form"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "homepage",
+      "target": "fide_rated_coach_concept"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "homepage",
+      "target": "online_chess_classes_concept"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "img_glowing_king",
+      "target": "homepage_hero"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "homepage_enrol_form",
+      "target": "homepage_class_preference_field"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "homepage_enrol_form",
+      "target": "formsubmit_integration"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "img_abstract_mind",
+      "target": "homepage_benefits_section"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "img_pawns_ascent",
+      "target": "homepage_benefits_section"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "img_strategic_knight",
+      "target": "homepage_why_us_section"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "chess-home-tutor-noida/index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "chess_home_tutor_noida_page",
+      "target": "noida_local_seo_concept"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "chess-classes-noida/index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "chess_classes_noida_page",
+      "target": "noida_local_seo_concept"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "chess-classes-noida/index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "chess_classes_noida_page",
+      "target": "fide_rated_coach_concept"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "online_chess_classes_concept",
+      "target": "fide_rated_coach_concept"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/glowing_king_hero_1775631608464.png",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "img_glowing_king",
+      "target": "fide_rated_coach_concept"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "chess-classes-noida/index.html",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "noida_local_seo_concept",
+      "target": "online_chess_classes_concept"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tournaments/index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tournaments_page",
+      "target": "elite_18_showcase"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tournaments/index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "tournaments_page",
+      "target": "tournament_registration_form"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "tournaments/index.html",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "img_academy_glow",
+      "target": "tournaments_page"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "noida_seo_cluster",
+      "label": "Noida Local SEO Pages Cluster",
+      "nodes": [
+        "chess_classes_noida_page",
+        "chess_home_tutor_noida_page",
+        "noida_local_seo_concept"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "chess-classes-noida/index.html"
+    },
+    {
+      "id": "trial_class_flow",
+      "label": "Trial Class Registration Flow",
+      "nodes": [
+        "homepage_enrol_form",
+        "homepage_class_preference_field",
+        "formsubmit_integration"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html"
+    },
+    {
+      "id": "chess_imagery_cluster",
+      "label": "Chess Visual Assets Cluster",
+      "nodes": [
+        "img_glowing_king",
+        "img_abstract_mind",
+        "img_pawns_ascent",
+        "img_strategic_knight",
+        "img_academy_glow"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/"
+    }
+  ],
+  "built_at_commit": "cfdf2de44f38a983ea8fbef5b919905392ba23a1"
+}

@@ -919,3 +919,275 @@ footer {
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
 }
+
+/* =============================================
+   FIDE TRUST BAR
+   ============================================= */
+.fide-trust-bar {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 50%, rgba(245,158,11,0.15) 100%);
+  border-bottom: 1px solid rgba(245,158,11,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.55rem 5%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  z-index: 999;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-wrap: wrap;
+  letter-spacing: 0.3px;
+}
+.fide-trust-bar span { flex-shrink: 0; }
+.trust-sep { color: rgba(245,158,11,0.4); font-size: 1.2rem; }
+
+/* =============================================
+   LANDING PAGE — SHARED
+   ============================================= */
+.lp-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 160px 5% 80px;
+  position: relative;
+  overflow: hidden;
+}
+.lp-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(245,158,11,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lp-hero-content { max-width: 780px; z-index: 1; }
+.lp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 30px;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+.lp-hero h1 {
+  font-size: 3.8rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.lp-hero p.lp-lead {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+.lp-hero p.lp-lead strong { color: var(--text-main); }
+.lp-cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Trust Strip */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 2rem 5%;
+  background: rgba(245,158,11,0.04);
+  border-top: 1px solid rgba(245,158,11,0.1);
+  border-bottom: 1px solid rgba(245,158,11,0.1);
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.trust-item .ti-icon {
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+/* How It Works */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  counter-reset: steps;
+}
+.step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+  counter-increment: steps;
+}
+.step-card:hover {
+  border-color: rgba(245,158,11,0.4);
+  transform: translateY(-5px);
+}
+.step-card::before {
+  content: counter(steps);
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #000;
+  font-weight: 900;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+.step-card p { color: var(--text-muted); }
+
+/* Instructor Card */
+.instructor-section { padding: 6rem 5%; }
+.instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.instructor-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.instructor-card:hover {
+  border-color: rgba(245,158,11,0.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.instructor-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(245,158,11,0.3) 0%, rgba(245,158,11,0.05) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1.5rem;
+  border: 2px solid rgba(245,158,11,0.3);
+}
+.instructor-card h3 { font-size: 1.4rem; margin-bottom: 0.4rem; }
+.instructor-fide {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+.instructor-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* FAQ Section */
+.faq-section { padding: 6rem 5%; }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item {
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item.open { border-color: rgba(245,158,11,0.3); }
+.faq-question {
+  width: 100%;
+  background: var(--bg-card);
+  border: none;
+  color: var(--text-main);
+  padding: 1.4rem 1.8rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: background 0.3s;
+}
+.faq-question:hover { background: rgba(255,255,255,0.05); }
+.faq-arrow {
+  color: var(--primary);
+  font-size: 1.4rem;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  background: rgba(245,158,11,0.02);
+}
+.faq-answer p {
+  padding: 1.2rem 1.8rem 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+.faq-item.open .faq-answer { max-height: 300px; }
+
+/* Inline CTA box inside articles */
+.lp-cta-box {
+  background: radial-gradient(circle at center, rgba(245,158,11,0.12) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  margin: 3rem 0;
+}
+.lp-cta-box h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.lp-cta-box p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive for FIDE bar + landing pages */
+@media (max-width: 768px) {
+  .fide-trust-bar { display: none; }
+  .lp-hero { padding: 130px 5% 60px; }
+  .lp-hero h1 { font-size: 2.6rem; }
+  .trust-strip { gap: 1.2rem; }
+  .lp-cta-group { flex-direction: column; }
+  .lp-cta-group .btn-primary { width: 100%; text-align: center; }
+}

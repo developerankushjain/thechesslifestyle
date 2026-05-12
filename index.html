@@ -5,9 +5,10 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <title>TheChessLifestyle | Chess for Mental Health & Cognitive Growth in Noida</title>
-    <meta name="description" content="Noida's top chess academy focusing on chess as a lifestyle for mental health, cognitive development, and well-being. Learn from FIDE rated National level coaches in Sector 120.">
-    <meta name="keywords" content="chess classes in noida, chess for mental health, online chess classes noida, best chess academy in noida, learn chess noida, chess for kids noida, adult chess classes noida, sector 120 noida chess, FIDE rated coaches noida">
+    <title>Online Chess Classes by Indian FIDE Rated Coaches | TheChessLifestyle</title>
+    <meta name="description" content="Learn chess online from Indian FIDE Rated instructors. Expert online chess classes for kids & adults in USA, UK, Canada, Australia & Saudi Arabia. Book your FREE trial class today!">
+    <meta name="keywords" content="online chess classes, online chess coaching, chess lessons online, online chess tutor, chess classes for kids online, FIDE rated chess coach, Indian chess coach online, online chess classes USA, online chess classes UK, online chess classes Canada, online chess classes Australia, chess coaching online">
+    <link rel="canonical" href="https://www.thechesslifestyle.com/">
     <meta name="author" content="TheChessLifestyle Noida">
     <meta name="robots" content="index, follow">
 
@@ -33,26 +34,37 @@
         <li><a href="#philosophy">Our Philosophy</a></li>
         <li><a href="#benefits">Benefits</a></li>
         <li><a href="#why-us">Why Choose Us</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="/online-chess-classes/">Online Classes</a></li>
         <li><a href="#enrol" class="highlight" style="font-weight: 700; color: #f59e0b;">Trial Class</a></li>
         <li><a href="/tournaments/" class="btn-primary pulse-main">Elite 18 Showcase</a></li>
       </ul>
       <div class="mobile-menu-toggle">&#9776;</div>
     </nav>
 
+    <!-- FIDE Trust Bar -->
+    <div class="fide-trust-bar">
+      <span>🏅 Indian FIDE Rated Instructors</span>
+      <span class="trust-sep">·</span>
+      <span>🌍 Students in USA · UK · Canada · Australia · Saudi Arabia</span>
+      <span class="trust-sep">·</span>
+      <span>⭐ 4.9 Star Rating</span>
+      <span class="trust-sep">·</span>
+      <span>🎓 Online &amp; Offline Classes Available</span>
+    </div>
+
     <header id="home" class="hero">
       <div class="hero-content fade-in-stagger">
-        <h2 class="sub-heading highlight">Not Just For Tournaments. For Life.</h2>
+        <h2 class="sub-heading highlight">Indian FIDE Rated Instructors · Global Online Classes</h2>
         <h1>Chess is a <br><span class="highlight">Lifestyle.</span></h1>
-        <p class="hero-lead">At TheChessLifestyle, we believe chess is the ultimate tool for <strong>mental and cognitive health</strong>. From Class 1 students developing logic, to adults seeking a mental detox—it's never late to start building a healthier mind.</p>
+        <p class="hero-lead">At TheChessLifestyle, we believe chess is the ultimate tool for <strong>mental and cognitive health</strong>. Learn online from <strong>Indian FIDE Rated coaches</strong> — from Class 1 students developing logic, to adults seeking a mental edge. Students across USA, UK, Canada, Australia &amp; Saudi Arabia trust us.</p>
         <div class="hero-buttons" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-          <a href="/tournaments/" class="btn-primary pulse-main">Register for Elite 18 Showcase</a>
-          <a href="#enrol" class="btn-primary" style="background: transparent; border: 2px solid var(--primary); color: var(--primary) !important;">Enrol now for trial class</a>
+          <a href="#enrol" class="btn-primary pulse-main" id="hero-trial-cta">Book Your FREE Trial Class</a>
+          <a href="/online-chess-classes/" class="btn-primary" style="background: transparent; border: 2px solid var(--primary); color: var(--primary) !important;">Explore Online Classes</a>
         </div>
       </div>
       <div class="hero-graphic float-anim">
         <div class="image-wrapper tilt-card">
-          <img src="/glowing_king_hero_1775631608464.png" alt="Glowing Golden King" class="hero-img">
+          <img src="/glowing_king_hero_1775631608464.png" alt="Indian FIDE rated chess coach online class" class="hero-img">
         </div>
       </div>
     </header>
@@ -169,37 +181,35 @@
         </div>
       </section>
       
-      <!-- New Enrolment Form Section -->
+      <!-- Enrolment Form Section -->
       <section id="enrol" class="enrol-section section-alt scroll-reveal">
         <div class="cta-banner">
           <div class="cta-content glass tilt-card mobile-glow">
-            <h2>Ready to Transform Your Mind?</h2>
-            <p>Join Noida's most thoughtful chess academy today.</p>
-            
-            <form class="enrol-form" action="https://formsubmit.co/teacherankushjain@gmail.com" method="POST">
+            <h2>Book Your <span class="highlight">FREE Trial Class</span></h2>
+            <p>Learn from Indian FIDE Rated instructors — online from anywhere in the world, or offline in Noida.</p>
+
+            <form class="enrol-form" action="https://formsubmit.co/teacherankushjain@gmail.com" method="POST" id="trial-class-form">
               <!-- Honeypot -->
               <input type="text" name="_honey" style="display:none">
-              <!-- Disable Captcha optionally -->
               <input type="hidden" name="_captcha" value="false">
-              <!-- Thank You Page (auto resolves back to site if omitted) -->
-              <input type="hidden" name="_subject" value="New enrolment request for TheChessLifestyle">
+              <input type="hidden" name="_subject" value="New Trial Class Request — TheChessLifestyle">
 
               <div class="form-group">
-                <input type="text" name="Student Name" placeholder="Student Name" required>
+                <input type="text" name="Student Name" placeholder="Student Name" required id="field-student-name">
               </div>
               <div class="form-group">
-                <input type="text" name="Age or Class" placeholder="Age / Class" required>
+                <input type="text" name="Age or Class" placeholder="Age / Class" required id="field-age">
               </div>
               <div class="form-group split">
-                <input type="text" name="Father's Name" placeholder="Father's Name (If applicable)">
-                <input type="text" name="Father's Profession" placeholder="Father's Profession">
+                <input type="text" name="Father's Name" placeholder="Father's Name (If applicable)" id="field-father-name">
+                <input type="text" name="Father's Profession" placeholder="Father's Profession" id="field-father-prof">
               </div>
               <div class="form-group split">
-                <input type="text" name="Mother's Name" placeholder="Mother's Name (If applicable)">
-                <input type="text" name="Mother's Profession" placeholder="Mother's Profession">
+                <input type="text" name="Mother's Name" placeholder="Mother's Name (If applicable)" id="field-mother-name">
+                <input type="text" name="Mother's Profession" placeholder="Mother's Profession" id="field-mother-prof">
               </div>
               <div class="form-group">
-                <select name="Chess Experience Level" class="form-select" required>
+                <select name="Chess Experience Level" class="form-select" required id="field-experience">
                   <option value="" disabled selected>Select Chess Experience Level...</option>
                   <option value="I don't know how pieces move">I don't know how pieces move</option>
                   <option value="I know how pieces move but I don't know any chess openings">I know how pieces move but I don't know any chess openings</option>
@@ -208,14 +218,22 @@
                   <option value="I play on chess.com with rating above 1200">I play on chess.com with rating above 1200</option>
                 </select>
               </div>
+              <div class="form-group">
+                <select name="Class Preference" class="form-select" required id="field-class-mode">
+                  <option value="" disabled selected>Preferred Class Mode...</option>
+                  <option value="Online Classes — From Anywhere in the World">🌐 Online Classes — From Anywhere in the World</option>
+                  <option value="Offline Classes — Noida, Sector 120 (In-Person)">📍 Offline Classes — Noida, Sector 120 (In-Person)</option>
+                  <option value="Both — Open to Either Option">🔄 Both — I'm open to either option</option>
+                </select>
+              </div>
               <div class="form-group split">
-                <input type="tel" name="Phone Number" placeholder="Contact Number" required>
-                <input type="email" name="Email" placeholder="Email Address" required>
+                <input type="tel" name="Phone Number" placeholder="Contact Number" required id="field-phone">
+                <input type="email" name="Email" placeholder="Email Address" required id="field-email">
               </div>
               <div class="form-group">
-                <textarea name="Message" rows="3" placeholder="Tell us about the student's experience or expectations..."></textarea>
+                <textarea name="Message" rows="3" placeholder="Tell us about the student's experience or expectations..." id="field-message"></textarea>
               </div>
-              <button type="submit" class="btn-primary pulse-main submit-btn">Enrol now for trial class</button>
+              <button type="submit" class="btn-primary pulse-main submit-btn" id="form-submit-btn">Book My FREE Trial Class →</button>
             </form>
           </div>
         </div>
@@ -252,7 +270,19 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h3>Our Services</h3>
+          <h3>Online Classes</h3>
+          <ul>
+            <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
+            <li><a href="/online-chess-classes-for-kids/">Online Chess Classes for Kids</a></li>
+            <li><a href="/online-chess-classes-usa/">Online Chess Classes — USA</a></li>
+            <li><a href="/online-chess-classes-uk/">Online Chess Classes — UK</a></li>
+            <li><a href="/online-chess-classes-canada/">Online Chess Classes — Canada</a></li>
+            <li><a href="/online-chess-classes-australia/">Online Chess Classes — Australia</a></li>
+            <li><a href="/online-chess-classes-saudi-arabia/">Online Chess Classes — Saudi Arabia</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>In-Person (Noida)</h3>
           <ul>
             <li><a href="/chess-classes-noida/">Chess Classes in Noida</a></li>
             <li><a href="/chess-home-tutor-noida/">Chess Home Tutor in Noida</a></li>
