@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <title>Online Chess Classes by Indian FIDE Rated Coaches | TheChessLifestyle</title>
+    <title>Expert Online Chess Classes & Coaching | TheChessLifestyle</title>
     <meta name="description" content="Learn chess online from Indian FIDE Rated instructors. Expert online chess classes for kids & adults in USA, UK, Canada, Australia & Saudi Arabia. Book your FREE trial class today!">
     <meta name="keywords" content="online chess classes, online chess coaching, chess lessons online, online chess tutor, chess classes for kids online, FIDE rated chess coach, Indian chess coach online, online chess classes USA, online chess classes UK, online chess classes Canada, online chess classes Australia, chess coaching online">
     <link rel="canonical" href="https://www.thechesslifestyle.com/">
@@ -15,14 +15,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.thechesslifestyle.com/">
-    <meta property="og:title" content="Online Chess Classes by Indian FIDE Rated Coaches | TheChessLifestyle">
+    <meta property="og:title" content="Expert Online Chess Classes &amp; Coaching | TheChessLifestyle">
     <meta property="og:description" content="Learn chess online from Indian FIDE Rated instructors. Expert online chess classes for kids & adults in USA, UK, Canada, Australia & Saudi Arabia. Book your FREE trial class today!">
     <meta property="og:image" content="https://www.thechesslifestyle.com/glowing_king_hero_1775631608464.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.thechesslifestyle.com/">
-    <meta name="twitter:title" content="Online Chess Classes by Indian FIDE Rated Coaches | TheChessLifestyle">
+    <meta name="twitter:title" content="Expert Online Chess Classes &amp; Coaching | TheChessLifestyle">
     <meta name="twitter:description" content="Learn chess online from Indian FIDE Rated instructors. Expert online chess classes for kids & adults in USA, UK, Canada, Australia & Saudi Arabia. Book your FREE trial class today!">
     <meta name="twitter:image" content="https://www.thechesslifestyle.com/glowing_king_hero_1775631608464.png">
 
@@ -32,11 +34,25 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "EducationalOrganization",
+          "@type": "Organization",
           "name": "TheChessLifestyle",
           "url": "https://www.thechesslifestyle.com/",
           "logo": "https://www.thechesslifestyle.com/favicon.png",
-          "sameAs": []
+          "sameAs": ["https://www.instagram.com/thechesslifestyle"],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "47",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Chirag Soni",
+          "jobTitle": "Head Chess Coach",
+          "worksFor": {"@type": "Organization", "name": "TheChessLifestyle"},
+          "sameAs": "https://ratings.fide.com/profile/25971115/statistics"
         },
         {
           "@type": "Course",
@@ -57,10 +73,11 @@
     }
     </script>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet"></noscript>
     
     <link rel="stylesheet" href="./style.css">
   </head>
@@ -81,20 +98,31 @@
         <li><a href="#why-us">Why Choose Us</a></li>
         <li><a href="/online-chess-classes/">Online Classes</a></li>
         <li><a href="#enrol" class="highlight" style="font-weight: 700; color: #f59e0b;">Trial Class</a></li>
-        <li><a href="/tournaments/" class="btn-primary pulse-main">Elite 18 Showcase</a></li>
       </ul>
       <div class="mobile-menu-toggle">&#9776;</div>
     </nav>
 
     <!-- FIDE Trust Bar -->
     <div class="fide-trust-bar">
-      <span>🏅 Indian FIDE Rated Instructors</span>
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; color: var(--primary);"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        Indian FIDE Rated Instructors
+      </span>
       <span class="trust-sep">·</span>
-      <span>🌍 Students in USA · UK · Canada · Australia · Saudi Arabia</span>
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; color: var(--primary);"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+        Students in USA · UK · Canada · Australia · Saudi Arabia
+      </span>
       <span class="trust-sep">·</span>
-      <span>⭐ 4.9 Star Rating</span>
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; color: var(--primary);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        4.9 Star Rating
+      </span>
       <span class="trust-sep">·</span>
-      <span>🎓 Online &amp; Offline Classes Available</span>
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; color: var(--primary);"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+        Online &amp; Offline Classes Available
+      </span>
     </div>
 
     <header id="home" class="hero">
@@ -109,7 +137,10 @@
       </div>
       <div class="hero-graphic float-anim">
         <div class="image-wrapper tilt-card">
-          <img src="/glowing_king_hero_1775631608464.png" alt="Glowing gold chess king representing FIDE rated chess coaching methodology" class="hero-img">
+          <picture>
+            <source srcset="/glowing_king_hero_1775631608464.webp" type="image/webp">
+            <img src="/glowing_king_hero_1775631608464.png" alt="Glowing gold chess king representing FIDE rated chess coaching methodology" class="hero-img" width="600" height="500">
+          </picture>
         </div>
       </div>
     </header>
@@ -125,7 +156,10 @@
           </div>
           <!-- Newly injected graphic -->
           <div class="philosophy-graphic float-anim-slow tilt-card mobile-glow">
-            <img src="/abstract_mind_1775632559604.png" alt="Geometric mind connecting chess strategies with cognitive health and focus" class="rich-img">
+            <picture>
+              <source srcset="/abstract_mind_1775632559604.webp" type="image/webp">
+              <img src="/abstract_mind_1775632559604.png" alt="Geometric mind connecting chess strategies with cognitive health and focus" class="rich-img" loading="lazy" width="600" height="400">
+            </picture>
           </div>
         </div>
       </section>
@@ -134,40 +168,107 @@
         <h2>Deep Cognitive Benefits</h2>
         <!-- Graphic Header for Mobile Richness -->
         <div class="benefits-header-img float-anim tilt-card mobile-glow section-graphic">
-          <img src="/pawns_ascent_1775632592436.png" alt="Pawn ascending to Queen showing the journey of learning chess for mental growth" class="rich-img">
+          <picture>
+            <source srcset="/pawns_ascent_1775632592436.webp" type="image/webp">
+            <img src="/pawns_ascent_1775632592436.png" alt="Pawn ascending to Queen showing the journey of learning chess for mental growth" class="rich-img" loading="lazy" width="600" height="400">
+          </picture>
         </div>
 
         <div class="benefits-grid">
           <div class="benefit-card tilt-card mobile-glow">
-            <div class="icon">🧘</div>
+            <div class="icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+            </div>
             <h3>ADHD & Focus Management</h3>
             <p>Chess demands deep concentration. Regular practice naturally rewires the brain to sustain focus and block out modern distractions.</p>
           </div>
           <div class="benefit-card tilt-card mobile-glow">
-            <div class="icon">🧠</div>
+            <div class="icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"></path><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="M12 2v2"></path><path d="M12 22v-2"></path><path d="m17 20.66-1-1.73"></path><path d="M11 10.27 7 3.34"></path><path d="m20.66 17-1.73-1"></path><path d="m3.34 7 1.73 1"></path><path d="M14 12h8"></path><path d="M2 12h2"></path><path d="m20.66 7-1.73 1"></path><path d="m3.34 17 1.73-1"></path><path d="m17 3.34-1 1.73"></path><path d="m11 13.73-4 6.93"></path></svg>
+            </div>
             <h3>Neuroplasticity</h3>
             <p>For adults and seniors, learning new complex patterns stimulates neuron growth, aiding tremendously in long-term mental health.</p>
           </div>
           <div class="benefit-card tilt-card mobile-glow">
-            <div class="icon">🛡️</div>
+            <div class="icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+            </div>
             <h3>Emotional Resilience</h3>
             <p>Losing games gracefully teaches patience and how to handle real-life failures without anxiety or panic.</p>
           </div>
           <div class="benefit-card tilt-card mobile-glow">
-            <div class="icon">👁️</div>
+            <div class="icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </div>
             <h3>Spatial Reasoning</h3>
             <p>Crucial for Class 1+ students, visualizing the board improves math and geometry comprehension seamlessly.</p>
           </div>
           <div class="benefit-card tilt-card mobile-glow">
-            <div class="icon">⏳</div>
+            <div class="icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
             <h3>Patience & Impulse Control</h3>
             <p>Thinking before you move eradicates impulsive behaviors, leading to calmer, more calculated life decisions.</p>
           </div>
           <div class="benefit-card tilt-card mobile-glow">
-            <div class="icon">🏆</div>
+            <div class="icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+            </div>
             <h3>Academic Excellence</h3>
             <p>The memory retention and logical structuring learned on the board translate directly to better grades and studying habits.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="section-alt scroll-reveal" style="padding:6rem 5%; background: var(--bg-main);">
+        <h2 style="text-align: center;">Meet Our <span class="highlight">Head Coach</span></h2>
+        <div class="coach-profile" style="max-width: 900px; margin: 3rem auto 0; text-align: left;">
+          <picture>
+            <source srcset="/coach-chirag.webp" type="image/webp">
+            <img src="/coach-chirag.jpg" alt="Head Chess Coach Chirag Soni - FIDE Rated" class="coach-image" loading="lazy" width="140" height="140">
+          </picture>
+          <div class="coach-details">
+            <h4>Chirag Soni</h4>
+            <p><strong>FIDE ID:</strong> <a href="https://ratings.fide.com/profile/25971115/statistics" target="_blank" style="color:var(--primary); text-decoration: none;">25971115</a></p>
+            <p style="font-size: 0.95rem;">Chirag brings years of competitive international experience to TheChessLifestyle. His specialized coaching approach focuses on building long-term cognitive resilience and rigorous tournament preparation for students of all ages.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-alt scroll-reveal" style="padding:6rem 5%; text-align:center;">
+        <h2>Students <span class="highlight">Across the Globe</span></h2>
+        <p style="color:var(--text-muted); max-width:620px; margin:1rem auto 3rem; font-size:1.05rem;">Our FIDE Rated coaches teach students in their timezone, at their pace. Join thousands of learners worldwide.</p>
+        <div class="benefits-grid" style="max-width:900px; margin:0 auto;">
+          <a href="/online-chess-classes-usa/" class="benefit-card tilt-card" style="text-decoration:none; color:inherit;">
+            <div class="icon">🇺🇸</div>
+            <h3>Chess Classes in USA</h3>
+            <p>EST · CST · PST timezone slots for kids and adults across the United States.</p>
+          </a>
+          <a href="/online-chess-classes-uk/" class="benefit-card tilt-card" style="text-decoration:none; color:inherit;">
+            <div class="icon">🇬🇧</div>
+            <h3>Chess Classes in UK</h3>
+            <p>GMT · BST sessions aligned with UK school schedules and ECF grading system.</p>
+          </a>
+          <a href="/online-chess-classes-canada/" class="benefit-card tilt-card" style="text-decoration:none; color:inherit;">
+            <div class="icon">🇨🇦</div>
+            <h3>Chess Classes in Canada</h3>
+            <p>EST · PST slots for Canadian students and adult learners coast to coast.</p>
+          </a>
+          <a href="/online-chess-classes-australia/" class="benefit-card tilt-card" style="text-decoration:none; color:inherit;">
+            <div class="icon">🇦🇺</div>
+            <h3>Chess Classes in Australia</h3>
+            <p>AEST morning and weekend sessions for Australian families and schools.</p>
+          </a>
+          <a href="/online-chess-classes-saudi-arabia/" class="benefit-card tilt-card" style="text-decoration:none; color:inherit;">
+            <div class="icon">🇸🇦</div>
+            <h3>Chess Classes in Saudi Arabia</h3>
+            <p>AST (GMT+3) flexible slots tailored for the Saudi workweek (Sun–Thu).</p>
+          </a>
+          <a href="/online-chess-classes-for-kids/" class="benefit-card tilt-card" style="text-decoration:none; color:inherit;">
+            <div class="icon">👶</div>
+            <h3>Chess Classes for Kids</h3>
+            <p>Specially designed curriculum for children aged 5–16 worldwide.</p>
+          </a>
         </div>
       </section>
 
@@ -176,8 +277,11 @@
         <div class="why-container">
           <div class="why-image-side scroll-reveal">
             <div class="image-wrapper tilt-card mobile-glow float-anim-slow">
-              <img src="/strategic_knight_1775631654015.png" alt="Strategic chess knight representing expert FIDE rated coaching from Noida" class="why-img">
-            </div>
+                <picture>
+                  <source srcset="/strategic_knight_1775631654015.webp" type="image/webp">
+                  <img src="/strategic_knight_1775631654015.png" alt="Strategic chess knight representing expert FIDE rated coaching from Noida" class="why-img" loading="lazy" width="600" height="500">
+                </picture>
+              </div>
           </div>
           <div class="why-grid">
             <div class="why-card tilt-card mobile-glow">
@@ -204,7 +308,10 @@
         <h2>What Noida Parents Say</h2>
         
         <div class="testimonial-hero-img float-animtilt-card mobile-glow section-graphic">
-          <img src="/academy_glow_1775632640782.png" alt="Antique chess clock and board representing our premium chess academy in Sector 120 Noida" class="rich-img testimonial-graphic">
+          <picture>
+            <source srcset="/academy_glow_1775632640782.webp" type="image/webp">
+            <img src="/academy_glow_1775632640782.png" alt="Antique chess clock and board representing our premium chess academy in Sector 120 Noida" class="rich-img testimonial-graphic" loading="lazy" width="600" height="400">
+          </picture>
         </div>
 
         <div class="testimonial-slider">
@@ -292,9 +399,10 @@
           <h2 class="logo">TheChessLifestyle</h2>
           <p class="footer-tagline">Chess for Mental & Cognitive Health.</p>
           <div class="socials">
-            <span class="social-icon">IG</span>
-            <span class="social-icon">FB</span>
-            <span class="social-icon">IN</span>
+            <a href="https://www.instagram.com/thechesslifestyle" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TheChessLifestyle on Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              Instagram
+            </a>
           </div>
         </div>
         <div class="footer-col">
@@ -331,7 +439,6 @@
           <ul>
             <li><a href="/chess-classes-noida/">Chess Classes in Noida</a></li>
             <li><a href="/chess-home-tutor-noida/">Chess Home Tutor in Noida</a></li>
-            <li><a href="/tournaments/">Chess Tournaments in Noida</a></li>
           </ul>
         </div>
         <div class="footer-col contact-info">

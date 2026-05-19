@@ -67,11 +67,11 @@ const pages = [
 
 // Geo pages config
 const geoPages = [
-  {slug:'online-chess-classes-usa',country:'USA',flag:'🇺🇸',tz:'EST/CST/PST',currency:'USD',slots:'Evening & weekend slots matching EST, CST, PST timezones',testimonial:{text:'"My son\'s chess.com rating went from 600 to 1100 in 6 months with TheChessLifestyle coaches!"',author:'— David K., San Francisco, California 🇺🇸'}},
-  {slug:'online-chess-classes-uk',country:'UK',flag:'🇬🇧',tz:'GMT/BST',currency:'GBP',slots:'Evening & weekend slots matching GMT timezone',testimonial:{text:'"Far more structured and affordable than any UK-based chess tutor we\'ve tried. Brilliant coaches!"',author:'— James W., Manchester, UK 🇬🇧'}},
-  {slug:'online-chess-classes-canada',country:'Canada',flag:'🇨🇦',tz:'EST/PST',currency:'CAD',slots:'Evening & weekend slots matching EST and PST',testimonial:{text:'"Both my kids attend from Toronto. The Indian FIDE coaches are incredibly patient and skilled!"',author:'— Ravi S., Toronto, Canada 🇨🇦'}},
-  {slug:'online-chess-classes-australia',country:'Australia',flag:'🇦🇺',tz:'AEST/AWST',currency:'AUD',slots:'Morning & weekend slots matching AEST timezone',testimonial:{text:'"Saturday morning chess classes from Sydney — my daughter won her school championship after 4 months!"',author:'— Lisa P., Sydney, Australia 🇦🇺'}},
-  {slug:'online-chess-classes-saudi-arabia',country:'Saudi Arabia',flag:'🇸🇦',tz:'AST (GMT+3)',currency:'SAR',slots:'Evening & weekend slots matching Arabian Standard Time',testimonial:{text:'"Excellent coaches, flexible scheduling for Riyadh timezone. My son loves his weekly sessions!"',author:'— Ahmed M., Riyadh, Saudi Arabia 🇸🇦'}},
+  {slug:'online-chess-classes-usa',country:'USA',flag:'🇺🇸',tz:'EST/CST/PST',currency:'USD',slots:'Evening & weekend slots matching EST, CST, PST timezones',testimonial:{text:'"My son\'s chess.com rating went from 600 to 1100 in 6 months with TheChessLifestyle coaches!"',author:'— David K., San Francisco, California 🇺🇸'}, localBlock: '<div class="highlight-box"><h3>USCF vs FIDE Ratings</h3><p>Our curriculum is designed to help scholastic players in the USA rapidly improve their <strong>USCF (US Chess Federation) ratings</strong>. While our coaches hold international FIDE ratings, they are highly experienced in preparing American students for intense local and national USCF tournaments.</p></div>'},
+  {slug:'online-chess-classes-uk',country:'UK',flag:'🇬🇧',tz:'GMT/BST',currency:'GBP',slots:'Evening & weekend slots matching GMT timezone',testimonial:{text:'"Far more structured and affordable than any UK-based chess tutor we\'ve tried. Brilliant coaches!"',author:'— James W., Manchester, UK 🇬🇧'}, localBlock: '<div class="highlight-box"><h3>ECF Grading & UK Tournaments</h3><p>We understand the specific structure of the <strong>English Chess Federation (ECF)</strong> grading system. Our coaches provide tailored preparation for British scholastic tournaments, offering evening and weekend slots that perfectly align with UK school hours and the GMT/BST timezone.</p></div>'},
+  {slug:'online-chess-classes-canada',country:'Canada',flag:'🇨🇦',tz:'EST/PST',currency:'CAD',slots:'Evening & weekend slots matching EST and PST',testimonial:{text:'"Both my kids attend from Toronto. The Indian FIDE coaches are incredibly patient and skilled!"',author:'— Ravi S., Toronto, Canada 🇨🇦'}, localBlock: '<div class="highlight-box"><h3>Canadian Chess Federation Excellence</h3><p>With a growing number of students from Toronto, Vancouver, and Montreal, our FIDE-rated coaches are well-versed in preparing players for CFC (Chess Federation of Canada) events, ensuring your child receives world-class tactical training in the EST or PST timezones.</p></div>'},
+  {slug:'online-chess-classes-australia',country:'Australia',flag:'🇦🇺',tz:'AEST/AWST',currency:'AUD',slots:'Morning & weekend slots matching AEST timezone',testimonial:{text:'"Saturday morning chess classes from Sydney — my daughter won her school championship after 4 months!"',author:'— Lisa P., Sydney, Australia 🇦🇺'}, localBlock: '<div class="highlight-box"><h3>Australian Timezone Optimized</h3><p>Finding high-quality chess coaching that aligns with Australian timezones can be difficult. We offer dedicated morning and early afternoon slots for AEST/AWST students, helping them prepare for Australian Chess Federation (ACF) rated events without disrupting their sleep schedules.</p></div>'},
+  {slug:'online-chess-classes-saudi-arabia',country:'Saudi Arabia',flag:'🇸🇦',tz:'AST (GMT+3)',currency:'SAR',slots:'Evening & weekend slots matching Arabian Standard Time',testimonial:{text:'"Excellent coaches, flexible scheduling for Riyadh timezone. My son loves his weekly sessions!"',author:'— Ahmed M., Saudi Arabia 🇸🇦'}, localBlock: '<div class="highlight-box"><h3>Chess Growth in the Middle East</h3><p>With the rapid growth of chess across the Middle East, we are proud to offer specialized coaching for students in Saudi Arabia. Our schedules are adapted to the Middle Eastern workweek (Sunday-Thursday) to provide maximum convenience for our AST timezone students.</p></div>'},
 ];
 
 geoPages.forEach(g => {
@@ -104,6 +104,7 @@ geoPages.forEach(g => {
       {q:`How much do classes cost in ${g.currency}?`,a:`We offer flexible monthly packages. Contact us after your free trial for personalized ${g.currency} pricing.`},
     ],
     subject: `New Trial Request — ${g.country} Online Chess`,
+    localBlock: g.localBlock || '',
   });
 });
 
@@ -162,7 +163,6 @@ function buildPage(cfg) {
       <li><a href="/#benefits">Benefits</a></li>
       <li><a href="/online-chess-classes/" style="color:var(--primary);font-weight:700;">Online Classes</a></li>
       <li><a href="#enrol" class="highlight" style="font-weight:700;color:#f59e0b;">Trial Class</a></li>
-      <li><a href="/tournaments/" class="btn-primary pulse-main">Elite 18 Showcase</a></li>
     </ul>
     <div class="mobile-menu-toggle">&#9776;</div>
   </nav>
@@ -190,7 +190,20 @@ function buildPage(cfg) {
   <main>
     <section class="benefits scroll-reveal">
       <h2>Why Choose <span class="highlight">Our Online Chess Classes</span></h2>
+      ${cfg.localBlock ? `<div style="max-width: 900px; margin: 0 auto 3rem; text-align: left;">${cfg.localBlock}</div>` : ''}
       <div class="benefits-grid">${benefitsHTML}
+      </div>
+    </section>
+
+    <section class="section-alt scroll-reveal" style="padding:6rem 5%; background: var(--bg-main);">
+      <h2>Meet Our <span class="highlight">Head Coach</span></h2>
+      <div class="coach-profile" style="max-width: 900px; margin: 3rem auto 0; text-align: left;">
+        <img src="../coach-chirag.jpg" alt="Coach Chirag Soni" class="coach-image" loading="lazy">
+        <div class="coach-details">
+          <h4>Chirag Soni</h4>
+          <p><strong>FIDE ID:</strong> <a href="https://ratings.fide.com/profile/25971115/statistics" target="_blank" style="color:var(--primary); text-decoration: none;">25971115</a></p>
+          <p style="font-size: 0.95rem;">Chirag brings years of competitive international experience to TheChessLifestyle. His specialized coaching approach focuses on building long-term cognitive resilience and rigorous tournament preparation for students of all ages.</p>
+        </div>
       </div>
     </section>
 
@@ -280,7 +293,6 @@ function buildPage(cfg) {
         <ul>
           <li><a href="/chess-classes-noida/">Chess Classes in Noida</a></li>
           <li><a href="/chess-home-tutor-noida/">Chess Home Tutor Noida</a></li>
-          <li><a href="/tournaments/">Tournaments</a></li>
         </ul>
       </div>
       <div class="footer-col contact-info">
