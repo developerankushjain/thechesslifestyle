@@ -47,7 +47,7 @@ def render_post(meta, html_content):
     slug     = meta.get("slug", "post")
     author   = meta.get("author", "Chirag Soni")
     pub_date = meta.get("date", TODAY)
-    image    = meta.get("image", "/glowing_king_hero_1775631608464.webp")
+    image    = meta.get("image", "/og_banner_1200x630.png")
     category = meta.get("category", "Chess")
     tags     = meta.get("tags", "chess, coaching, FIDE")
     read_min = meta.get("read_min", "5")
@@ -94,6 +94,14 @@ def render_post(meta, html_content):
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGZHBK0Y4P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-GGZHBK0Y4P');
+  </script>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} | TheChessLifestyle</title>
@@ -117,6 +125,9 @@ def render_post(meta, html_content):
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">
   <meta name="twitter:image" content="{og_image}">
+  <meta property="og:site_name" content="TheChessLifestyle">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:site" content="@thechesslifestyle">
   <!-- Schema -->
   <script type="application/ld+json">{schema}</script>
   <script type="application/ld+json">{breadcrumb}</script>
@@ -275,7 +286,7 @@ def render_post(meta, html_content):
     <div class="blog-cta">
       <h3>Ready to Start Your <span class="highlight">Chess Journey?</span></h3>
       <p>Book a free 45-minute trial class with Chirag Soni — no credit card, no commitment.</p>
-      <a href="/#trial" class="cta-btn" style="display:inline-block;">Book Free Trial Class →</a>
+      <a href="/#enrol" class="btn-primary" style="display:inline-block;">Book Free Trial Class →</a>
     </div>
   </main>
 
@@ -318,7 +329,7 @@ def render_index(posts):
         pub_date = m.get("date", TODAY)
         category = m.get("category", "Chess")
         read_min = m.get("read_min", "5")
-        image    = m.get("image", "/glowing_king_hero_1775631608464.webp")
+        image    = m.get("image", "/og_banner_1200x630.png")
         cards += f'''
         <a href="/blog/{slug}/" class="blog-card tilt-card" style="text-decoration:none; color:inherit; display:block;">
           <picture>
@@ -350,6 +361,14 @@ def render_index(posts):
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGZHBK0Y4P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-GGZHBK0Y4P');
+  </script>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chess Blog | Expert Tips &amp; Guides | TheChessLifestyle</title>
@@ -361,13 +380,16 @@ def render_index(posts):
   <meta property="og:title" content="Chess Blog | Expert Tips &amp; Guides | TheChessLifestyle">
   <meta property="og:description" content="Learn chess strategies, tips and insights from FIDE Rated coach Chirag Soni.">
   <meta property="og:url" content="{SITE_URL}/blog/">
-  <meta property="og:image" content="{SITE_URL}/glowing_king_hero_1775631608464.webp">
+  <meta property="og:image" content="{SITE_URL}/og_banner_1200x630.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Chess Blog | TheChessLifestyle">
   <meta name="twitter:description" content="Expert chess coaching tips by FIDE Rated coach Chirag Soni.">
-  <meta name="twitter:image" content="{SITE_URL}/glowing_king_hero_1775631608464.webp">
+  <meta name="twitter:image" content="{SITE_URL}/og_banner_1200x630.png">
+  <meta property="og:site_name" content="TheChessLifestyle">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:site" content="@thechesslifestyle">
   <script type="application/ld+json">{schema}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -24,6 +24,10 @@ export default defineConfig({
         blog: resolve(__dirname, 'blog/index.html'),
         blog_improve_rating: resolve(__dirname, 'blog/how-to-improve-chess-rating-fast/index.html'),
         blog_academic_performance: resolve(__dirname, 'blog/chess-improves-academic-performance/index.html'),
+        blog_openings_beginners: resolve(__dirname, 'blog/best-chess-openings-for-beginners/index.html'),
+        blog_teach_child: resolve(__dirname, 'blog/how-to-teach-chess-to-a-child/index.html'),
+        blog_coach_vs_selfstudy: resolve(__dirname, 'blog/online-chess-coach-vs-self-study/index.html'),
+        blog_kids_near_me: resolve(__dirname, 'blog/chess-classes-for-kids-near-me/index.html'),
         // Legal pages
         privacy: resolve(__dirname, 'privacy.html'),
         terms: resolve(__dirname, 'terms.html'),
