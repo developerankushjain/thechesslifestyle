@@ -109,6 +109,7 @@ def render_post(meta, html_content):
   <meta name="keywords" content="{tags}">
   <meta name="author" content="{author}">
   <link rel="canonical" href="{canonical}">
+  <link rel="alternate" type="application/rss+xml" title="TheChessLifestyle Blog RSS" href="{SITE_URL}/feed.xml">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
   <meta property="og:type" content="article">
@@ -375,6 +376,7 @@ def render_index(posts):
   <meta name="description" content="Learn chess strategies, tips and insights from FIDE Rated coach Chirag Soni. Articles on chess for kids, improvement guides, and coaching insights.">
   <meta name="author" content="TheChessLifestyle">
   <link rel="canonical" href="{SITE_URL}/blog/">
+  <link rel="alternate" type="application/rss+xml" title="TheChessLifestyle Blog RSS" href="{SITE_URL}/feed.xml">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Chess Blog | Expert Tips &amp; Guides | TheChessLifestyle">
@@ -494,6 +496,77 @@ def update_sitemap(posts):
         f.write(content)
     print(f"  Updated sitemap with {len(posts)+1} blog URLs")
 
+# ─── RSS FEED GENERATOR ────────────────────────────────────────────────────
+def generate_rss(posts):
+    """Generate public/feed.xml with all blog articles (RFC 4287 / RSS 2.0)."""
+    import re as _re
+    from email.utils import formatdate
+    from calendar import timegm
+    from time import strptime
+
+    FEED_URL = f"{SITE_URL}/feed.xml"
+
+    def to_rfc822(date_str):
+        try:
+            t = strptime(str(date_str), "%Y-%m-%d")
+            return formatdate(timegm(t), usegmt=True)
+        except Exception:
+            return formatdate(usegmt=True)
+
+    today_rfc = formatdate(usegmt=True)
+    items = ""
+    for p in posts:
+        m        = p["meta"]
+        slug     = m.get("slug", "post")
+        title    = m.get("title", "Chess Article")
+        desc     = m.get("description", "")
+        pub_date = to_rfc822(m.get("date", TODAY))
+        category = m.get("category", "Chess")
+        author   = m.get("author", "Chirag Soni")
+        link     = f"{SITE_URL}/blog/{slug}/"
+        # Strip markdown from body for plain-text excerpt
+        plain = _re.sub(r'[#*`_>\[\]()!]', '', p.get("html", ""))
+        plain = _re.sub(r'<[^>]+>', '', plain)
+        plain = _re.sub(r'\s+', ' ', plain).strip()[:280].rsplit(' ', 1)[0] + '\u2026'
+        items += f"""
+    <item>
+      <title><![CDATA[{title}]]></title>
+      <link>{link}</link>
+      <guid isPermaLink="true">{link}</guid>
+      <description><![CDATA[{desc or plain}]]></description>
+      <pubDate>{pub_date}</pubDate>
+      <category>{category}</category>
+      <author>hello@thechesslifestyle.com ({author})</author>
+    </item>"""
+
+    rss = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>TheChessLifestyle Blog</title>
+    <link>{SITE_URL}/blog/</link>
+    <description>Expert chess coaching tips, strategies and guides by FIDE Rated coach Chirag Soni. Online chess classes for kids and adults worldwide.</description>
+    <language>en-IN</language>
+    <managingEditor>hello@thechesslifestyle.com (Chirag Soni)</managingEditor>
+    <webMaster>hello@thechesslifestyle.com (TheChessLifestyle)</webMaster>
+    <lastBuildDate>{today_rfc}</lastBuildDate>
+    <ttl>1440</ttl>
+    <image>
+      <url>{SITE_URL}/og_banner_1200x630.png</url>
+      <title>TheChessLifestyle Blog</title>
+      <link>{SITE_URL}/blog/</link>
+    </image>
+    <atom:link href="{FEED_URL}" rel="self" type="application/rss+xml" />
+    <copyright>Copyright 2026, TheChessLifestyle. All rights reserved.</copyright>{items}
+  </channel>
+</rss>"""
+
+    feed_path = "public/feed.xml"
+    with open(feed_path, "w", encoding="utf-8") as f:
+        f.write(rss)
+    print(f"  Generated /feed.xml ({len(posts)} articles)")
+
 # ─── NEW POST SCAFFOLD ─────────────────────────────────────────────────────
 def scaffold_new_post():
     os.makedirs(CONTENT_DIR, exist_ok=True)
@@ -580,8 +653,9 @@ def main():
         f.write(render_index(posts))
     print(f"  Created /blog/index.html ({len(posts)} posts)")
 
-    # Update sitemap
+    # Update sitemap + RSS feed
     update_sitemap(posts)
+    generate_rss(posts)
     print(f"\nDone! {len(posts)} post(s) generated.")
 
 if __name__ == "__main__":

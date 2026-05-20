@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>TheChessLifestyle Blog</title>
+    <link>https://www.thechesslifestyle.com/blog/</link>
+    <description>Expert chess coaching tips, strategies and guides by FIDE Rated coach Chirag Soni. Online chess classes for kids and adults worldwide.</description>
+    <language>en-IN</language>
+    <managingEditor>hello@thechesslifestyle.com (Chirag Soni)</managingEditor>
+    <webMaster>hello@thechesslifestyle.com (TheChessLifestyle)</webMaster>
+    <lastBuildDate>Wed, 20 May 2026 02:10:17 GMT</lastBuildDate>
+    <ttl>1440</ttl>
+    <image>
+      <url>https://www.thechesslifestyle.com/og_banner_1200x630.png</url>
+      <title>TheChessLifestyle Blog</title>
+      <link>https://www.thechesslifestyle.com/blog/</link>
+    </image>
+    <atom:link href="https://www.thechesslifestyle.com/feed.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copyright 2026, TheChessLifestyle. All rights reserved.</copyright>
+    <item>
+      <title><![CDATA[Online Chess Coach vs Self-Study: Which Is Better for Improving Faster?]]></title>
+      <link>https://www.thechesslifestyle.com/blog/online-chess-coach-vs-self-study/</link>
+      <guid isPermaLink="true">https://www.thechesslifestyle.com/blog/online-chess-coach-vs-self-study/</guid>
+      <description><![CDATA[Comparing online chess coaching vs self-study with apps like Chess.com and Lichess. A FIDE Rated coach explains what actually works for rapid improvement at every level.]]></description>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <category>Chess Improvement</category>
+      <author>hello@thechesslifestyle.com (Chirag Soni)</author>
+    </item>
+    <item>
+      <title><![CDATA[How to Teach Chess to a Child: A Complete Parent's Guide]]></title>
+      <link>https://www.thechesslifestyle.com/blog/how-to-teach-chess-to-a-child/</link>
+      <guid isPermaLink="true">https://www.thechesslifestyle.com/blog/how-to-teach-chess-to-a-child/</guid>
+      <description><![CDATA[Learn exactly how to teach chess to your child at any age — from 5-year-olds learning piece movements to 12-year-olds preparing for tournaments. Step-by-step guide from a FIDE Rated coach.]]></description>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <category>Chess for Kids</category>
+      <author>hello@thechesslifestyle.com (Chirag Soni)</author>
+    </item>
+    <item>
+      <title><![CDATA[How to Improve Your Chess Rating Fast: A FIDE Coach's Complete Guide]]></title>
+      <link>https://www.thechesslifestyle.com/blog/how-to-improve-chess-rating-fast/</link>
+      <guid isPermaLink="true">https://www.thechesslifestyle.com/blog/how-to-improve-chess-rating-fast/</guid>
+      <description><![CDATA[Want to improve your chess rating quickly? FIDE Rated coach Chirag Soni shares the exact training system used with students who gained 200+ rating points in under a year.]]></description>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <category>Chess Improvement</category>
+      <author>hello@thechesslifestyle.com (Chirag Soni)</author>
+    </item>
+    <item>
+      <title><![CDATA[7 Proven Ways Chess Improves Your Child's Academic Performance]]></title>
+      <link>https://www.thechesslifestyle.com/blog/chess-improves-academic-performance/</link>
+      <guid isPermaLink="true">https://www.thechesslifestyle.com/blog/chess-improves-academic-performance/</guid>
+      <description><![CDATA[Research shows students who play chess score significantly higher in math and reading. Here's exactly how chess coaching builds the cognitive skills that translate to better grades.]]></description>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <category>Chess for Kids</category>
+      <author>hello@thechesslifestyle.com (Chirag Soni)</author>
+    </item>
+    <item>
+      <title><![CDATA[Chess Classes for Kids Near Me: What to Look for Before You Enrol]]></title>
+      <link>https://www.thechesslifestyle.com/blog/chess-classes-for-kids-near-me/</link>
+      <guid isPermaLink="true">https://www.thechesslifestyle.com/blog/chess-classes-for-kids-near-me/</guid>
+      <description><![CDATA[Searching for chess classes for kids near you? Here's exactly what to check before enrolling your child — qualifications, curriculum, class size, and red flags to avoid.]]></description>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <category>Chess for Kids</category>
+      <author>hello@thechesslifestyle.com (Chirag Soni)</author>
+    </item>
+    <item>
+      <title><![CDATA[Best Chess Openings for Beginners: A FIDE Coach's Complete Guide]]></title>
+      <link>https://www.thechesslifestyle.com/blog/best-chess-openings-for-beginners/</link>
+      <guid isPermaLink="true">https://www.thechesslifestyle.com/blog/best-chess-openings-for-beginners/</guid>
+      <description><![CDATA[Learn the 5 best chess openings for beginners recommended by FIDE Rated coaches. Master e4, d4, the Italian Game, London System and more with step-by-step guidance.]]></description>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <category>Chess Improvement</category>
+      <author>hello@thechesslifestyle.com (Chirag Soni)</author>
+    </item>
+  </channel>
+</rss>
