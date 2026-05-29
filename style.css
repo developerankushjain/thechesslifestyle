@@ -712,11 +712,11 @@ footer {
 
 /* Scroll Fading WOW */
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+  opacity: 1; /* Fallback to visible if JS fails */
+  transform: none;
 }
 
+/* We will let JS add a class to body if we want animations, but for now let's just make it visible to fix the blank space issue */
 .scroll-reveal.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
