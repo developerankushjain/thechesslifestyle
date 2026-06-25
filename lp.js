@@ -110,13 +110,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (exitModal) {
     // Desktop exit intent
-    document.addEventListener("mouseleave", (e) => {
-      if (e.clientY < 10 && !exitIntentTriggered) {
-        // Check session storage so we don't annoy them if they dismissed it
-        if (!sessionStorage.getItem("exitModalDismissed")) {
+    document.addEventListener("mouseout", (e) => {
+      // If mouse leaves the window (relatedTarget is null) and towards the top
+      if (e.relatedTarget === null && e.clientY < 20 && !exitIntentTriggered) {
+        console.log("Exit intent triggered! clientY:", e.clientY);
+        // Temporarily bypassing sessionStorage for testing
+        // if (!sessionStorage.getItem("exitModalDismissed")) {
           exitModal.classList.add("show");
           exitIntentTriggered = true;
-        }
+        // } else {
+        //   console.log("Exit modal already dismissed previously.");
+        // }
       }
     });
 

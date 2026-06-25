@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" fill="none">
+  <!-- ─── Three horizontal dark navy bars ─── -->
+  <rect x="28"  y="68"  width="304" height="36" rx="18" fill="#2d3a4a"/>
+  <rect x="28"  y="152" width="304" height="36" rx="18" fill="#2d3a4a"/>
+  <rect x="28"  y="236" width="304" height="36" rx="18" fill="#2d3a4a"/>
+
+  <!-- ─── Left orange diagonal slash ─── -->
+  <polygon points="97,282  127,282  183,54  153,54" fill="#f97316"/>
+
+  <!-- ─── Right orange diagonal slash ─── -->
+  <polygon points="187,282  217,282  273,54  243,54" fill="#f97316"/>
+
+  <!-- ─── Two orange dots at the bottom ─── -->
+  <circle cx="120" cy="318" r="22" fill="#f97316"/>
+  <circle cx="218" cy="318" r="22" fill="#f97316"/>
+</svg>
