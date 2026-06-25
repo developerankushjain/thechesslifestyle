@@ -148,3 +148,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Ensure GA4 form_submit event fires on form submission
+document.addEventListener("DOMContentLoaded", function() {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'Lead Generation',
+                    'event_label': window.location.pathname
+                });
+            }
+        });
+    });
+});
