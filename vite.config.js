@@ -12,6 +12,7 @@ export default defineConfig({
         // In-person / local pages
         chess_classes_noida: resolve(__dirname, 'chess-classes-noida/index.html'),
         chess_home_tutor_noida: resolve(__dirname, 'chess-home-tutor-noida/index.html'),
+        standee_challenge: resolve(__dirname, 'standee-challenge/index.html'),
         // Online class landing pages
         online_chess_classes: resolve(__dirname, 'online-chess-classes/index.html'),
         online_chess_classes_for_kids: resolve(__dirname, 'online-chess-classes-for-kids/index.html'),
