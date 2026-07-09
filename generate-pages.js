@@ -227,8 +227,8 @@ function buildPage(cfg) {
         <div class="cta-content glass tilt-card">
           <h2>Book Your <span class="highlight">FREE Trial Class</span></h2>
           <p>Learn from Indian FIDE Rated instructors — online from anywhere, or offline in Noida.</p>
-          <form class="enrol-form" action="https://formsubmit.co/teacherankushjain@gmail.com" method="POST">
-            <input type="text" name="_honey" style="display:none">
+          <form class="enrol-form" action="https://formspree.io/f/xvzjjenb" method="POST">
+            <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="${cfg.subject}">
             <div class="form-group"><input type="text" name="Student Name" placeholder="Student Name" required></div>
