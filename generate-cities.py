@@ -179,7 +179,7 @@ TMPL = '''<!DOCTYPE html>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>
   </footer>
-  <script src="../lp.js"></script>
+  <script type="module" src="../lp.js"></script>
 </body>
 </html>'''
 
