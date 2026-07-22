@@ -17,7 +17,7 @@ No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
 16,Lists,Provide itemExtent when known,Skip measurement,itemExtent for fixed height items,No itemExtent for uniform lists,ListView.builder(itemExtent: 50),ListView.builder without itemExtent,Medium,
 17,Lists,Use keys for stateful items,Preserve widget state,Key for stateful list items,No key for dynamic lists,ListTile(key: ValueKey(item.id)),ListTile without key,High,
 18,Lists,Use SliverList for custom scroll,Custom scroll effects,CustomScrollView with Slivers,Nested ListViews,CustomScrollView(slivers: [SliverList()]),ListView inside ListView,Medium,https://api.flutter.dev/flutter/widgets/SliverList-class.html
-19,Navigation,Use Navigator 2.0 or GoRouter,Declarative routing,go_router for navigation,Navigator.push for complex apps,GoRouter(routes: [...]),Navigator.push everywhere,Medium,https://pub.dev/packages/go_router
+19,Navigation,Use Navigator 2.0 or GoRouter,Declarative routing,go_router for navigation,Navigator.push for complex apps,GoRouter(routes: [...]),Navigator.push everywhere,Medium,https://pub.dev/pricing/go_router
 20,Navigation,Use named routes,Organized navigation,Named routes for clarity,Anonymous routes,Navigator.pushNamed(context '/home'),Navigator.push(context MaterialPageRoute()),Low,
 21,Navigation,Handle back button (PopScope),Android back behavior and predictive back (Android 14+),Use PopScope widget (WillPopScope is deprecated),Use WillPopScope,"PopScope(canPop: false, onPopInvoked: (didPop) => ...)",WillPopScope(onWillPop: ...),High,https://api.flutter.dev/flutter/widgets/PopScope-class.html
 22,Navigation,Pass typed arguments,Type-safe route arguments,Typed route arguments,Dynamic arguments,MyRoute(id: '123'),arguments: {'id': '123'},Medium,
