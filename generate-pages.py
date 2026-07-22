@@ -52,7 +52,10 @@ TMPL = '''<!DOCTYPE html>
 <body>
   <div class="glow-tracker" id="cursor-glow"></div>
   <nav class="navbar">
-    <div class="logo"><a href="/" style="color:white;text-decoration:none;">TheChessLifestyle</a></div>
+    <a href="/" class="logo">
+        <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
+        TheChessLifestyle
+      </a>
     <ul class="nav-links">
       <li><a href="/#philosophy">Our Philosophy</a></li>
       <li><a href="/online-chess-classes/" style="color:var(--primary);font-weight:700;">Online Classes</a></li>
