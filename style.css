@@ -1675,13 +1675,17 @@ footer {
 }
 
 .mini-form-container {
-  margin-top: 2rem;
-  padding: 1.5rem;
+  margin: 2rem auto 0;
+  padding: 2rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(245, 158, 11, 0.3);
   text-align: left;
   max-width: 500px;
+}
+
+.mini-form-container h3 {
+  text-align: center;
 }
 
 .mini-form .form-group {
