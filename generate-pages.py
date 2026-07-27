@@ -179,7 +179,11 @@ TMPL = '''<!DOCTYPE html>
       <div class="footer-col"><h2 class="logo">TheChessLifestyle</h2><p class="footer-tagline">Chess for Mental &amp; Cognitive Health.</p></div>
       <div class="footer-col"><h3>Online Classes</h3><ul><li><a href="/online-chess-classes/">Online Chess Classes</a></li><li><a href="/online-chess-classes-for-kids/">For Kids</a></li><li><a href="/online-chess-classes-usa/">USA</a></li><li><a href="/online-chess-classes-uk/">UK</a></li><li><a href="/online-chess-classes-canada/">Canada</a></li><li><a href="/online-chess-classes-australia/">Australia</a></li><li><a href="/online-chess-classes-saudi-arabia/">Saudi Arabia</a></li></ul></div>
       <div class="footer-col"><h3>In-Person (Noida)</h3><ul><li><a href="/chess-classes-noida/">Chess Classes in Noida</a></li><li><a href="/chess-home-tutor-noida/">Chess Home Tutor Noida</a></li></ul></div>
-      <div class="footer-col contact-info"><h3>Contact</h3><p>Sector 120, Noida</p><p><a href="tel:+917206789979">7206789979</a></p><a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a></div>
+      <div class="footer-col contact-info">
+        <h3>Contact Us</h3>
+        <p>📍 Global Online Operations</p>
+        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+      </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>
   </footer>

@@ -179,7 +179,11 @@ TMPL = '''<!DOCTYPE html>
         </ul>
       </div>
       <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="/online-chess-classes/">Online Chess Classes</a></li><li><a href="/online-chess-classes-for-kids/">For Kids</a></li><li><a href="/pricing/">Pricing & Packages</a></li><li><a href="/blog/">Blog & Insights</a></li></ul></div>
-      <div class="footer-col contact-info"><h3>Contact</h3><p><a href="tel:+917206789979">7206789979</a></p><a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a></div>
+      <div class="footer-col contact-info">
+        <h3>Contact Us</h3>
+        <p>📍 Global Online Operations</p>
+        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+      </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>
   </footer>

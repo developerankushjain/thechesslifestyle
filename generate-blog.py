@@ -320,9 +320,9 @@ def render_post(meta, html_content):
         <li><a href="/chess-classes-noida/">Chess Classes in Noida</a></li>
         <li><a href="/chess-home-tutor-noida/">Chess Home Tutor Noida</a></li>
       </ul></div>
-      <div class="footer-col contact-info"><h3>Contact</h3>
-        <p>Sector 120, Noida</p>
-        <p><a href="tel:+917206789979">7206789979</a></p>
+      <div class="footer-col contact-info">
+        <h3>Contact Us</h3>
+        <p>📍 Global Online Operations</p>
         <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
       </div>
     </div>
@@ -468,9 +468,9 @@ def render_index(posts):
         <li><a href="/chess-classes-noida/">Chess Classes in Noida</a></li>
         <li><a href="/chess-home-tutor-noida/">Chess Home Tutor Noida</a></li>
       </ul></div>
-      <div class="footer-col contact-info"><h3>Contact</h3>
-        <p>Sector 120, Noida</p>
-        <p><a href="tel:+917206789979">7206789979</a></p>
+      <div class="footer-col contact-info">
+        <h3>Contact Us</h3>
+        <p>📍 Global Online Operations</p>
         <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
       </div>
     </div>

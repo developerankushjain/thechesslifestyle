@@ -300,8 +300,7 @@ function buildPage(cfg) {
       </div>
       <div class="footer-col contact-info">
         <h3>Contact Us</h3>
-        <p>📍 Sector 120, Noida, UP</p>
-        <p>📞 <a href="tel:+917206789979">7206789979</a></p>
+        <p>📍 Global Online Operations</p>
         <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
       </div>
     </div>
