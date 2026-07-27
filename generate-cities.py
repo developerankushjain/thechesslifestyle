@@ -182,7 +182,7 @@ TMPL = '''<!DOCTYPE html>
       <div class="footer-col contact-info">
         <h3>Contact Us</h3>
         <p>📍 Global Online Operations</p>
-        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
       </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>
@@ -199,8 +199,8 @@ def main():
             city['secondary_cta'] = '<a href="#enrol" class="btn-primary" style="background:var(--primary);border-color:var(--primary);color:var(--bg-main);">📞 Schedule a Call</a>'
             city['phone_placeholder'] = 'Your Phone Number'
         else:
-            city['secondary_cta'] = f'<a href="https://wa.me/917206789979?text=I%27d+like+to+book+a+free+trial+chess+class+from+{city["city"]}" target="_blank" class="btn-primary" style="background:#25D366;border-color:#25D366;color:white;">📲 WhatsApp Us</a>'
-            city['phone_placeholder'] = 'WhatsApp / Phone'
+            city['secondary_cta'] = f''
+            city['phone_placeholder'] = 'Phone'
             
         html = TMPL.format(**city)
         with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:

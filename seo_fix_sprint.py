@@ -115,7 +115,7 @@ write(index_path, c)
 print("  ✅ Removed duplicate AggregateRating from LocalBusiness schema")
 
 # ─────────────────────────────────────────────
-# FIX 5: USA page — fix form CTA ("WhatsApp / Phone" → "Phone Number")
+# FIX 5: USA page — fix form CTA ("Phone" → "Phone Number")
 #         Add Calendly-style scheduling CTA
 #         Replace generic testimonials with specific US ones
 # ─────────────────────────────────────────────
@@ -123,7 +123,7 @@ print("\n=== FIX 5: Fixing US form, testimonials, and CTA ===")
 c = read(usa_path)
 
 # 5a. Fix form placeholder
-c = c.replace('placeholder="WhatsApp / Phone"', 'placeholder="Phone Number (US)"')
+c = c.replace('placeholder="Phone"', 'placeholder="Phone Number (US)"')
 
 # 5b. Fix "offline in Noida" copy in form header (irrelevant to US audience)
 c = c.replace(
@@ -200,7 +200,7 @@ new_form_header = '''    <section id="enrol" class="enrol-section section-alt sc
             <span style="font-size:1.5rem;">📅</span>
             <div>
               <strong style="color:#f59e0b;">Prefer to schedule a call first?</strong><br>
-              <span style="color:var(--text-muted);font-size:0.9rem;">Email us at <a href="mailto:hello@thechesslifestyle.com" style="color:var(--primary);">hello@thechesslifestyle.com</a> with your timezone and we'll send a booking link.</span>
+              <span style="color:var(--text-muted);font-size:0.9rem;">Email us at <a href="mailto:admin@thechesslifestyle.com" style="color:var(--primary);">admin@thechesslifestyle.com</a> with your timezone and we'll send a booking link.</span>
             </div>
           </div>
           <form class="enrol-form"'''
@@ -288,7 +288,7 @@ old_pricing_header = '''          <p>Whether you're an absolute beginner or aimi
         </div>'''
 
 new_pricing_header = '''          <p>Whether you're an absolute beginner or aiming for the master title, we have structured deep-theory classes designed around your rating and psychology.</p>
-          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.75rem;">Prices shown in INR. For USD/GBP/CAD/AUD equivalents, <a href="mailto:hello@thechesslifestyle.com" style="color:var(--primary);">email us</a> or use our <a href="/online-chess-classes-usa/" style="color:var(--primary);">USA page</a> for approximate USD pricing starting from <strong style="color:#f59e0b;">~$30–$120/month USD</strong>.</p>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.75rem;">Prices shown in INR. For USD/GBP/CAD/AUD equivalents, <a href="mailto:admin@thechesslifestyle.com" style="color:var(--primary);">email us</a> or use our <a href="/online-chess-classes-usa/" style="color:var(--primary);">USA page</a> for approximate USD pricing starting from <strong style="color:#f59e0b;">~$30–$120/month USD</strong>.</p>
         </div>'''
 
 c = c.replace(old_pricing_header, new_pricing_header)
@@ -342,7 +342,7 @@ print("\n=== FIX 10: Adding pricing link to USA page FAQ ===")
 c = read(usa_path)
 c = c.replace(
     '<div class="faq-answer"><p>We offer flexible monthly packages. Contact us after your free trial for personalized USD pricing.</p></div>',
-    '<div class="faq-answer"><p>We offer flexible monthly packages starting from approximately <strong>$30–$120/month USD</strong> depending on the plan. <a href="/pricing/" style="color:var(--primary);">View all pricing plans →</a> or email us at <a href="mailto:hello@thechesslifestyle.com" style="color:var(--primary);">hello@thechesslifestyle.com</a> for a USD quote.</p></div>'
+    '<div class="faq-answer"><p>We offer flexible monthly packages starting from approximately <strong>$30–$120/month USD</strong> depending on the plan. <a href="/pricing/" style="color:var(--primary);">View all pricing plans →</a> or email us at <a href="mailto:admin@thechesslifestyle.com" style="color:var(--primary);">admin@thechesslifestyle.com</a> for a USD quote.</p></div>'
 )
 write(usa_path, c)
 print("  ✅ Added USD pricing to FAQ with link to pricing page")

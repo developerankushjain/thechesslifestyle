@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
           errorDiv.style.background = 'rgba(239, 68, 68, 0.1)';
           errorDiv.style.borderRadius = '8px';
           errorDiv.style.border = '1px solid rgba(239, 68, 68, 0.3)';
-          errorDiv.innerHTML = 'There was an error submitting your request. Please try again or email us directly at hello@thechesslifestyle.com.';
+          errorDiv.innerHTML = 'There was an error submitting your request. Please try again or email us directly at admin@thechesslifestyle.com.';
           form.appendChild(errorDiv);
         }
       }

@@ -323,7 +323,7 @@ def render_post(meta, html_content):
       <div class="footer-col contact-info">
         <h3>Contact Us</h3>
         <p>📍 Global Online Operations</p>
-        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
       </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>
@@ -471,7 +471,7 @@ def render_index(posts):
       <div class="footer-col contact-info">
         <h3>Contact Us</h3>
         <p>📍 Global Online Operations</p>
-        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
       </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>
@@ -555,7 +555,7 @@ def generate_rss(posts):
       <description><![CDATA[{desc or plain}]]></description>
       <pubDate>{pub_date}</pubDate>
       <category>{category}</category>
-      <author>hello@thechesslifestyle.com ({author})</author>
+      <author>admin@thechesslifestyle.com ({author})</author>
     </item>"""
 
     rss = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -567,8 +567,8 @@ def generate_rss(posts):
     <link>{SITE_URL}/blog/</link>
     <description>Expert chess coaching tips, strategies and guides by FIDE Rated coach Chirag Soni. Online chess classes for kids and adults worldwide.</description>
     <language>en-IN</language>
-    <managingEditor>hello@thechesslifestyle.com (Chirag Soni)</managingEditor>
-    <webMaster>hello@thechesslifestyle.com (TheChessLifestyle)</webMaster>
+    <managingEditor>admin@thechesslifestyle.com (Chirag Soni)</managingEditor>
+    <webMaster>admin@thechesslifestyle.com (TheChessLifestyle)</webMaster>
     <lastBuildDate>{today_rfc}</lastBuildDate>
     <ttl>1440</ttl>
     <image>

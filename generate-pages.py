@@ -152,7 +152,7 @@ TMPL = '''<!DOCTYPE html>
             </div>
             <div class="form-group"><input type="text" name="Country" placeholder="Country & Timezone (e.g. USA EST)"></div>
             <div class="form-group split">
-              <input type="tel" name="Phone" placeholder="WhatsApp / Phone" required>
+              <input type="tel" name="Phone" placeholder="Phone" required>
               <input type="email" name="Email" placeholder="Email" required>
             </div>
             <div class="form-group"><textarea name="Message" rows="3" placeholder="Questions?"></textarea></div>
@@ -182,7 +182,7 @@ TMPL = '''<!DOCTYPE html>
       <div class="footer-col contact-info">
         <h3>Contact Us</h3>
         <p>📍 Global Online Operations</p>
-        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
       </div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>

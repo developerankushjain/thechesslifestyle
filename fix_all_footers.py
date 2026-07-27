@@ -5,12 +5,12 @@ target_dir = "."
 pattern = re.compile(r'<div class="footer-col contact-info">
         <h3>Contact Us</h3>
         <p>📍 Global Online Operations</p>
-        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
       </div>', re.DOTALL)
 replacement = '''<div class="footer-col contact-info">
         <h3>Contact Us</h3>
         <p>📍 Global Online Operations</p>
-        <a href="mailto:hello@thechesslifestyle.com">hello@thechesslifestyle.com</a>
+        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
       </div>'''
 
 count = 0
