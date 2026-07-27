@@ -127,8 +127,8 @@ c = c.replace('placeholder="WhatsApp / Phone"', 'placeholder="Phone Number (US)"
 
 # 5b. Fix "offline in Noida" copy in form header (irrelevant to US audience)
 c = c.replace(
-    '<p>Learn from Indian FIDE Rated instructors — online from anywhere, or offline in Noida.</p>',
-    '<p>Learn from Indian FIDE Rated instructors — live Zoom sessions in your EST/CST/PST timezone. 100% online, no commute.</p>'
+    '<p>Learn from International FIDE Rated instructors — online from anywhere, or offline in Noida.</p>',
+    '<p>Learn from International FIDE Rated instructors — live Zoom sessions in your EST/CST/PST timezone. 100% online, no commute.</p>'
 )
 
 # 5c. Remove "Offline Classes — Noida" from the USA form dropdown
@@ -171,7 +171,7 @@ new_testimonials = '''      <div class="testimonial-slider">
           </div>
           <div class="test-card glass tilt-card">
             <div class="stars">★★★★★</div>
-            <p>"We tried two local tutors in Houston before finding TheChessLifestyle. The Indian FIDE coaches are far more structured and knowledgeable, and the price is unbeatable. My daughter now competes in TCA tournaments."</p>
+            <p>"We tried two local tutors in Houston before finding TheChessLifestyle. The International FIDE coaches are far more structured and knowledgeable, and the price is unbeatable. My daughter now competes in TCA tournaments."</p>
             <h4>— Jennifer M., Houston, Texas 🇺🇸</h4>
           </div>
           <div class="test-card glass tilt-card">
@@ -188,7 +188,7 @@ old_form_header = '''    <section id="enrol" class="enrol-section section-alt sc
       <div class="cta-banner">
         <div class="cta-content glass tilt-card">
           <h2>Book Your <span class="highlight">FREE Trial Class</span></h2>
-          <p>Learn from Indian FIDE Rated instructors — live Zoom sessions in your EST/CST/PST timezone. 100% online, no commute.</p>
+          <p>Learn from International FIDE Rated instructors — live Zoom sessions in your EST/CST/PST timezone. 100% online, no commute.</p>
           <form class="enrol-form"'''
 
 new_form_header = '''    <section id="enrol" class="enrol-section section-alt scroll-reveal">

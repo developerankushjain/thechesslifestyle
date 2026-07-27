@@ -22,14 +22,14 @@ TMPL = '''<!DOCTYPE html>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Online Chess Classes in {city} | Free Trial</title>
-  <meta name="description" content="Expert online chess coaching for kids & adults in {city}. Indian FIDE Rated instructors, {timezone} timezone slots. Book FREE trial today!">
+  <meta name="description" content="Expert online chess coaching for kids & adults in {city}. International FIDE Rated instructors, {timezone} timezone slots. Book FREE trial today!">
   <meta name="keywords" content="{kw}">
   <meta name="author" content="TheChessLifestyle">
   <link rel="canonical" href="https://www.thechesslifestyle.com/{slug}/">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Online Chess Classes in {city} | Free Trial">
-  <meta property="og:description" content="Expert online chess coaching for kids & adults in {city}. Indian FIDE Rated instructors, {timezone} timezone slots.">
+  <meta property="og:description" content="Expert online chess coaching for kids & adults in {city}. International FIDE Rated instructors, {timezone} timezone slots.">
   <meta property="og:url" content="https://www.thechesslifestyle.com/{slug}/">
   <meta property="og:image" content="https://www.thechesslifestyle.com/og_banner_1200x630.webp">
   <meta property="og:image:alt" content="TheChessLifestyle — Online Chess Classes by FIDE Rated Coaches">
@@ -66,7 +66,7 @@ TMPL = '''<!DOCTYPE html>
     <div class="lp-hero-content">
       <div class="lp-badge">FIDE Rated Instructors in {city}</div>
       <h1>Online Chess Classes<br><span class="highlight">in {city}</span></h1>
-      <p class="lp-lead">Learn chess online from <strong>Indian FIDE Rated instructors</strong>. World-class coaching available during convenient <strong>{timezone}</strong> hours for kids &amp; adults in {city}.</p>
+      <p class="lp-lead">Learn chess online from <strong>International FIDE Rated instructors</strong>. World-class coaching available during convenient <strong>{timezone}</strong> hours for kids &amp; adults in {city}.</p>
       <div class="lp-cta-group">
         <a href="#enrol" class="btn-primary pulse-main">Book Your FREE Trial Class</a>
         {secondary_cta}
@@ -85,7 +85,7 @@ TMPL = '''<!DOCTYPE html>
     <section class="benefits scroll-reveal">
       <h2>Why Families in {city} Choose <span class="highlight">Us</span></h2>
       <div class="benefits-grid">
-        <div class="benefit-card tilt-card"><div class="icon">&#127941;</div><h3>Elite FIDE Coaches</h3><p>Get access to Indian FIDE Rated professionals instead of expensive local {city} tutors.</p></div>
+        <div class="benefit-card tilt-card"><div class="icon">&#127941;</div><h3>Elite FIDE Coaches</h3><p>Get access to International FIDE Rated professionals instead of expensive local {city} tutors.</p></div>
         <div class="benefit-card tilt-card"><div class="icon">&#128336;</div><h3>{timezone} Timezone Slots</h3><p>We operate on your schedule. Perfect for after-school enrichment or evening adult classes.</p></div>
         <div class="benefit-card tilt-card"><div class="icon">&#129504;</div><h3>Cognitive Focus</h3><p>Our structured curriculum builds deep focus, patience, and emotional resilience in children.</p></div>
       </div>
@@ -137,7 +137,7 @@ TMPL = '''<!DOCTYPE html>
       <div class="cta-banner">
         <div class="cta-content glass tilt-card">
           <h2>Book Your <span class="highlight">FREE Trial Class</span></h2>
-          <p>Indian FIDE Rated instructors — online for students in {city}.</p>
+          <p>International FIDE Rated instructors — online for students in {city}.</p>
           <form class="enrol-form" action="https://formspree.io/f/xvzjjenb" method="POST">
             <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="_subject" value="New Trial - {city}">

@@ -37,7 +37,7 @@
 ## God Nodes (most connected - your core abstractions)
 1. `Homepage` - 6 edges
 2. `Vite Build Config` - 5 edges
-3. `Indian FIDE Rated Coach — Core USP` - 4 edges
+3. `International FIDE Rated Coach — Core USP` - 4 edges
 4. `Main JS Entry Point` - 3 edges
 5. `Landing Page Shared JS` - 3 edges
 6. `Trial Class Enrollment Form` - 3 edges
@@ -67,7 +67,7 @@
 
 ### Community 0 - "Homepage JS & Animations"
 Cohesion: 0.23
-Nodes (12): Vite Logo Asset (Dev scaffold), Chess Classes Noida SEO Landing Page, Chess Home Tutor Noida Landing Page, Indian FIDE Rated Coach — Core USP, Homepage, FIDE Trust Bar, Homepage Hero Section, Glowing Gold King — Hero Section Image (+4 more)
+Nodes (12): Vite Logo Asset (Dev scaffold), Chess Classes Noida SEO Landing Page, Chess Home Tutor Noida Landing Page, International FIDE Rated Coach — Core USP, Homepage, FIDE Trust Bar, Homepage Hero Section, Glowing Gold King — Hero Section Image (+4 more)
 
 ### Community 1 - "SEO Landing Pages & FIDE USP"
 Cohesion: 0.18
@@ -109,7 +109,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.055) - this node is a cross-community bridge._
 - **Why does `Main JS Entry Point` connect `Vite Dev Scaffold` to `Homepage JS & Animations`?**
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
-- **Are the 2 inferred relationships involving `Indian FIDE Rated Coach — Core USP` (e.g. with `Online Chess Classes — Primary SEO Target` and `Glowing Gold King — Hero Section Image`) actually correct?**
-  _`Indian FIDE Rated Coach — Core USP` has 2 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 2 inferred relationships involving `International FIDE Rated Coach — Core USP` (e.g. with `Online Chess Classes — Primary SEO Target` and `Glowing Gold King — Hero Section Image`) actually correct?**
+  _`International FIDE Rated Coach — Core USP` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `fs`, `path`, `pages` to the rest of the system?**
   _44 weakly-connected nodes found - possible documentation gaps or missing edges._

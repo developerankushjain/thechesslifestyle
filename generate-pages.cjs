@@ -4,14 +4,14 @@ const path = require('path');
 const pages = [
   {
     slug: 'online-chess-classes',
-    title: 'Online Chess Classes by Indian FIDE Rated Instructors',
+    title: 'Online Chess Classes by International FIDE Rated Instructors',
     h1: 'Online Chess Classes<br><span class="highlight">by FIDE Rated Coaches</span>',
-    desc: 'Join online chess classes taught by Indian FIDE Rated instructors. Expert chess coaching for kids & adults worldwide. Book a FREE trial class today!',
+    desc: 'Join online chess classes taught by International FIDE Rated instructors. Expert chess coaching for kids & adults worldwide. Book a FREE trial class today!',
     keywords: 'online chess classes, online chess coaching, chess lessons online, FIDE rated chess coach online, learn chess online',
-    badge: '🏅 Indian FIDE Rated Instructors',
+    badge: '🏅 International FIDE Rated Instructors',
     lead: 'Learn chess online from <strong>India\'s best FIDE Rated instructors</strong> — from the comfort of your home, in any timezone. Structured programs for beginners to advanced players, aged 5 to adult. Students across <strong>USA, UK, Canada, Australia &amp; Saudi Arabia</strong> trust us.',
     benefits: [
-      {icon:'🏅',t:'Indian FIDE Rated Coaches',p:'Your instructor is a nationally recognized Indian FIDE Rated player — world-class expertise, delivered online.'},
+      {icon:'🏅',t:'International FIDE Rated Coaches',p:'Your instructor is a nationally recognized International FIDE Rated player — world-class expertise, delivered online.'},
       {icon:'🌍',t:'Any Timezone, Any Country',p:'We schedule classes around you. Whether you\'re in New York, London, Toronto, Sydney or Riyadh — we have slots that fit.'},
       {icon:'📊',t:'Personalized Progress Tracking',p:'Every student receives a personalized learning roadmap, game analysis after each session, and monthly progress reports.'},
       {icon:'🎯',t:'Curriculum for Every Level',p:'From complete beginners to rated 1800+ players — separate structured tracks for every level.'},
@@ -24,7 +24,7 @@ const pages = [
       {stars:'★★★★★',text:'"My daughter loves her weekend chess sessions from Sydney. She already won her school chess championship!"',author:'— Priya K., Sydney, Australia 🇦🇺'},
     ],
     faqs: [
-      {q:'Are your chess coaches FIDE rated?',a:'Yes. All our instructors are Indian FIDE Rated players with national-level tournament experience.'},
+      {q:'Are your chess coaches FIDE rated?',a:'Yes. All our instructors are International FIDE Rated players with national-level tournament experience.'},
       {q:'How do online chess classes work?',a:'Classes are conducted via Zoom/Google Meet using a shared digital chessboard. Each session is 45-60 minutes with recorded sessions and homework.'},
       {q:'What age groups do you teach?',a:'We teach students from age 5 (Class 1) all the way to adults with separate curriculum tracks.'},
       {q:'Can I attend from USA, UK, Canada, Australia or Saudi Arabia?',a:'Absolutely. We have students across all these countries with timezone-matched scheduling.'},
@@ -35,12 +35,12 @@ const pages = [
   },
   {
     slug: 'online-chess-classes-for-kids',
-    title: 'Online Chess Classes for Kids | Indian FIDE Rated Coaches',
+    title: 'Online Chess Classes for Kids | International FIDE Rated Coaches',
     h1: 'Online Chess Classes<br><span class="highlight">for Kids</span>',
-    desc: 'Fun, structured online chess classes for kids aged 5-16 by Indian FIDE Rated coaches. Build focus, logic & confidence. Book FREE trial!',
+    desc: 'Fun, structured online chess classes for kids aged 5-16 by International FIDE Rated coaches. Build focus, logic & confidence. Book FREE trial!',
     keywords: 'online chess classes for kids, chess lessons for children online, kids chess coaching, chess for kids',
     badge: '🎓 Ages 5–16 · FIDE Rated Coaches',
-    lead: 'Give your child the gift of chess — taught online by <strong>Indian FIDE Rated coaches</strong> who specialize in children\'s education. Fun, story-based learning for ages 5-8, competitive prep for ages 9-16. Students from <strong>USA, UK, Canada, Australia &amp; Saudi Arabia</strong>.',
+    lead: 'Give your child the gift of chess — taught online by <strong>International FIDE Rated coaches</strong> who specialize in children\'s education. Fun, story-based learning for ages 5-8, competitive prep for ages 9-16. Students from <strong>USA, UK, Canada, Australia &amp; Saudi Arabia</strong>.',
     benefits: [
       {icon:'🧒',t:'Child-Friendly Teaching',p:'Story-based learning, puzzles, and interactive games keep young minds engaged while building critical thinking skills.'},
       {icon:'🏅',t:'FIDE Rated Kid Specialists',p:'Our coaches are trained in child psychology and use age-appropriate methods. No boring lectures — pure interactive learning.'},
@@ -69,7 +69,7 @@ const pages = [
 const geoPages = [
   {slug:'online-chess-classes-usa',country:'USA',flag:'🇺🇸',tz:'EST/CST/PST',currency:'USD',slots:'Evening & weekend slots matching EST, CST, PST timezones',testimonial:{text:'"My son\'s chess.com rating went from 600 to 1100 in 6 months with TheChessLifestyle coaches!"',author:'— David K., San Francisco, California 🇺🇸'}, localBlock: '<div class="highlight-box"><h3>USCF vs FIDE Ratings</h3><p>Our curriculum is designed to help scholastic players in the USA rapidly improve their <strong>USCF (US Chess Federation) ratings</strong>. While our coaches hold international FIDE ratings, they are highly experienced in preparing American students for intense local and national USCF tournaments.</p></div>'},
   {slug:'online-chess-classes-uk',country:'UK',flag:'🇬🇧',tz:'GMT/BST',currency:'GBP',slots:'Evening & weekend slots matching GMT timezone',testimonial:{text:'"Far more structured and affordable than any UK-based chess tutor we\'ve tried. Brilliant coaches!"',author:'— James W., Manchester, UK 🇬🇧'}, localBlock: '<div class="highlight-box"><h3>ECF Grading & UK Tournaments</h3><p>We understand the specific structure of the <strong>English Chess Federation (ECF)</strong> grading system. Our coaches provide tailored preparation for British scholastic tournaments, offering evening and weekend slots that perfectly align with UK school hours and the GMT/BST timezone.</p></div>'},
-  {slug:'online-chess-classes-canada',country:'Canada',flag:'🇨🇦',tz:'EST/PST',currency:'CAD',slots:'Evening & weekend slots matching EST and PST',testimonial:{text:'"Both my kids attend from Toronto. The Indian FIDE coaches are incredibly patient and skilled!"',author:'— Ravi S., Toronto, Canada 🇨🇦'}, localBlock: '<div class="highlight-box"><h3>Canadian Chess Federation Excellence</h3><p>With a growing number of students from Toronto, Vancouver, and Montreal, our FIDE-rated coaches are well-versed in preparing players for CFC (Chess Federation of Canada) events, ensuring your child receives world-class tactical training in the EST or PST timezones.</p></div>'},
+  {slug:'online-chess-classes-canada',country:'Canada',flag:'🇨🇦',tz:'EST/PST',currency:'CAD',slots:'Evening & weekend slots matching EST and PST',testimonial:{text:'"Both my kids attend from Toronto. The International FIDE coaches are incredibly patient and skilled!"',author:'— Ravi S., Toronto, Canada 🇨🇦'}, localBlock: '<div class="highlight-box"><h3>Canadian Chess Federation Excellence</h3><p>With a growing number of students from Toronto, Vancouver, and Montreal, our FIDE-rated coaches are well-versed in preparing players for CFC (Chess Federation of Canada) events, ensuring your child receives world-class tactical training in the EST or PST timezones.</p></div>'},
   {slug:'online-chess-classes-australia',country:'Australia',flag:'🇦🇺',tz:'AEST/AWST',currency:'AUD',slots:'Morning & weekend slots matching AEST timezone',testimonial:{text:'"Saturday morning chess classes from Sydney — my daughter won her school championship after 4 months!"',author:'— Lisa P., Sydney, Australia 🇦🇺'}, localBlock: '<div class="highlight-box"><h3>Australian Timezone Optimized</h3><p>Finding high-quality chess coaching that aligns with Australian timezones can be difficult. We offer dedicated morning and early afternoon slots for AEST/AWST students, helping them prepare for Australian Chess Federation (ACF) rated events without disrupting their sleep schedules.</p></div>'},
   {slug:'online-chess-classes-saudi-arabia',country:'Saudi Arabia',flag:'🇸🇦',tz:'AST (GMT+3)',currency:'SAR',slots:'Evening & weekend slots matching Arabian Standard Time',testimonial:{text:'"Excellent coaches, flexible scheduling for Riyadh timezone. My son loves his weekly sessions!"',author:'— Ahmed M., Saudi Arabia 🇸🇦'}, localBlock: '<div class="highlight-box"><h3>Chess Growth in the Middle East</h3><p>With the rapid growth of chess across the Middle East, we are proud to offer specialized coaching for students in Saudi Arabia. Our schedules are adapted to the Middle Eastern workweek (Sunday-Thursday) to provide maximum convenience for our AST timezone students.</p></div>'},
 ];
@@ -77,14 +77,14 @@ const geoPages = [
 geoPages.forEach(g => {
   pages.push({
     slug: g.slug,
-    title: `Online Chess Classes in ${g.country} | Indian FIDE Rated Coaches `,
+    title: `Online Chess Classes in ${g.country} | International FIDE Rated Coaches `,
     h1: `Online Chess Classes<br><span class="highlight">in ${g.country} ${g.flag}</span>`,
-    desc: `Online chess classes for kids & adults in ${g.country}. Learn from Indian FIDE Rated instructors in your ${g.tz} timezone. Book FREE trial!`,
+    desc: `Online chess classes for kids & adults in ${g.country}. Learn from International FIDE Rated instructors in your ${g.tz} timezone. Book FREE trial!`,
     keywords: `online chess classes ${g.country}, chess coaching ${g.country}, chess lessons online ${g.country}, FIDE rated chess coach`,
     badge: `${g.flag} ${g.country} · FIDE Rated Coaches`,
-    lead: `Learn chess online from <strong>Indian FIDE Rated instructors</strong> — scheduled for your <strong>${g.tz} timezone</strong>. ${g.slots}. Affordable world-class coaching for kids &amp; adults in ${g.country}.`,
+    lead: `Learn chess online from <strong>International FIDE Rated instructors</strong> — scheduled for your <strong>${g.tz} timezone</strong>. ${g.slots}. Affordable world-class coaching for kids &amp; adults in ${g.country}.`,
     benefits: [
-      {icon:'🏅',t:'Indian FIDE Rated Coaches',p:`Your instructor is a nationally recognized Indian FIDE Rated player — delivering world-class expertise online to ${g.country}.`},
+      {icon:'🏅',t:'International FIDE Rated Coaches',p:`Your instructor is a nationally recognized International FIDE Rated player — delivering world-class expertise online to ${g.country}.`},
       {icon:'🕐',t:`${g.tz} Timezone Classes`,p:`${g.slots}. Never miss a class because of timezone issues.`},
       {icon:'💰',t:`Affordable in ${g.currency}`,p:`Premium coaching at a fraction of local ${g.country} tutor rates — without any compromise on quality or credentials.`},
       {icon:'🎯',t:'All Ages & Levels',p:'From complete beginners (age 5+) to advanced rated players. Separate structured tracks for every level.'},
@@ -98,7 +98,7 @@ geoPages.forEach(g => {
     ],
     faqs: [
       {q:`Can I attend from ${g.country}?`,a:`Absolutely! We have many students across ${g.country}. Classes are scheduled to match your ${g.tz} timezone.`},
-      {q:'Are your coaches FIDE rated?',a:'Yes. All instructors are Indian FIDE Rated players with national-level tournament experience.'},
+      {q:'Are your coaches FIDE rated?',a:'Yes. All instructors are International FIDE Rated players with national-level tournament experience.'},
       {q:`What time are classes in ${g.tz}?`,a:`We offer ${g.slots.toLowerCase()}. Exact times are confirmed after your free trial.`},
       {q:'Is the trial class free?',a:'Yes — 100% free, no credit card, no commitment. Full 45-minute session with a FIDE Rated instructor.'},
       {q:`How much do classes cost in ${g.currency}?`,a:`We offer flexible monthly packages. Contact us after your free trial for personalized ${g.currency} pricing.`},
@@ -229,7 +229,7 @@ function buildPage(cfg) {
       <div class="cta-banner">
         <div class="cta-content glass tilt-card">
           <h2>Book Your <span class="highlight">FREE Trial Class</span></h2>
-          <p>Learn from Indian FIDE Rated instructors — online from anywhere, or offline in Noida.</p>
+          <p>Learn from International FIDE Rated instructors — online from anywhere, or offline in Noida.</p>
           <form class="enrol-form" action="https://formspree.io/f/xvzjjenb" method="POST">
             <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="_captcha" value="false">

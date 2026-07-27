@@ -111,7 +111,7 @@ for slug in pages_needing_twitter:
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@thechesslifestyle">
   <meta name="twitter:title" content="TheChessLifestyle — Online Chess Classes by FIDE Rated Coaches">
-  <meta name="twitter:description" content="Online chess classes for kids &amp; adults. Indian FIDE Rated coaches. Book your FREE 45-min trial today.">
+  <meta name="twitter:description" content="Online chess classes for kids &amp; adults. International FIDE Rated coaches. Book your FREE 45-min trial today.">
   <meta name="twitter:image" content="https://www.thechesslifestyle.com/og_banner_1200x630.webp">'''
     c = re.sub(r'(<meta property="og:locale"[^>]+>)', r'\1' + twitter_block, c, count=1)
     write(path, c)

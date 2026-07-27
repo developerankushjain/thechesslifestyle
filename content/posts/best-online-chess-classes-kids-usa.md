@@ -24,6 +24,6 @@ America spans four major time zones. Whether you are looking for an after-school
 
 ## 3. The FIDE Advantage
 
-FIDE (Fédération Internationale des Échecs) is the world governing body of chess. A FIDE Rated coach brings a level of international competitive depth that amateur local tutors simply cannot match. India, for example, is currently producing some of the world's greatest chess talents. Connecting your child with an Indian FIDE Rated coach provides grandmaster-level methodology at a fraction of local US costs.
+FIDE (Fédération Internationale des Échecs) is the world governing body of chess. A FIDE Rated coach brings a level of international competitive depth that amateur local tutors simply cannot match. India, for example, is currently producing some of the world's greatest chess talents. Connecting your child with an International FIDE Rated coach provides grandmaster-level methodology at a fraction of local US costs.
 
 At **TheChessLifestyle**, we serve families across 20+ US states. We combine expert FIDE-rated coaching with seamless online delivery over Zoom, ensuring your child gets the best chess education possible, right from home.

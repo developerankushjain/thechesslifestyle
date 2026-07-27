@@ -22,4 +22,4 @@ For both Saudi national families and the vast expat communities residing in the 
 
 ## Getting Started
 
-Finding high-level coaching in the Kingdom used to be difficult. Today, through online platforms like **TheChessLifestyle**, students in Saudi Arabia can train directly with Indian FIDE Rated coaches. With time zones perfectly aligned and a curriculum that prepares students for official Saudi Chess Federation tournaments, the path from beginner to tournament player has never been clearer.
+Finding high-level coaching in the Kingdom used to be difficult. Today, through online platforms like **TheChessLifestyle**, students in Saudi Arabia can train directly with International FIDE Rated coaches. With time zones perfectly aligned and a curriculum that prepares students for official Saudi Chess Federation tournaments, the path from beginner to tournament player has never been clearer.

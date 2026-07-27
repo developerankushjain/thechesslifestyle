@@ -67,7 +67,7 @@ After a game (especially a loss), spend at least 10 minutes reviewing it without
 
 While self-study is important, the absolute fastest way to improve your chess rating is to work with someone who has already walked the path. A strong coach will instantly identify the flaws in your thinking process, correct your bad habits, and provide a structured curriculum tailored to your specific weaknesses.
 
-At **TheChessLifestyle**, our Indian FIDE Rated coaches specialize in taking players from absolute beginners to strong competitive club players. We track your progress, curate specific homework puzzles for you, and build an opening repertoire that suits your personal style.
+At **TheChessLifestyle**, our International FIDE Rated coaches specialize in taking players from absolute beginners to strong competitive club players. We track your progress, curate specific homework puzzles for you, and build an opening repertoire that suits your personal style.
 
 ### Ready to See Real Results?
 Stop guessing and start improving. 
