@@ -31,14 +31,15 @@ TMPL = '''<!DOCTYPE html>
   <meta property="og:title" content="Online Chess Classes in {city} | Free Trial">
   <meta property="og:description" content="Expert online chess coaching for kids & adults in {city}. Indian FIDE Rated instructors, {timezone} timezone slots.">
   <meta property="og:url" content="https://www.thechesslifestyle.com/{slug}/">
-  <meta property="og:image" content="https://www.thechesslifestyle.com/og_banner_1200x630.png">
+  <meta property="og:image" content="https://www.thechesslifestyle.com/og_banner_1200x630.webp">
+  <meta property="og:image:alt" content="TheChessLifestyle — Online Chess Classes by FIDE Rated Coaches">
   <meta name="twitter:card" content="summary_large_image">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" onload="this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style-city.css">
   
   <script type="application/ld+json">
   {{"@context":"https://schema.org","@graph":[{{"@type":"Course","name":"Online Chess Classes in {city}","description":"Expert online chess coaching for kids and adults in {city}.","provider":{{"@type":"Organization","name":"TheChessLifestyle","sameAs":"https://www.thechesslifestyle.com"}},"hasCourseInstance":{{"@type":"CourseInstance","courseMode":"online","inLanguage":"en"}}}}]}}
@@ -68,7 +69,7 @@ TMPL = '''<!DOCTYPE html>
       <p class="lp-lead">Learn chess online from <strong>Indian FIDE Rated instructors</strong>. World-class coaching available during convenient <strong>{timezone}</strong> hours for kids &amp; adults in {city}.</p>
       <div class="lp-cta-group">
         <a href="#enrol" class="btn-primary pulse-main">Book Your FREE Trial Class</a>
-        <a href="https://wa.me/917206789979?text=I'd+like+to+book+a+free+trial+chess+class+from+{city}" target="_blank" class="btn-primary" style="background:#25D366;border-color:#25D366;color:white;">📲 WhatsApp Us</a>
+        {secondary_cta}
       </div>
     </div>
   </header>
@@ -99,7 +100,7 @@ TMPL = '''<!DOCTYPE html>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
           
           <a href="/blog/does-chess-help-with-adhd-in-kids/" style="text-decoration: none; color: inherit; display: block; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: transform 0.3s;">
-            <img src="/og_banner_1200x630.png" style="width: 100%; height: 160px; object-fit: cover;" alt="Chess for ADHD">
+            <img src="/og_banner_1200x630.webp" style="width: 100%; height: 160px; object-fit: cover;" alt="Chess for ADHD">
             <div style="padding: 1.5rem;">
               <span style="color: var(--primary); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Chess Psychology</span>
               <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">Chess for ADHD: Does It Really Help?</h3>
@@ -108,7 +109,7 @@ TMPL = '''<!DOCTYPE html>
           </a>
 
           <a href="/blog/best-online-chess-classes-kids-usa/" style="text-decoration: none; color: inherit; display: block; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: transform 0.3s;">
-            <img src="/og_banner_1200x630.png" style="width: 100%; height: 160px; object-fit: cover;" alt="USA Chess Classes">
+            <img src="/og_banner_1200x630.webp" style="width: 100%; height: 160px; object-fit: cover;" alt="USA Chess Classes">
             <div style="padding: 1.5rem;">
               <span style="color: var(--primary); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Parent Guide</span>
               <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">Best Online Chess Classes for Kids</h3>
@@ -117,7 +118,7 @@ TMPL = '''<!DOCTYPE html>
           </a>
 
           <a href="/blog/chess-classes-dubai-expat-families/" style="text-decoration: none; color: inherit; display: block; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: transform 0.3s;">
-            <img src="/og_banner_1200x630.png" style="width: 100%; height: 160px; object-fit: cover;" alt="Dubai Chess">
+            <img src="/og_banner_1200x630.webp" style="width: 100%; height: 160px; object-fit: cover;" alt="Dubai Chess">
             <div style="padding: 1.5rem;">
               <span style="color: var(--primary); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Global Perspectives</span>
               <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">The Expat Guide to Chess Classes</h3>
@@ -153,7 +154,7 @@ TMPL = '''<!DOCTYPE html>
               </select>
             </div>
             <div class="form-group split">
-              <input type="tel" name="Phone" placeholder="WhatsApp / Phone" required>
+              <input type="tel" name="Phone" placeholder="{phone_placeholder}" required>
               <input type="email" name="Email" placeholder="Email" required>
             </div>
             <button type="submit" class="btn-primary pulse-main submit-btn">Book My FREE Trial Class</button>
@@ -190,6 +191,13 @@ def main():
     for city in CITIES:
         d = os.path.join(os.path.dirname(__file__), city['slug'])
         os.makedirs(d, exist_ok=True)
+        if city['country'] == 'USA':
+            city['secondary_cta'] = '<a href="#enrol" class="btn-primary" style="background:var(--primary);border-color:var(--primary);color:var(--bg-main);">📞 Schedule a Call</a>'
+            city['phone_placeholder'] = 'Your Phone Number'
+        else:
+            city['secondary_cta'] = f'<a href="https://wa.me/917206789979?text=I%27d+like+to+book+a+free+trial+chess+class+from+{city["city"]}" target="_blank" class="btn-primary" style="background:#25D366;border-color:#25D366;color:white;">📲 WhatsApp Us</a>'
+            city['phone_placeholder'] = 'WhatsApp / Phone'
+            
         html = TMPL.format(**city)
         with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:
             f.write(html)

@@ -45,14 +45,19 @@ def render_post(meta, html_content):
     title    = meta.get("title", "Chess Blog")
     desc     = meta.get("description", "")
     slug     = meta.get("slug", "post")
+    permalink= meta.get("permalink")
     author   = meta.get("author", "Chirag Soni")
     pub_date = meta.get("date", TODAY)
-    image    = meta.get("image", "/og_banner_1200x630.png")
+    image    = meta.get("image", "/og_banner_1200x630.webp")
     category = meta.get("category", "Chess")
     tags     = meta.get("tags", "chess, coaching, FIDE")
     read_min = meta.get("read_min", "5")
 
-    canonical = f"{SITE_URL}/blog/{slug}/"
+    if permalink:
+        canonical = f"{SITE_URL}{permalink}"
+    else:
+        canonical = f"{SITE_URL}/blog/{slug}/"
+        
     og_image  = f"{SITE_URL}{image}"
 
     schema = json.dumps({
@@ -80,12 +85,19 @@ def render_post(meta, html_content):
     }, ensure_ascii=False)
 
     # Breadcrumb schema
+    if permalink and permalink.startswith("/usa/"):
+        breadcrumb_parent_name = "USA Online Classes"
+        breadcrumb_parent_url = f"{SITE_URL}/online-chess-classes-usa/"
+    else:
+        breadcrumb_parent_name = "Blog"
+        breadcrumb_parent_url = f"{SITE_URL}/blog/"
+        
     breadcrumb = json.dumps({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
-        {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{SITE_URL}/blog/"},
+        {"@type": "ListItem", "position": 2, "name": breadcrumb_parent_name, "item": breadcrumb_parent_url},
         {"@type": "ListItem", "position": 3, "name": title, "item": canonical}
       ]
     })
@@ -117,6 +129,7 @@ def render_post(meta, html_content):
   <meta property="og:description" content="{desc}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="{og_image}">
+  <meta property="og:image:alt" content="{title}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="article:published_time" content="{pub_date}">
@@ -137,7 +150,7 @@ def render_post(meta, html_content):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" onload="this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../style-blog.css">
   <style>
     .blog-post-wrap {{
       max-width: 780px;
@@ -325,14 +338,16 @@ def render_index(posts):
     for p in posts:
         m = p["meta"]
         slug     = m.get("slug", "post")
+        permalink = m.get("permalink")
         title    = m.get("title", "")
         desc     = m.get("description", "")
         pub_date = m.get("date", TODAY)
         category = m.get("category", "Chess")
         read_min = m.get("read_min", "5")
-        image    = m.get("image", "/og_banner_1200x630.png")
+        image    = m.get("image", "/og_banner_1200x630.webp")
+        url = permalink if permalink else f"/blog/{slug}/"
         cards += f'''
-        <a href="/blog/{slug}/" class="blog-card tilt-card" style="text-decoration:none; color:inherit; display:block;">
+        <a href="{url}" class="blog-card tilt-card" style="text-decoration:none; color:inherit; display:block;">
           <picture>
             <source srcset="{image.replace('.png','.webp').replace('.jpg','.webp')}" type="image/webp">
             <img src="{image}" alt="{title}" class="blog-card-img" loading="lazy" width="400" height="220">
@@ -382,13 +397,14 @@ def render_index(posts):
   <meta property="og:title" content="Chess Blog | Expert Tips &amp; Guides | TheChessLifestyle">
   <meta property="og:description" content="Learn chess strategies, tips and insights from FIDE Rated coach Chirag Soni.">
   <meta property="og:url" content="{SITE_URL}/blog/">
-  <meta property="og:image" content="{SITE_URL}/og_banner_1200x630.png">
+  <meta property="og:image" content="{SITE_URL}/og_banner_1200x630.webp">
+  <meta property="og:image:alt" content="TheChessLifestyle — Online Chess Classes by FIDE Rated Coaches">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Chess Blog | TheChessLifestyle">
   <meta name="twitter:description" content="Expert chess coaching tips by FIDE Rated coach Chirag Soni.">
-  <meta name="twitter:image" content="{SITE_URL}/og_banner_1200x630.png">
+  <meta name="twitter:image" content="{SITE_URL}/og_banner_1200x630.webp">
   <meta property="og:site_name" content="TheChessLifestyle">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:site" content="@thechesslifestyle">
@@ -397,7 +413,7 @@ def render_index(posts):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" onload="this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style-blog.css">
   <style>
     .blog-index-wrap {{ max-width: 1100px; margin: 0 auto; padding: 120px 5% 5rem; }}
     .blog-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }}
@@ -482,10 +498,12 @@ def update_sitemap(posts):
   </url>"""
     for p in posts:
         slug = p["meta"].get("slug", "post")
+        permalink = p["meta"].get("permalink")
+        url = f"{SITE_URL}{permalink}" if permalink else f"{SITE_URL}/blog/{slug}/"
         pub  = p["meta"].get("date", TODAY)
         new_urls += f"""
   <url>
-    <loc>{SITE_URL}/blog/{slug}/</loc>
+    <loc>{url}</loc>
     <lastmod>{TODAY}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -518,12 +536,13 @@ def generate_rss(posts):
     for p in posts:
         m        = p["meta"]
         slug     = m.get("slug", "post")
+        permalink = m.get("permalink")
         title    = m.get("title", "Chess Article")
         desc     = m.get("description", "")
         pub_date = to_rfc822(m.get("date", TODAY))
         category = m.get("category", "Chess")
         author   = m.get("author", "Chirag Soni")
-        link     = f"{SITE_URL}/blog/{slug}/"
+        link     = f"{SITE_URL}{permalink}" if permalink else f"{SITE_URL}/blog/{slug}/"
         # Strip markdown from body for plain-text excerpt
         plain = _re.sub(r'[#*`_>\[\]()!]', '', p.get("html", ""))
         plain = _re.sub(r'<[^>]+>', '', plain)
@@ -553,7 +572,7 @@ def generate_rss(posts):
     <lastBuildDate>{today_rfc}</lastBuildDate>
     <ttl>1440</ttl>
     <image>
-      <url>{SITE_URL}/og_banner_1200x630.png</url>
+      <url>{SITE_URL}/og_banner_1200x630.webp</url>
       <title>TheChessLifestyle Blog</title>
       <link>{SITE_URL}/blog/</link>
     </image>
@@ -641,11 +660,15 @@ def main():
         posts.append({"meta": meta, "html": html_body})
 
         # Write post
-        out_dir = f"{BLOG_OUT_DIR}/{slug}"
+        permalink = meta.get("permalink")
+        if permalink:
+            out_dir = permalink.strip("/")
+        else:
+            out_dir = f"{BLOG_OUT_DIR}/{slug}"
         os.makedirs(out_dir, exist_ok=True)
         with open(f"{out_dir}/index.html", "w", encoding="utf-8") as f:
             f.write(render_post(meta, html_body))
-        print(f"  Created /blog/{slug}/index.html")
+        print(f"  Created /{out_dir}/index.html")
 
     # Write blog index
     os.makedirs(BLOG_OUT_DIR, exist_ok=True)

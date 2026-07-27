@@ -77,7 +77,7 @@ const geoPages = [
 geoPages.forEach(g => {
   pages.push({
     slug: g.slug,
-    title: `Online Chess Classes in ${g.country} | Indian FIDE Rated Coaches | TheChessLifestyle`,
+    title: `Online Chess Classes in ${g.country} | Indian FIDE Rated Coaches `,
     h1: `Online Chess Classes<br><span class="highlight">in ${g.country} ${g.flag}</span>`,
     desc: `Online chess classes for kids & adults in ${g.country}. Learn from Indian FIDE Rated instructors in your ${g.tz} timezone. Book FREE trial!`,
     keywords: `online chess classes ${g.country}, chess coaching ${g.country}, chess lessons online ${g.country}, FIDE rated chess coach`,
@@ -204,7 +204,7 @@ function buildPage(cfg) {
         <img src="../coach-chirag.jpg" alt="Coach Chirag Soni" class="coach-image" loading="lazy">
         <div class="coach-details">
           <h4>Chirag Soni</h4>
-          <p><strong>FIDE ID:</strong> <a href="https://ratings.fide.com/profile/25971115/statistics" target="_blank" style="color:var(--primary); text-decoration: none;">25971115</a></p>
+          <div class="fide-badge">FIDE ID: 25971115 &nbsp;|&nbsp; Peak FIDE Rating: 1729</div>
           <p style="font-size: 0.95rem;">Chirag brings years of competitive international experience to TheChessLifestyle. His specialized coaching approach focuses on building long-term cognitive resilience and rigorous tournament preparation for students of all ages.</p>
         </div>
       </div>
