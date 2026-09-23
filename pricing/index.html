@@ -116,13 +116,26 @@
           <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.75rem;">Prices shown in INR. For USD/GBP/CAD/AUD equivalents, <a href="mailto:admin@thechesslifestyle.com" style="color:var(--primary);">email us</a> or use our <a href="/online-chess-classes-usa/" style="color:var(--primary);">USA page</a> for approximate USD pricing starting from <strong style="color:#f59e0b;">~$30–$120/month USD</strong>.</p>
         </div>
 
+        
+        <div class="currency-selector-wrapper scroll-reveal">
+          <label for="currency-selector" style="margin-right:10px; font-weight:500;">Select Currency:</label>
+          <select id="currency-selector" class="currency-select">
+            <option value="INR">🇮🇳 INR (₹)</option>
+            <option value="USD">🇺🇸 USD ($)</option>
+            <option value="GBP">🇬🇧 GBP (£)</option>
+            <option value="EUR">🇪🇺 EUR (€)</option>
+            <option value="AUD">🇦🇺 AUD (A$)</option>
+            <option value="CAD">🇨🇦 CAD (C$)</option>
+          </select>
+        </div>
+
         <div class="pricing-grid scroll-reveal">
           
           <!-- Plan 1 -->
           <div class="pricing-card">
             <h3>0-Level Plan</h3>
             <div class="rating-target">Absolute Beginners (Age &lt; 7 years)</div>
-            <div class="price">₹4,999<span> / month</span></div>
+            <div class="price" data-inr="4,999" data-usd="60" data-gbp="45" data-eur="55" data-aud="80" data-cad="80">₹4,999<span> / month</span></div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">8 Group Classes</p>
             
             <ul class="pricing-features">
@@ -140,7 +153,7 @@
             <div class="pricing-badge">Most Popular For Beginners</div>
             <h3>Foundational</h3>
             <div class="rating-target">0 - 800 Rating (chess.com)</div>
-            <div class="price">₹3,999<span> / month</span></div>
+            <div class="price" data-inr="3,999" data-usd="50" data-gbp="40" data-eur="45" data-aud="65" data-cad="65">₹3,999<span> / month</span></div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">8 Group Classes</p>
             
             <ul class="pricing-features">
@@ -157,7 +170,7 @@
           <div class="pricing-card">
             <h3>Beginner Level</h3>
             <div class="rating-target">800 - 1200 Rating (chess.com)</div>
-            <div class="price">₹4,999<span> / month</span></div>
+            <div class="price" data-inr="4,999" data-usd="60" data-gbp="45" data-eur="55" data-aud="80" data-cad="80">₹4,999<span> / month</span></div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">8 Group Classes</p>
             
             <ul class="pricing-features">
@@ -175,7 +188,7 @@
           <div class="pricing-card">
             <h3>Intermediate Level</h3>
             <div class="rating-target">1200 - 1500 Rating (chess.com)</div>
-            <div class="price">₹5,999<span> / month</span></div>
+            <div class="price" data-inr="5,999" data-usd="75" data-gbp="55" data-eur="65" data-aud="100" data-cad="100">₹5,999<span> / month</span></div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">8 Group Classes</p>
             
             <ul class="pricing-features">
@@ -195,7 +208,7 @@
           <div class="pricing-card">
             <h3>Expert Level</h3>
             <div class="rating-target">1500 - 1800 Rating (chess.com)</div>
-            <div class="price">₹6,999<span> / month</span></div>
+            <div class="price" data-inr="6,999" data-usd="85" data-gbp="65" data-eur="75" data-aud="115" data-cad="115">₹6,999<span> / month</span></div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">8 Group Classes + <strong>1 Expert 1:1 Session</strong></p>
             
             <ul class="pricing-features">
@@ -214,7 +227,7 @@
           <div class="pricing-card">
             <h3>Master Level</h3>
             <div class="rating-target">1800+ Rating (chess.com)</div>
-            <div class="price">₹9,999<span> / month</span></div>
+            <div class="price" data-inr="9,999" data-usd="120" data-gbp="90" data-eur="110" data-aud="160" data-cad="160">₹9,999<span> / month</span></div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Highly Specialized Mentorship</p>
             
             <ul class="pricing-features">
@@ -365,6 +378,51 @@
     <script type="module" src="/lp.js"></script>
   
 
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const currencySelector = document.getElementById("currency-selector");
+  const prices = document.querySelectorAll(".price");
+  
+  const currencySymbols = {
+    "INR": "₹", "USD": "$", "GBP": "£", "EUR": "€", "AUD": "A$", "CAD": "C$"
+  };
+
+  function updatePrices(currency) {
+    prices.forEach(priceEl => {
+      const val = priceEl.getAttribute(`data-${currency.toLowerCase()}`);
+      if (val) {
+        priceEl.innerHTML = `${currencySymbols[currency]}${val}<span> / month</span>`;
+      }
+    });
+  }
+
+  if (currencySelector) {
+    currencySelector.addEventListener("change", function(e) {
+      updatePrices(e.target.value);
+    });
+  }
+
+  fetch("https://ipapi.co/json/")
+    .then(response => response.json())
+    .then(data => {
+      let detectedCurrency = "INR";
+      const country = data.country_code;
+      if (country === "US") detectedCurrency = "USD";
+      else if (country === "GB") detectedCurrency = "GBP";
+      else if (["AU", "NZ"].includes(country)) detectedCurrency = "AUD";
+      else if (country === "CA") detectedCurrency = "CAD";
+      else if (["FR", "DE", "IT", "ES", "NL", "BE", "IE", "AT", "GR", "PT", "FI"].includes(country)) detectedCurrency = "EUR";
+      
+      if (detectedCurrency !== "INR" && currencySelector) {
+        currencySelector.value = detectedCurrency;
+        updatePrices(detectedCurrency);
+      }
+    })
+    .catch(err => console.error("Currency detection failed", err));
+});
+</script>
 
 </body>
 </html>
