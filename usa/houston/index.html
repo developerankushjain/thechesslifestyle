@@ -149,15 +149,21 @@
 <body>
   <div class="glow-tracker" id="cursor-glow"></div>
   <nav class="navbar">
-    <div class="logo"><a href="/" style="color:#0f172a;font-weight:700;text-decoration:none;display:flex;align-items:center;"><img src="/favicon.svg" alt="Logo" style="width:24px;height:24px;margin-right:8px;vertical-align:middle;">TheChessLifestyle</a></div>
-    <ul class="nav-links">
-      <li><a href="/#philosophy">Our Philosophy</a></li>
-      <li><a href="/#benefits">Benefits</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-    <a href="/#trial" class="cta-btn">Free Trial</a>
-  </nav>
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
+        TheChessLifestyle
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#benefits">Benefits</a></li>
+        <li><a href="/#why-us">Why Choose Us</a></li>
+        <li><a href="/#coaches">Coaches</a></li>
+        <li><a href="/#gallery">Gallery</a></li>
+        <li><a href="/#testimonials">Testimonies</a></li>
+        <li><a href="/#blog">Blog</a></li>
+        <li><a href="/#trial" class="btn-trial">Book Trial</a></li>
+      </ul>
+      <div class="mobile-menu-toggle" id="mobile-menu-toggle">&#9776;</div>
+    </nav>
 
   <main class="blog-post-wrap">
     <nav class="blog-breadcrumb">
@@ -291,30 +297,54 @@
     </div>
   </main>
 
-  <footer id="contact">
-    <div class="footer-container">
-      <div class="footer-col"><h2 class="logo">TheChessLifestyle</h2><p class="footer-tagline">Chess for Mental &amp; Cognitive Health.</p></div>
-      <div class="footer-col"><h3>Online Classes</h3><ul>
-        <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
-        <li><a href="/online-chess-classes-for-kids/">For Kids</a></li>
-        <li><a href="/online-chess-classes-usa/">USA</a></li>
-        <li><a href="/online-chess-classes-uk/">UK</a></li>
-        <li><a href="/online-chess-classes-canada/">Canada</a></li>
-        <li><a href="/online-chess-classes-australia/">Australia</a></li>
-        <li><a href="/online-chess-classes-saudi-arabia/">Saudi Arabia</a></li>
-      </ul></div>
-      <div class="footer-col"><h3>In-Person (Noida)</h3><ul>
-        <li><a href="/chess-classes-noida/">Chess Classes in Noida</a></li>
-        <li><a href="/chess-home-tutor-noida/">Chess Home Tutor Noida</a></li>
-      </ul></div>
-      <div class="footer-col contact-info">
-        <h3>Contact Us</h3>
-        <p>📍 Global Online Operations</p>
-        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
+  <footer>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/favicon.svg" alt="TheChessLifestyle Logo" class="footer-logo" width="40" height="40" style="margin-bottom: 0.5rem;" />
+            <h2>TheChessLifestyle</h2>
+            <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/#benefits">Benefits of Chess</a></li>
+              <li><a href="/#coaches">Our Coaches</a></li>
+              <li><a href="/#gallery">Gallery</a></li>
+              <li><a href="/#trial">Book Trial</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms of Service</a></li>
+              <li><a href="/refund.html">Refund Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.
+        </div>
       </div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2026 TheChessLifestyle.</p></div>
-  </footer>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          document.getElementById('nav-links').classList.toggle('active');
+        });
+      }
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          const navLinks = document.getElementById('nav-links');
+          if(navLinks) navLinks.classList.remove('active');
+        });
+      });
+    </script>
+
   <script src="../../main.js" type="module"></script>
 </body>
 </html>
