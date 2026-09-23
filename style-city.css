@@ -1,15 +1,19 @@
 :root {
-  --primary: #f59e0b; /* amber/gold */
+  --primary: #f59e0b; /* Vibrant amber/gold */
   --primary-hover: #d97706;
-  --bg-dark: #07090e; /* deeper dark */
-  --bg-card: rgba(255, 255, 255, 0.04);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --glass-border: rgba(255, 255, 255, 0.08);
-
-  /* Chessboard pattern colors */
-  --chess-dark: #0a0a0a;
-  --chess-light: #121212;
+  --bg-main: #ffffff;
+  --bg-alt: #f8fafc; /* Very light gray/blue */
+  --bg-card: #ffffff;
+  --text-main: #0f172a; /* Dark slate */
+  --text-muted: #475569;
+  --border-light: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-primary: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
 }
 
 * {
@@ -25,56 +29,13 @@ html {
 body {
   font-family: "Inter", sans-serif;
   color: var(--text-main);
+  background-color: var(--bg-main);
   line-height: 1.6;
   overflow-x: hidden;
-  position: relative;
-  /* Premium Checkered Background */
-  background-color: var(--chess-dark);
-  background-image:
-    linear-gradient(
-      45deg,
-      var(--chess-light) 25%,
-      transparent 25%,
-      transparent 75%,
-      var(--chess-light) 75%,
-      var(--chess-light)
-    ),
-    linear-gradient(
-      45deg,
-      var(--chess-light) 25%,
-      transparent 25%,
-      transparent 75%,
-      var(--chess-light) 75%,
-      var(--chess-light)
-    );
-  background-size: 150px 150px;
-  background-position:
-    0 0,
-    75px 75px;
 }
 
 /* Add a dark gradient overlay so the text remains easy to read over the checkers */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background:
-    radial-gradient(
-      circle at center,
-      transparent 0%,
-      rgba(7, 9, 14, 0.85) 100%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(7, 9, 14, 0.6) 0%,
-      rgba(7, 9, 14, 0.95) 100%
-    );
-  z-index: -3;
-  pointer-events: none;
-}
+
 
 h1,
 h2,
@@ -132,7 +93,7 @@ h4 {
   padding: 0 5%; /* Flex will handle vertical centering now */
   z-index: 1000;
   border-bottom: 1px solid var(--glass-border);
-  background: rgba(7, 9, 14, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
 }
 
@@ -140,7 +101,7 @@ h4 {
   font-family: "Outfit", sans-serif;
   font-size: 1.6rem;
   font-weight: 900;
-  color: #fff;
+  color: var(--text-main);
   letter-spacing: -0.5px;
   display: flex;
   align-items: center;
@@ -406,7 +367,7 @@ section h2 {
 
 .test-card h4 {
   font-size: 1rem;
-  color: #fff;
+  color: var(--text-main);
 }
 
 /* CTA Banner */
@@ -457,7 +418,7 @@ footer {
 .footer-col h3 {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .footer-col ul {
@@ -677,7 +638,7 @@ footer {
   padding: 1.5rem;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--text-main);
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
@@ -995,7 +956,7 @@ footer {
   width: 60px;
   height: 60px;
   background-color: #25d366;
-  color: #fff;
+  color: var(--text-main);
   border-radius: 50px;
   text-align: center;
   font-size: 30px;
@@ -1012,7 +973,7 @@ footer {
 .whatsapp-float:hover {
   background-color: #128c7e;
   transform: scale(1.1);
-  color: #fff;
+  color: var(--text-main);
 }
 
 .whatsapp-icon-float {
@@ -1111,7 +1072,7 @@ footer {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .toast-content small {
@@ -1165,7 +1126,7 @@ footer {
 }
 
 .close-modal:hover {
-  color: #fff;
+  color: var(--text-main);
 }
 
 /* Multi-step form styles */
@@ -1277,7 +1238,7 @@ footer {
 .coach-bio h3 {
   font-size: 2.2rem;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .fide-badge {
@@ -1371,7 +1332,7 @@ footer {
 }
 
 .review-author-info h4 {
-  color: #fff;
+  color: var(--text-main);
   margin: 0;
   font-size: 1rem;
 }
