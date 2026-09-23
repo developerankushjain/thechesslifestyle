@@ -38,7 +38,7 @@
   </script>
 </head>
 <body>
-  <div class="glow-tracker" id="cursor-glow"></div>
+  
   <nav class="navbar">
       <a href="/" class="logo">
         <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
@@ -273,5 +273,32 @@
     </script>
 
   <script src="../lp.js"></script>
+
+<script>
+      const coachesScroll = document.getElementById('coaches-scroll');
+      const cPrev = document.getElementById('coaches-prev');
+      const cNext = document.getElementById('coaches-next');
+      if (coachesScroll && cPrev && cNext) {
+        cPrev.addEventListener('click', () => coachesScroll.scrollBy({ left: -320, behavior: 'smooth' }));
+        cNext.addEventListener('click', () => coachesScroll.scrollBy({ left: 320, behavior: 'smooth' }));
+      }
+      
+      const galleryScroll = document.getElementById('gallery-scroll');
+      const gPrev = document.getElementById('gallery-prev');
+      const gNext = document.getElementById('gallery-next');
+      if (galleryScroll && gPrev && gNext) {
+        gPrev.addEventListener('click', () => galleryScroll.scrollBy({ left: -320, behavior: 'smooth' }));
+        gNext.addEventListener('click', () => galleryScroll.scrollBy({ left: 320, behavior: 'smooth' }));
+      }
+      
+      const testimonialsScroll = document.getElementById('testimonials-scroll');
+      const tPrev = document.getElementById('testimonials-prev');
+      const tNext = document.getElementById('testimonials-next');
+      if (testimonialsScroll && tPrev && tNext) {
+        tPrev.addEventListener('click', () => testimonialsScroll.scrollBy({ left: -320, behavior: 'smooth' }));
+        tNext.addEventListener('click', () => testimonialsScroll.scrollBy({ left: 320, behavior: 'smooth' }));
+      }
+</script>
+
 </body>
 </html>
