@@ -86,25 +86,26 @@
   </head>
   <body>
     <!-- Floating Background Details -->
-    <div class="svg-floater" style="top: 15%; left: 10%; font-size: 300px; line-height: 1;" data-speed="2">♜</div>
-    <div class="svg-floater" style="top: 60%; right: 5%; font-size: 400px; line-height: 1;" data-speed="-1.5">♞</div>
+    
+    
 
-    <div class="glow-tracker" id="cursor-glow"></div>
+    
 
     <nav class="navbar">
-      <a href="/" style="text-decoration: none;"><div class="logo">
+      <a href="/" class="logo">
         <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
         TheChessLifestyle
-      </div></a>
-      <ul class="nav-links">
-        <li><a href="/#philosophy">Our Philosophy</a></li>
+      </a>
+      <ul class="nav-links" id="nav-links">
         <li><a href="/#benefits">Benefits</a></li>
         <li><a href="/#why-us">Why Choose Us</a></li>
-        <li><a href="/#testimonials">Testimonials</a></li>
-        <li><a href="/pricing/" class="highlight" style="font-weight: 700;">Packages</a></li>
-        <li><a href="/#enrol" class="btn-primary pulse-main">Enrol now</a></li>
+        <li><a href="/#coaches">Coaches</a></li>
+        <li><a href="/#gallery">Gallery</a></li>
+        <li><a href="/#testimonials">Testimonies</a></li>
+        <li><a href="/#blog">Blog</a></li>
+        <li><a href="/#trial" class="btn-trial">Book Trial</a></li>
       </ul>
-      <div class="mobile-menu-toggle">&#9776;</div>
+      <div class="mobile-menu-toggle" id="mobile-menu-toggle">&#9776;</div>
     </nav>
 
     <main>
@@ -118,7 +119,7 @@
         <div class="pricing-grid scroll-reveal">
           
           <!-- Plan 1 -->
-          <div class="pricing-card tilt-card mobile-glow">
+          <div class="pricing-card">
             <h3>0-Level Plan</h3>
             <div class="rating-target">Absolute Beginners (Age &lt; 7 years)</div>
             <div class="price">₹4,999<span> / month</span></div>
@@ -135,7 +136,7 @@
           </div>
 
           <!-- Plan 2 -->
-          <div class="pricing-card tilt-card mobile-glow popular">
+          <div class="pricing-card popular">
             <div class="pricing-badge">Most Popular For Beginners</div>
             <h3>Foundational</h3>
             <div class="rating-target">0 - 800 Rating (chess.com)</div>
@@ -153,7 +154,7 @@
           </div>
 
           <!-- Plan 3 -->
-          <div class="pricing-card tilt-card mobile-glow">
+          <div class="pricing-card">
             <h3>Beginner Level</h3>
             <div class="rating-target">800 - 1200 Rating (chess.com)</div>
             <div class="price">₹4,999<span> / month</span></div>
@@ -171,7 +172,7 @@
           </div>
 
           <!-- Plan 4 -->
-          <div class="pricing-card tilt-card mobile-glow">
+          <div class="pricing-card">
             <h3>Intermediate Level</h3>
             <div class="rating-target">1200 - 1500 Rating (chess.com)</div>
             <div class="price">₹5,999<span> / month</span></div>
@@ -191,7 +192,7 @@
           </div>
 
           <!-- Plan 5 -->
-          <div class="pricing-card tilt-card mobile-glow">
+          <div class="pricing-card">
             <h3>Expert Level</h3>
             <div class="rating-target">1500 - 1800 Rating (chess.com)</div>
             <div class="price">₹6,999<span> / month</span></div>
@@ -210,7 +211,7 @@
           </div>
 
           <!-- Plan 6 -->
-          <div class="pricing-card tilt-card mobile-glow">
+          <div class="pricing-card">
             <h3>Master Level</h3>
             <div class="rating-target">1800+ Rating (chess.com)</div>
             <div class="price">₹9,999<span> / month</span></div>
@@ -235,7 +236,7 @@
         <!-- Terms and Conditions Section -->
         <div class="terms-grid scroll-reveal">
           
-          <div class="term-card tilt-card mobile-glow">
+          <div class="term-card">
             <div class="term-icon">📆</div>
             <h4>Advance Payment Discounts</h4>
             <p>Commit to a healthier mind for longer, and get rewarded heavily.</p>
@@ -246,7 +247,7 @@
             </ul>
           </div>
 
-          <div class="term-card tilt-card mobile-glow">
+          <div class="term-card">
             <div class="term-icon">🤝</div>
             <h4>Special Referral Programme</h4>
             <p>Chess gets better with friends. Refer a new student to TheChessLifestyle.</p>
@@ -255,7 +256,7 @@
             </div>
           </div>
 
-          <div class="term-card tilt-card mobile-glow">
+          <div class="term-card">
             <div class="term-icon">💳</div>
             <h4>Registration Fees</h4>
             <p>Every new student pays a ₹1,000 lifetime membership & registration fee.</p>
@@ -325,66 +326,45 @@
       </div>
     </section>
 
-<footer id="contact">
-      <div class="footer-container">
-        <div class="footer-col">
-          <h2 class="logo">
-            <img src="/favicon.svg" alt="TheChessLifestyle" class="logo-icon" width="28" height="31" loading="lazy"/>
-            TheChessLifestyle
-          </h2>
-          <p class="footer-tagline">Chess for Mental & Cognitive Health.</p>
-          <div class="socials">
-            <span class="social-icon">IG</span>
-            <span class="social-icon">FB</span>
-            <span class="social-icon">IN</span>
+<footer>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/favicon.svg" alt="TheChessLifestyle Logo" class="footer-logo" width="40" height="40" style="margin-bottom: 0.5rem;" />
+            <h2>TheChessLifestyle</h2>
+            <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/#benefits">Benefits of Chess</a></li>
+              <li><a href="/#coaches">Our Coaches</a></li>
+              <li><a href="/#gallery">Gallery</a></li>
+              <li><a href="/#trial">Book Trial</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms of Service</a></li>
+              <li><a href="/refund.html">Refund Policy</a></li>
+            </ul>
           </div>
         </div>
-                <div class="footer-col">
-          <h3>Top Locations</h3>
-          <ul id="footer-locations">
-            <li><a href="/online-chess-classes-new-york/">New York</a></li>
-            <li><a href="/online-chess-classes-los-angeles/">Los Angeles</a></li>
-            <li><a href="/online-chess-classes-london/">London</a></li>
-            <li><a href="/online-chess-classes-dubai/">Dubai</a></li>
-            <li><a href="/online-chess-classes-sydney/">Sydney</a></li>
-            <li><a href="/online-chess-classes-toronto/">Toronto</a></li>
-          </ul>
+        <div class="footer-bottom">
+          &copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.
         </div>
-<div class="footer-col">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="/#philosophy">Our Philosophy</a></li>
-            <li><a href="/#benefits">Mental Benefits</a></li>
-            <li><a href="/#why-us">Why Us</a></li>
-            <li><a href="/#testimonials">Testimonials</a></li>
-            <li><a href="/pricing/">Pricing & Packages</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Legal</h3>
-          <ul>
-            <li><a href="/terms.html">Terms and Conditions</a></li>
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/refund.html">Refund Policy</a></li>
-          </ul>
-        </div>
-        <div class="footer-col contact-info">
-        <h3>Contact Us</h3>
-        <p>📍 Global Online Operations</p>
-        <a href="mailto:admin@thechesslifestyle.com">admin@thechesslifestyle.com</a>
-      </div>
-      </div>
-      <div class="footer-bottom">
-        <p>All copyrights reserved. &copy; 2026 TheChessLifestyle Noida.</p>
       </div>
     </footer>
+
+    
+
 
     <script type="module" src="/main.js"></script>
     <script type="module" src="/lp.js"></script>
   
-<div class="mobile-sticky-cta" id="mobile-sticky-cta">
-  <a href="/#enrol" class="btn-primary pulse-main">Book Free Trial Class →</a>
-</div>
+
 
 </body>
 </html>
