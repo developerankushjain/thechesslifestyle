@@ -786,7 +786,7 @@ footer {
 .horizontal-scroll-container::-webkit-scrollbar {
   display: none;
 }
-.benefit-card, .coach-card {
+.benefit-card, .coach-card, .blog-card {
   scroll-snap-align: center;
   flex: 0 0 300px; /* fixed width for cards inside horizontal scroll */
   height: auto; /* let height grow naturally */
