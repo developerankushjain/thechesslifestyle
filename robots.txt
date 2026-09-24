@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block dev/junk directories
+Disallow: /dist/
+Disallow: /graphify-out/
+Disallow: /standee-challenge/
+Disallow: /.git/
+Disallow: /*.py
+
+# Sitemap
+Sitemap: https://www.thechesslifestyle.com/sitemap.xml
