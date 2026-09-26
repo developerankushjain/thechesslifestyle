@@ -144,14 +144,14 @@
   
     /* Country code phone combo */
     .phone-row { margin-bottom: 0 !important; }
-    .phone-combo { display: flex; gap: 0; width: 100%; }
+    .phone-combo { display: flex; gap: 0.5rem; width: 100%; }
     .cc-select {
       flex: 0 0 auto;
-      width: 185px;
+      width: 130px;
       padding: .8rem .6rem .8rem .9rem;
       border: 1.5px solid #e2e8f0;
-      border-right: none;
-      border-radius: 10px 0 0 10px;
+      
+      border-radius: 10px;
       font-size: .82rem;
       font-family: 'Inter', sans-serif;
       color: #0f172a;
@@ -168,12 +168,12 @@
     }
     .phone-combo input[type="tel"] {
       flex: 1;
-      border-radius: 0 10px 10px 0 !important;
+      border-radius: 10px !important;
     }
     @media(max-width:480px) {
       .phone-combo { flex-direction: column; }
-      .cc-select { width: 100%; border-right: 1.5px solid #e2e8f0; border-bottom: none; border-radius: 10px 10px 0 0; }
-      .phone-combo input[type="tel"] { border-radius: 0 0 10px 10px !important; }
+      .cc-select { width: 100%;  border-radius: 10px; }
+      .phone-combo input[type="tel"] { border-radius: 10px !important; }
     }
   </style>
 </head>
@@ -454,10 +454,7 @@
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="New Trial Request — Dubai">
             <div class="fg"><input type="text" name="Student Name" placeholder="Student's Full Name *" required></div>
-            <div class="form-row">
-              <div class="fg" style="margin-bottom:0;"><input type="text" name="Age or Class" placeholder="Age / Grade *" required></div>
-              <div class="fg" style="margin-bottom:0;"><input type="text" name="City" placeholder="City (e.g. Dubai)"></div>
-            </div>
+            <div class="fg"><input type="text" name="Age or Class" placeholder="Age / Grade *" required></div>
             <div class="fg">
               <select name="Chess Experience Level" required>
                 <option value="" disabled selected>Chess Experience Level *</option>
@@ -498,7 +495,7 @@
                   <option value="+353">&#x1F1EE;&#x1F1EA; +353 (Ireland)</option>
                   <option value="Other">Other</option>
                 </select>
-                <input type="tel" name="Phone Number" placeholder="WhatsApp / Phone Number *" required>
+                <input type="tel" name="WhatsApp Number" placeholder="WhatsApp Number *" required>
               </div>
             </div>
             <div class="fg"><textarea name="Message" rows="2" placeholder="Any questions or requirements?"></textarea></div>
