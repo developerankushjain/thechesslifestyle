@@ -140,8 +140,43 @@
   ]
 }
 </script>
+  <style>
+    /* ── News Ticker Strip ── */
+    #news-strip{position:fixed;top:0;left:0;width:100%;z-index:9999;background:linear-gradient(90deg,#b45309,#f59e0b,#b45309);box-shadow:0 2px 12px rgba(245,158,11,.5);height:38px;display:flex;align-items:center;overflow:hidden}
+    #news-strip .strip-label{flex-shrink:0;background:#0f172a;color:#f59e0b;font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:0 1rem;height:100%;display:flex;align-items:center;white-space:nowrap;z-index:2}
+    #news-strip .strip-track{flex:1;overflow:hidden;position:relative;height:100%}
+    #news-strip .strip-inner{display:flex;align-items:center;height:100%;white-space:nowrap;animation:tickerScroll 28s linear infinite}
+    #news-strip .strip-inner:hover{animation-play-state:paused}
+    #news-strip .strip-msg{display:inline-flex;align-items:center;gap:.6rem;padding:0 3rem;font-size:.82rem;font-weight:700;color:#0f172a;text-decoration:none;cursor:pointer}
+    #news-strip .strip-msg .s-icon{font-size:1rem}
+    #news-strip .strip-msg:hover{color:#fff}
+    #news-strip .strip-msg .s-cta{background:#0f172a;color:#f59e0b;padding:.15rem .65rem;border-radius:50px;font-size:.72rem;font-weight:800;letter-spacing:.05em;margin-left:.25rem;transition:background .2s}
+    #news-strip .strip-msg:hover .s-cta{background:#fff;color:#b45309}
+    #news-strip .strip-close{flex-shrink:0;background:none;border:none;color:#0f172a;font-size:1.1rem;padding:0 .85rem;cursor:pointer;line-height:1;opacity:.7;transition:opacity .2s}
+    #news-strip .strip-close:hover{opacity:1}
+    @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    body.has-strip{padding-top:38px}
+    body.has-strip .navbar{top:38px}
+    @media(max-width:600px){#news-strip .strip-label{font-size:.7rem;padding:0 .6rem}#news-strip .strip-msg{font-size:.75rem;padding:0 2rem}}
+  </style>
 </head>
-  <body>
+  <body class="has-strip">
+
+    <!-- News Strip -->
+    <div id="news-strip">
+      <div class="strip-label">&#x265A; LIVE NOW</div>
+      <div class="strip-track">
+        <div class="strip-inner" id="strip-inner">
+          <!-- First copy -->
+          <a href="/tournament/" class="strip-msg"><span class="s-icon">&#x1F3C6;</span> TheChessLifestyle X Raghav Global Rapid Chess Tournament &mdash; 31 October 2026 &middot; Under 12 &amp; Open Category &middot; Cash Prizes + Trophies + Chess.com Diamond &middot; Early Bird Discount before 20 Oct! <span class="s-cta">Register Now &rarr;</span></a>
+          <a href="/tournament/" class="strip-msg"><span class="s-icon">&#x265F;</span> Entry Fee: &#x20B9;300 (Under 12) &middot; &#x20B9;500 (Open) &middot; 25% off for Female, Senior Citizens, Raghav Global Students &amp; Early Birds &middot; FREE entry for FIDE Titled Players! <span class="s-cta">Register Now &rarr;</span></a>
+          <!-- Duplicate for seamless loop -->
+          <a href="/tournament/" class="strip-msg"><span class="s-icon">&#x1F3C6;</span> TheChessLifestyle X Raghav Global Rapid Chess Tournament &mdash; 31 October 2026 &middot; Under 12 &amp; Open Category &middot; Cash Prizes + Trophies + Chess.com Diamond &middot; Early Bird Discount before 20 Oct! <span class="s-cta">Register Now &rarr;</span></a>
+          <a href="/tournament/" class="strip-msg"><span class="s-icon">&#x265F;</span> Entry Fee: &#x20B9;300 (Under 12) &middot; &#x20B9;500 (Open) &middot; 25% off for Female, Senior Citizens, Raghav Global Students &amp; Early Birds &middot; FREE entry for FIDE Titled Players! <span class="s-cta">Register Now &rarr;</span></a>
+        </div>
+      </div>
+      <button class="strip-close" id="strip-close" aria-label="Close announcement" title="Close">&times;</button>
+    </div>
 
     <!-- Navbar -->
     <nav class="navbar">
@@ -745,6 +780,20 @@
         blNext.addEventListener('click', () => blogScroll.scrollBy({ left: 320, behavior: 'smooth' }));
       }
 </script>
+  <script>
+    // News strip close
+    (function(){
+      const strip = document.getElementById('news-strip');
+      const btn   = document.getElementById('strip-close');
+      if(btn && strip){
+        btn.addEventListener('click', function(){
+          strip.style.display = 'none';
+          document.body.classList.remove('has-strip');
+          document.querySelector('.navbar').style.top = '0';
+        });
+      }
+    })();
+  </script>
   </body>
 
 </html>
