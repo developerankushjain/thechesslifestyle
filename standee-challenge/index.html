@@ -53,7 +53,41 @@
         color: white;
         font-weight: 500;
       }
-    </style>
+    
+    /* Country code phone combo */
+    .phone-row { margin-bottom: 0 !important; }
+    .phone-combo { display: flex; gap: 0; width: 100%; }
+    .cc-select {
+      flex: 0 0 auto;
+      width: 185px;
+      padding: .8rem .6rem .8rem .9rem;
+      border: 1.5px solid #e2e8f0;
+      border-right: none;
+      border-radius: 10px 0 0 10px;
+      font-size: .82rem;
+      font-family: 'Inter', sans-serif;
+      color: #0f172a;
+      background: #f8fafc;
+      outline: none;
+      cursor: pointer;
+      appearance: auto;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .cc-select:focus {
+      border-color: var(--primary, #f59e0b);
+      box-shadow: 0 0 0 3px rgba(245,158,11,.1);
+      background: #fff;
+    }
+    .phone-combo input[type="tel"] {
+      flex: 1;
+      border-radius: 0 10px 10px 0 !important;
+    }
+    @media(max-width:480px) {
+      .phone-combo { flex-direction: column; }
+      .cc-select { width: 100%; border-right: 1.5px solid #e2e8f0; border-bottom: none; border-radius: 10px 10px 0 0; }
+      .phone-combo input[type="tel"] { border-radius: 0 0 10px 10px !important; }
+    }
+  </style>
   </head>
   <body>
     <div class="glow-tracker" id="cursor-glow"></div>
