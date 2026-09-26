@@ -58,8 +58,8 @@
     .phone-row { margin-bottom: 0 !important; }
     .phone-combo { display: flex; gap: 0.5rem; width: 100%; }
     .cc-select {
-      flex: 0 0 auto;
-      width: 130px;
+      flex: 0 0 auto !important;
+      width: 150px !important;
       padding: .8rem .6rem .8rem .9rem;
       border: 1.5px solid #e2e8f0;
       
@@ -79,13 +79,16 @@
       background: #fff;
     }
     .phone-combo input[type="tel"] {
-      flex: 1;
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
       border-radius: 10px !important;
     }
     @media(max-width:480px) {
       .phone-combo { flex-direction: column; }
       .cc-select { width: 100%;  border-radius: 10px; }
-      .phone-combo input[type="tel"] { border-radius: 10px !important; }
+      .phone-combo input[type="tel"] {
+      width: 100% !important;
+      flex: 1 1 auto !important; border-radius: 10px !important; }
     }
   </style>
   </head>
