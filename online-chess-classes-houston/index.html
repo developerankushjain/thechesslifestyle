@@ -452,7 +452,7 @@
         <div class="form-card">
           <div class="ft">Book Your Free Trial</div>
           <div class="fs">We'll confirm within 24 hours &mdash; CST (UTC-6) slot</div>
-          <form action="https://formspree.io/f/xvzjjenb" method="POST">
+          <form action="https://formspree.io/f/xvzjjenb" method="POST" onsubmit="const b = this.querySelector('button[type=submit]'); b.innerHTML = 'Booking...'; b.style.opacity = '0.7'; b.style.cursor = 'wait';">
             <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_subject" value="New Trial Request — Houston">
