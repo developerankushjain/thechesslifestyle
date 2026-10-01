@@ -490,11 +490,12 @@
       </div>
     </section>
 
-    <!-- Recent Updates (Blog) — Minimal, dynamic, auto-sorted -->
-    <section id="blog" style="padding:4rem 0 5rem;">
+    <!-- From the Blog — compact horizontal scroll with thumbnails -->
+    <section id="blog" style="padding:4rem 0 4.5rem;">
       <div class="container">
 
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
+        <!-- Header row -->
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
           <div>
             <h2 class="section-title" style="margin-bottom:.35rem;">From the <span class="highlight">Blog</span></h2>
             <p class="section-subtitle" style="margin:0;">Chess coaching insights, strategy guides, and parent resources.</p>
@@ -502,75 +503,76 @@
           <a href="/blog/" style="display:inline-flex;align-items:center;gap:.4rem;color:var(--primary);text-decoration:none;font-weight:600;font-size:.9rem;border:1px solid rgba(245,158,11,.3);padding:.5rem 1.1rem;border-radius:.5rem;transition:background .2s;" onmouseover="this.style.background='rgba(245,158,11,.08)'" onmouseout="this.style.background='transparent'">All Articles &rarr;</a>
         </div>
 
-        <!-- Article list — filled by JS -->
-        <div id="blog-list"></div>
-
-        <div style="text-align:center;margin-top:2.25rem;">
-          <a href="/blog/" class="btn-primary" style="padding:.8rem 2rem;font-size:.95rem;">Explore All Articles &rarr;</a>
+        <!-- Horizontal scroll strip -->
+        <div style="position:relative;">
+          <div id="blog-scroll-strip" style="display:flex;gap:1.1rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(245,158,11,.3) transparent;"></div>
         </div>
 
       </div>
     </section>
 
     <style>
-      .blog-list-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 1.25rem;
-        padding: 1.1rem 0;
-        border-bottom: 1px solid rgba(255,255,255,.07);
+      #blog-scroll-strip::-webkit-scrollbar { height: 4px; }
+      #blog-scroll-strip::-webkit-scrollbar-track { background: transparent; }
+      #blog-scroll-strip::-webkit-scrollbar-thumb { background: rgba(245,158,11,.3); border-radius: 4px; }
+
+      .bsc {
+        flex: 0 0 230px;
+        scroll-snap-align: start;
+        border-radius: .9rem;
+        overflow: hidden;
         text-decoration: none;
         color: inherit;
-        transition: opacity .2s;
-      }
-      .blog-list-item:last-child { border-bottom: none; }
-      .blog-list-item:hover { opacity: .78; }
-      .blog-list-item:hover .bli-title { color: var(--primary, #f59e0b); }
-      .bli-num {
-        flex-shrink: 0;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: rgba(245,158,11,.1);
-        border: 1px solid rgba(245,158,11,.25);
-        color: var(--primary, #f59e0b);
-        font-size: .72rem;
-        font-weight: 700;
+        background: var(--bg-card, #1e293b);
+        border: 1px solid rgba(255,255,255,.07);
         display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: .15rem;
+        flex-direction: column;
+        transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
       }
-      .bli-body { flex: 1; min-width: 0; }
-      .bli-tag {
+      .bsc:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 36px rgba(0,0,0,.35);
+        border-color: rgba(245,158,11,.35);
+      }
+      .bsc-img-wrap { overflow: hidden; height: 130px; flex-shrink: 0; }
+      .bsc-img {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        display: block;
+        transition: transform .4s ease;
+      }
+      .bsc:hover .bsc-img { transform: scale(1.06); }
+      .bsc-body { padding: .9rem 1rem 1rem; display: flex; flex-direction: column; flex: 1; }
+      .bsc-tag {
         display: inline-block;
-        font-size: .68rem;
+        font-size: .65rem;
         font-weight: 700;
         letter-spacing: .08em;
         text-transform: uppercase;
         color: var(--primary, #f59e0b);
-        margin-bottom: .3rem;
+        margin-bottom: .45rem;
       }
-      .bli-title {
+      .bsc-title {
         font-family: 'Outfit', sans-serif;
-        font-size: 1rem;
+        font-size: .88rem;
         font-weight: 700;
         color: var(--text-main, #f8fafc);
         line-height: 1.4;
-        margin: 0 0 .3rem;
-        transition: color .2s;
-        white-space: nowrap;
+        margin: 0 0 auto;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-        text-overflow: ellipsis;
+        transition: color .2s;
       }
-      .bli-meta {
-        font-size: .75rem;
+      .bsc:hover .bsc-title { color: var(--primary, #f59e0b); }
+      .bsc-meta {
+        font-size: .72rem;
         color: var(--text-muted, #94a3b8);
+        margin-top: .7rem;
         display: flex;
-        gap: .6rem;
-      }
-      @media (max-width: 560px) {
-        .bli-title { font-size: .9rem; white-space: normal; }
+        gap: .5rem;
       }
     </style>
 
@@ -579,29 +581,31 @@
       // BLOG REGISTRY — add new posts at the TOP
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       const BLOG_POSTS = [
-        { url:"/blog/online-chess-classes-for-kids-fees/", tag:"Pricing & Value", title:"Online Chess Classes for Kids Fees: What You Actually Pay in 2026", date:"Oct 2026", read:"8 min" },
-        { url:"/blog/best-online-chess-classes-for-kids/", tag:"Chess for Kids", title:"Best Online Chess Classes for Kids in 2026: A Parent's Honest Guide", date:"Oct 2026", read:"9 min" },
-        { url:"/blog/chess-coaching-near-me-vs-online/", tag:"Chess for Kids", title:"Chess Coaching Near Me vs Online: Which is Better for Your Child?", date:"Oct 2026", read:"5 min" },
-        { url:"/blog/online-chess-coach-vs-self-study/", tag:"Chess Improvement", title:"Online Chess Coach vs Self-Study: Which Is Better for Improving Faster?", date:"May 2026", read:"7 min" },
-        { url:"/blog/how-to-teach-chess-to-a-child/", tag:"Chess for Kids", title:"How to Teach Chess to a Child: A Complete Parent's Guide", date:"May 2026", read:"8 min" },
-        { url:"/blog/chess-improves-academic-performance/", tag:"Chess for Kids", title:"7 Proven Ways Chess Improves Your Child's Academic Performance", date:"May 2026", read:"8 min" },
-        { url:"/blog/does-chess-help-with-adhd-in-kids/", tag:"Chess Psychology", title:"Chess for ADHD: Does It Really Help? (A Coach's Perspective)", date:"Jul 2026", read:"7 min" },
-        { url:"/blog/how-to-improve-chess-rating-fast/", tag:"Chess Improvement", title:"How to Improve Your Chess Rating Fast: A FIDE Coach's Guide", date:"May 2026", read:"7 min" },
-        { url:"/blog/chess-com-lessons-vs-thechesslifestyle/", tag:"Comparisons", title:"Chess.com Lessons vs TheChessLifestyle: Which is Better for Your Child?", date:"Jul 2026", read:"7 min" },
-        { url:"/blog/local-us-chess-club-vs-online-fide-coach/", tag:"Comparisons", title:"Local US Chess Club vs Online FIDE Coach: The Ultimate Guide", date:"Jul 2026", read:"8 min" },
-        { url:"/blog/best-chess-openings-for-beginners/", tag:"Chess Improvement", title:"Best Chess Openings for Beginners: A FIDE Coach's Complete Guide", date:"May 2026", read:"9 min" },
-        { url:"/blog/chess-classes-for-kids-near-me/", tag:"Chess for Kids", title:"Chess Classes for Kids Near Me: What to Look for Before You Enrol", date:"May 2026", read:"6 min" }
+        { url:"/blog/online-chess-classes-for-kids-fees/", img:"/gallery/20260715_111545.webp", tag:"Pricing & Value", title:"Online Chess Classes for Kids Fees: What You Actually Pay in 2026", date:"Oct 2026", read:"8 min" },
+        { url:"/blog/best-online-chess-classes-for-kids/", img:"/gallery/20260823_132227.webp", tag:"Chess for Kids", title:"Best Online Chess Classes for Kids in 2026: A Parent's Honest Guide", date:"Oct 2026", read:"9 min" },
+        { url:"/blog/chess-coaching-near-me-vs-online/", img:"/gallery/20260603_101319.webp", tag:"Chess for Kids", title:"Chess Coaching Near Me vs Online: Which is Better for Your Child?", date:"Oct 2026", read:"5 min" },
+        { url:"/blog/online-chess-coach-vs-self-study/", img:"/gallery/20260823_132250.webp", tag:"Chess Improvement", title:"Online Chess Coach vs Self-Study: Which Is Better for Improving Faster?", date:"May 2026", read:"7 min" },
+        { url:"/blog/how-to-teach-chess-to-a-child/", img:"/gallery/20260822_162246.webp", tag:"Chess for Kids", title:"How to Teach Chess to a Child: A Complete Parent's Guide", date:"May 2026", read:"8 min" },
+        { url:"/blog/chess-improves-academic-performance/", img:"/gallery/20260418_141727.webp", tag:"Chess for Kids", title:"7 Proven Ways Chess Improves Your Child's Academic Performance", date:"May 2026", read:"8 min" },
+        { url:"/blog/does-chess-help-with-adhd-in-kids/", img:"/gallery/20260823_132227.webp", tag:"Chess Psychology", title:"Chess for ADHD: Does It Really Help? (A Coach's Perspective)", date:"Jul 2026", read:"7 min" },
+        { url:"/blog/how-to-improve-chess-rating-fast/", img:"/gallery/20260823_124538.webp", tag:"Chess Improvement", title:"How to Improve Your Chess Rating Fast: A FIDE Coach's Guide", date:"May 2026", read:"7 min" },
+        { url:"/blog/chess-com-lessons-vs-thechesslifestyle/", img:"/gallery/20260822_110914.webp", tag:"Comparisons", title:"Chess.com Lessons vs TheChessLifestyle: Which is Better for Your Child?", date:"Jul 2026", read:"7 min" },
+        { url:"/blog/local-us-chess-club-vs-online-fide-coach/", img:"/gallery/20260822_162353.webp", tag:"Comparisons", title:"Local US Chess Club vs Online FIDE Coach: The Ultimate Guide", date:"Jul 2026", read:"8 min" },
+        { url:"/blog/best-chess-openings-for-beginners/", img:"/gallery/20260822_162434.webp", tag:"Chess Improvement", title:"Best Chess Openings for Beginners: A FIDE Coach's Complete Guide", date:"May 2026", read:"9 min" },
+        { url:"/blog/chess-classes-for-kids-near-me/", img:"/gallery/20260823_121401.webp", tag:"Chess for Kids", title:"Chess Classes for Kids Near Me: What to Look for Before You Enrol", date:"May 2026", read:"6 min" }
       ];
 
-      const list = document.getElementById('blog-list');
-      if (list) {
-        list.innerHTML = BLOG_POSTS.slice(0, 6).map((p, i) =>
-          `<a href="${p.url}" class="blog-list-item">
-            <div class="bli-num">${String(i+1).padStart(2,'0')}</div>
-            <div class="bli-body">
-              <div class="bli-tag">${p.tag}</div>
-              <div class="bli-title">${p.title}</div>
-              <div class="bli-meta"><span>${p.date}</span><span>·</span><span>${p.read} read</span></div>
+      const strip = document.getElementById('blog-scroll-strip');
+      if (strip) {
+        strip.innerHTML = BLOG_POSTS.map(p =>
+          `<a href="${p.url}" class="bsc">
+            <div class="bsc-img-wrap">
+              <img src="${p.img}" alt="${p.title}" class="bsc-img" loading="lazy" width="230" height="130">
+            </div>
+            <div class="bsc-body">
+              <span class="bsc-tag">${p.tag}</span>
+              <div class="bsc-title">${p.title}</div>
+              <div class="bsc-meta"><span>${p.date}</span><span>·</span><span>${p.read} read</span></div>
             </div>
           </a>`
         ).join('');
