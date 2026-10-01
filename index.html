@@ -490,131 +490,87 @@
       </div>
     </section>
 
-    <!-- Recent Updates (Blog) — Dynamic, auto-sorted -->
-    <section id="blog" style="padding: 5rem 0 6rem; position: relative; overflow: hidden;">
+    <!-- Recent Updates (Blog) — Minimal, dynamic, auto-sorted -->
+    <section id="blog" style="padding:4rem 0 5rem;">
+      <div class="container">
 
-      <!-- Decorative background glow -->
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 80%,rgba(245,158,11,0.07) 0%,transparent 70%);pointer-events:none;"></div>
-
-      <div class="container" style="position:relative;">
-
-        <!-- Section header -->
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
           <div>
-            <span style="display:inline-flex;align-items:center;gap:.45rem;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:var(--primary);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:1rem;">✦ Latest From the Blog</span>
-            <h2 class="section-title" style="margin-bottom:.5rem;">Expert <span class="highlight">Insights</span></h2>
-            <p class="section-subtitle" style="margin:0;max-width:520px;">Deep-dives on chess coaching, parenting, skill improvement, and everything in between.</p>
+            <h2 class="section-title" style="margin-bottom:.35rem;">From the <span class="highlight">Blog</span></h2>
+            <p class="section-subtitle" style="margin:0;">Chess coaching insights, strategy guides, and parent resources.</p>
           </div>
-          <a href="/blog/" style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:var(--primary);text-decoration:none;padding:.65rem 1.4rem;border-radius:.6rem;font-weight:600;font-size:.9rem;transition:all .25s;white-space:nowrap;" onmouseover="this.style.background='rgba(245,158,11,.2)'" onmouseout="this.style.background='rgba(245,158,11,.1)'">View All Posts &rarr;</a>
+          <a href="/blog/" style="display:inline-flex;align-items:center;gap:.4rem;color:var(--primary);text-decoration:none;font-weight:600;font-size:.9rem;border:1px solid rgba(245,158,11,.3);padding:.5rem 1.1rem;border-radius:.5rem;transition:background .2s;" onmouseover="this.style.background='rgba(245,158,11,.08)'" onmouseout="this.style.background='transparent'">All Articles &rarr;</a>
         </div>
 
-        <!-- Featured post (large) + 2 side cards -->
-        <div id="blog-featured" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
-          <!-- Filled by JS -->
-        </div>
+        <!-- Article list — filled by JS -->
+        <div id="blog-list"></div>
 
-        <!-- Remaining posts row (horizontal scroll) -->
-        <div style="position:relative;">
-          <div id="blog-row" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;">
-            <!-- Filled by JS -->
-          </div>
-        </div>
-
-        <!-- View more -->
-        <div style="text-align:center;margin-top:3rem;">
-          <a href="/blog/" class="btn-primary" style="display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.5rem;font-size:1rem;">Explore All Articles &rarr;</a>
+        <div style="text-align:center;margin-top:2.25rem;">
+          <a href="/blog/" class="btn-primary" style="padding:.8rem 2rem;font-size:.95rem;">Explore All Articles &rarr;</a>
         </div>
 
       </div>
     </section>
 
     <style>
-      .blog-card-new {
-        position: relative;
-        border-radius: 1.1rem;
-        overflow: hidden;
+      .blog-list-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid rgba(255,255,255,.07);
         text-decoration: none;
         color: inherit;
-        display: block;
-        background: var(--bg-card, #1e293b);
-        border: 1px solid rgba(255,255,255,0.07);
-        transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        transition: opacity .2s;
       }
-      .blog-card-new:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 24px 48px rgba(0,0,0,.35), 0 0 0 1px rgba(245,158,11,.25);
-        border-color: rgba(245,158,11,.35);
-      }
-      .blog-card-new .card-img {
-        width: 100%;
-        display: block;
-        object-fit: cover;
-        transition: transform .45s ease;
-      }
-      .blog-card-new:hover .card-img { transform: scale(1.04); }
-      .blog-card-new .card-img-wrap { overflow: hidden; }
-      .blog-card-new .card-body { padding: 1.4rem 1.5rem 1.6rem; }
-      .blog-card-new .card-tag {
-        display: inline-block;
-        background: rgba(245,158,11,.13);
+      .blog-list-item:last-child { border-bottom: none; }
+      .blog-list-item:hover { opacity: .78; }
+      .blog-list-item:hover .bli-title { color: var(--primary, #f59e0b); }
+      .bli-num {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(245,158,11,.1);
+        border: 1px solid rgba(245,158,11,.25);
         color: var(--primary, #f59e0b);
         font-size: .72rem;
         font-weight: 700;
-        letter-spacing: .07em;
-        text-transform: uppercase;
-        padding: .22rem .75rem;
-        border-radius: 100px;
-        margin-bottom: .85rem;
-      }
-      .blog-card-new h3 {
-        font-family: 'Outfit', sans-serif;
-        font-size: 1.05rem;
-        font-weight: 700;
-        line-height: 1.38;
-        color: var(--text-main, #f8fafc);
-        margin: 0 0 .6rem;
-      }
-      .blog-card-new p {
-        font-size: .88rem;
-        color: var(--text-muted, #94a3b8);
-        line-height: 1.65;
-        margin: 0 0 1rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-      .blog-card-new .card-meta {
-        font-size: .78rem;
-        color: var(--text-muted, #94a3b8);
         display: flex;
         align-items: center;
+        justify-content: center;
+        margin-top: .15rem;
+      }
+      .bli-body { flex: 1; min-width: 0; }
+      .bli-tag {
+        display: inline-block;
+        font-size: .68rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--primary, #f59e0b);
+        margin-bottom: .3rem;
+      }
+      .bli-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-main, #f8fafc);
+        line-height: 1.4;
+        margin: 0 0 .3rem;
+        transition: color .2s;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .bli-meta {
+        font-size: .75rem;
+        color: var(--text-muted, #94a3b8);
+        display: flex;
         gap: .6rem;
       }
-      /* Featured card (large left slot) */
-      .blog-card-featured {
-        grid-column: 1 / 2;
-        display: flex;
-        flex-direction: column;
-      }
-      .blog-card-featured .card-img-wrap { height: 300px; }
-      .blog-card-featured .card-img { height: 300px; }
-      .blog-card-featured h3 { font-size: 1.4rem; -webkit-line-clamp: 3; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden; }
-      .blog-card-featured p { -webkit-line-clamp: 3; }
-      /* Side column (right slot, 2 stacked) */
-      .blog-side-col {
-        grid-column: 2 / 3;
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-      .blog-card-side .card-img-wrap { height: 140px; }
-      .blog-card-side .card-img { height: 140px; }
-      .blog-card-side .card-body { padding: 1rem 1.25rem 1.25rem; }
-      .blog-card-side h3 { font-size: .95rem; }
-      @media (max-width: 720px) {
-        #blog-featured { grid-template-columns: 1fr !important; }
-        .blog-card-featured, .blog-side-col { grid-column: auto !important; }
+      @media (max-width: 560px) {
+        .bli-title { font-size: .9rem; white-space: normal; }
       }
     </style>
 
@@ -623,165 +579,32 @@
       // BLOG REGISTRY — add new posts at the TOP
       // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       const BLOG_POSTS = [
-        {
-          url: "/blog/online-chess-classes-for-kids-fees/",
-          img: "/gallery/20260715_111545.webp",
-          alt: "Online Chess Classes for Kids Fees 2026",
-          tag: "Pricing & Value",
-          title: "Online Chess Classes for Kids Fees: What You Actually Pay in 2026",
-          desc: "A FIDE-rated coach breaks down real pricing — group vs private, what drives the cost, and what is worth paying for.",
-          date: "2026-10-02",
-          read: "8 min"
-        },
-        {
-          url: "/blog/best-online-chess-classes-for-kids/",
-          img: "/gallery/20260823_132227.webp",
-          alt: "Best Online Chess Classes for Kids 2026",
-          tag: "Chess for Kids",
-          title: "Best Online Chess Classes for Kids in 2026: A Parent's Honest Guide",
-          desc: "A FIDE-rated coach explains exactly what separates great online chess programs for kids from mediocre ones.",
-          date: "2026-10-02",
-          read: "9 min"
-        },
-        {
-          url: "/blog/chess-coaching-near-me-vs-online/",
-          img: "/gallery/20260823_132227.webp",
-          alt: "Chess Coaching Near Me vs Online",
-          tag: "Chess for Kids",
-          title: "Chess Coaching Near Me vs Online: Which is Better for Your Child?",
-          desc: "Searching for chess coaching near me? Compare local chess clubs vs online FIDE-rated coaches.",
-          date: "2026-10-02",
-          read: "5 min"
-        },
-        {
-          url: "/blog/online-chess-coach-vs-self-study/",
-          img: "/gallery/20260823_132250.webp",
-          alt: "Online Chess Coach vs Self-Study",
-          tag: "Chess Improvement",
-          title: "Online Chess Coach vs Self-Study: Which Is Better for Improving Faster?",
-          desc: "Comparing live coaching vs self-study with apps like Chess.com and Lichess. What actually works?",
-          date: "2026-05-19",
-          read: "7 min"
-        },
-        {
-          url: "/blog/how-to-teach-chess-to-a-child/",
-          img: "/gallery/20260822_162246.webp",
-          alt: "How to Teach Chess to a Child",
-          tag: "Chess for Kids",
-          title: "How to Teach Chess to a Child: A Complete Parent's Guide",
-          desc: "From 5-year-olds learning piece movements to 12-year-olds preparing for tournaments. Step-by-step guide.",
-          date: "2026-05-19",
-          read: "8 min"
-        },
-        {
-          url: "/blog/chess-improves-academic-performance/",
-          img: "/gallery/20260418_141727.webp",
-          alt: "Chess Improves Academic Performance",
-          tag: "Chess for Kids",
-          title: "7 Proven Ways Chess Improves Your Child's Academic Performance",
-          desc: "Students who play chess score significantly higher in math and reading. Here's the science behind why.",
-          date: "2026-05-19",
-          read: "8 min"
-        },
-        {
-          url: "/blog/does-chess-help-with-adhd-in-kids/",
-          img: "/gallery/20260823_132227.webp",
-          alt: "Chess and ADHD in Kids",
-          tag: "Chess Psychology",
-          title: "Chess for ADHD: Does It Really Help? (A Coach's Perspective)",
-          desc: "How structured chess coaching helps children with ADHD improve focus, patience, and emotional regulation.",
-          date: "2026-07-22",
-          read: "7 min"
-        },
-        {
-          url: "/blog/how-to-improve-chess-rating-fast/",
-          img: "/gallery/20260823_124538.webp",
-          alt: "How to Improve Chess Rating Fast",
-          tag: "Chess Improvement",
-          title: "How to Improve Your Chess Rating Fast: A FIDE Coach's Guide",
-          desc: "Actionable strategies to improve your rating — better tactics training, essential endgames, and stopping blunders.",
-          date: "2026-05-28",
-          read: "7 min"
-        },
-        {
-          url: "/blog/chess-com-lessons-vs-thechesslifestyle/",
-          img: "/gallery/20260822_110914.webp",
-          alt: "Chess.com vs TheChessLifestyle",
-          tag: "Comparisons",
-          title: "Chess.com Lessons vs TheChessLifestyle: Which is Better for Your Child?",
-          desc: "Automated Chess.com lessons vs live coaching with FIDE Rated masters. An honest comparison.",
-          date: "2026-07-27",
-          read: "7 min"
-        },
-        {
-          url: "/blog/local-us-chess-club-vs-online-fide-coach/",
-          img: "/gallery/IMG-20260823-WA0036.webp",
-          alt: "Local Chess Club vs Online Coach",
-          tag: "Comparisons",
-          title: "Local US Chess Club vs Online FIDE Coach: The Ultimate Guide",
-          desc: "Cost, quality, convenience, and USCF rating growth compared side by side.",
-          date: "2026-07-27",
-          read: "8 min"
-        },
-        {
-          url: "/blog/best-chess-openings-for-beginners/",
-          img: "/gallery/20260822_162434.webp",
-          alt: "Best Chess Openings for Beginners",
-          tag: "Chess Improvement",
-          title: "Best Chess Openings for Beginners: A FIDE Coach's Complete Guide",
-          desc: "The 5 best openings for beginners — the Italian Game, London System and more with step-by-step guidance.",
-          date: "2026-05-19",
-          read: "9 min"
-        },
-        {
-          url: "/blog/chess-classes-for-kids-near-me/",
-          img: "/gallery/IMG-20260823-WA0028.webp",
-          alt: "Chess Classes for Kids Near Me",
-          tag: "Chess for Kids",
-          title: "Chess Classes for Kids Near Me: What to Look for Before You Enrol",
-          desc: "The honest checklist every parent needs before enrolling — qualifications, red flags, and what to ask.",
-          date: "2026-05-19",
-          read: "6 min"
-        }
+        { url:"/blog/online-chess-classes-for-kids-fees/", tag:"Pricing & Value", title:"Online Chess Classes for Kids Fees: What You Actually Pay in 2026", date:"Oct 2026", read:"8 min" },
+        { url:"/blog/best-online-chess-classes-for-kids/", tag:"Chess for Kids", title:"Best Online Chess Classes for Kids in 2026: A Parent's Honest Guide", date:"Oct 2026", read:"9 min" },
+        { url:"/blog/chess-coaching-near-me-vs-online/", tag:"Chess for Kids", title:"Chess Coaching Near Me vs Online: Which is Better for Your Child?", date:"Oct 2026", read:"5 min" },
+        { url:"/blog/online-chess-coach-vs-self-study/", tag:"Chess Improvement", title:"Online Chess Coach vs Self-Study: Which Is Better for Improving Faster?", date:"May 2026", read:"7 min" },
+        { url:"/blog/how-to-teach-chess-to-a-child/", tag:"Chess for Kids", title:"How to Teach Chess to a Child: A Complete Parent's Guide", date:"May 2026", read:"8 min" },
+        { url:"/blog/chess-improves-academic-performance/", tag:"Chess for Kids", title:"7 Proven Ways Chess Improves Your Child's Academic Performance", date:"May 2026", read:"8 min" },
+        { url:"/blog/does-chess-help-with-adhd-in-kids/", tag:"Chess Psychology", title:"Chess for ADHD: Does It Really Help? (A Coach's Perspective)", date:"Jul 2026", read:"7 min" },
+        { url:"/blog/how-to-improve-chess-rating-fast/", tag:"Chess Improvement", title:"How to Improve Your Chess Rating Fast: A FIDE Coach's Guide", date:"May 2026", read:"7 min" },
+        { url:"/blog/chess-com-lessons-vs-thechesslifestyle/", tag:"Comparisons", title:"Chess.com Lessons vs TheChessLifestyle: Which is Better for Your Child?", date:"Jul 2026", read:"7 min" },
+        { url:"/blog/local-us-chess-club-vs-online-fide-coach/", tag:"Comparisons", title:"Local US Chess Club vs Online FIDE Coach: The Ultimate Guide", date:"Jul 2026", read:"8 min" },
+        { url:"/blog/best-chess-openings-for-beginners/", tag:"Chess Improvement", title:"Best Chess Openings for Beginners: A FIDE Coach's Complete Guide", date:"May 2026", read:"9 min" },
+        { url:"/blog/chess-classes-for-kids-near-me/", tag:"Chess for Kids", title:"Chess Classes for Kids Near Me: What to Look for Before You Enrol", date:"May 2026", read:"6 min" }
       ];
 
-      function buildCard(post, cls = "") {
-        return `<a href="${post.url}" class="blog-card-new ${cls}" style="text-decoration:none;">
-          <div class="card-img-wrap">
-            <img src="${post.img}" alt="${post.alt}" class="card-img" loading="lazy" width="600" height="350">
-          </div>
-          <div class="card-body">
-            <span class="card-tag">${post.tag}</span>
-            <h3>${post.title}</h3>
-            <p>${post.desc}</p>
-            <div class="card-meta">
-              <span>📅 ${post.date}</span>
-              <span>·</span>
-              <span>⏱ ${post.read} read</span>
+      const list = document.getElementById('blog-list');
+      if (list) {
+        list.innerHTML = BLOG_POSTS.slice(0, 6).map((p, i) =>
+          `<a href="${p.url}" class="blog-list-item">
+            <div class="bli-num">${String(i+1).padStart(2,'0')}</div>
+            <div class="bli-body">
+              <div class="bli-tag">${p.tag}</div>
+              <div class="bli-title">${p.title}</div>
+              <div class="bli-meta"><span>${p.date}</span><span>·</span><span>${p.read} read</span></div>
             </div>
-          </div>
-        </a>`;
-      }
-
-      const featured = document.getElementById('blog-featured');
-      const row = document.getElementById('blog-row');
-
-      if (featured && BLOG_POSTS.length > 0) {
-        // First post = big featured card
-        featured.innerHTML = buildCard(BLOG_POSTS[0], 'blog-card-featured');
-
-        // Posts 1 & 2 = stacked side column
-        if (BLOG_POSTS.length > 1) {
-          const sideCol = document.createElement('div');
-          sideCol.className = 'blog-side-col';
-          sideCol.innerHTML = BLOG_POSTS.slice(1, 3).map(p => buildCard(p, 'blog-card-side')).join('');
-          featured.appendChild(sideCol);
-        }
-      }
-
-      // Posts 3 onwards = bottom grid row (show next 4)
-      if (row && BLOG_POSTS.length > 3) {
-        row.innerHTML = BLOG_POSTS.slice(3, 7).map(p => buildCard(p)).join('');
+          </a>`
+        ).join('');
       }
     </script>
 
