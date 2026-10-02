@@ -99,7 +99,7 @@ js_logic = """
         const order = await res.json();
         
         const options = {
-          key: "rzp_live_SO205h9L7UaQiV", // Live key injected directly as requested
+          key: "rzp_test_Tiyz0S3QSrz2jw", // Live key injected directly as requested
           amount: order.amount,
           currency: order.currency,
           name: "TheChessLifestyle",
