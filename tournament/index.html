@@ -18,29 +18,46 @@
     html, body { overflow-x: hidden; width: 100%; }
     :root{--primary:#f59e0b;--dark:#0f172a;--mid:#1e293b;--text:#475569;--border:#e2e8f0;--bg:#f8fafc}
 
-    /* Hero */
-    .t-hero{position:relative;overflow:hidden;padding:7rem 5% 5rem;text-align:center;min-height:95vh;display:flex;align-items:center;justify-content:center;background-color:var(--dark);background-image:url('/gallery/tournament_hero.webp');background-size:cover;background-position:center top;background-repeat:no-repeat}
-    .t-hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto}
-    /* Multi-layer gradient overlay: bottom fade + top dark scrim + warm orange glow at center */
-    .t-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0.2) 30%, rgba(15,23,42,0.3) 60%, rgba(15,23,42,0.97) 100%),radial-gradient(ellipse 70% 50% at 50% 40%, rgba(245,158,11,0.25) 0%, transparent 70%);pointer-events:none;z-index:1}
+    /* Hero — Desktop */
+    .t-hero{
+      position:relative;overflow:hidden;padding:7rem 5% 5rem;
+      text-align:center;min-height:95vh;
+      display:flex;align-items:center;justify-content:center;
+      background-color:var(--dark);
+      background-image:url('/gallery/tournament_hero.webp');
+      background-size:cover;background-position:center center;background-repeat:no-repeat;
+    }
+    .t-hero-inner{position:relative;z-index:3;max-width:860px;margin:0 auto;width:100%}
+    /* Three-layer overlay: strong dark top scrim + heavy bottom fade + amber glow */
+    .t-hero::after{
+      content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+      background:
+        linear-gradient(to bottom,
+          rgba(10,16,35,0.88) 0%,
+          rgba(10,16,35,0.65) 25%,
+          rgba(10,16,35,0.6)  55%,
+          rgba(10,16,35,0.97) 100%
+        ),
+        radial-gradient(ellipse 70% 50% at 50% 45%, rgba(245,158,11,0.18) 0%, transparent 65%);
+    }
     .t-chess-bg{display:none}
-    .t-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:var(--primary);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem}
-    .t-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:.75rem}
+    .t-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,158,11,.18);border:1px solid rgba(245,158,11,.4);color:var(--primary);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem;text-shadow:none;backdrop-filter:blur(4px)}
+    .t-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:.75rem;text-shadow:0 2px 24px rgba(0,0,0,0.8),0 0 60px rgba(0,0,0,0.5)}
     .t-hero h1 .hl{color:var(--primary)}
     .t-hero h1 .hl2{color:#fb923c}
-    .t-hero-sub{font-size:1.15rem;color:#94a3b8;margin:0 auto 2.5rem;max-width:600px;line-height:1.7}
+    .t-hero-sub{font-size:1.15rem;color:#cbd5e1;margin:0 auto 2.5rem;max-width:600px;line-height:1.7;text-shadow:0 1px 8px rgba(0,0,0,0.7)}
     .t-meta-row{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2.5rem}
-    .t-meta-pill{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#e2e8f0;font-size:.88rem;font-weight:500;padding:.55rem 1.1rem;border-radius:12px}
+    .t-meta-pill{display:flex;align-items:center;gap:.5rem;background:rgba(15,23,42,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);color:#e2e8f0;font-size:.88rem;font-weight:500;padding:.55rem 1.1rem;border-radius:12px}
     .t-meta-pill svg{color:var(--primary)}
     .t-hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
     .btn-amber{background:linear-gradient(135deg,var(--primary),#f59e0b);color:#fff;padding:.9rem 2rem;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;box-shadow:0 8px 28px rgba(245,158,11,.4);transition:all .3s}
     .btn-amber:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(245,158,11,.5)}
-    .btn-outline-w{border:2px solid rgba(255,255,255,.25);color:#fff;padding:.9rem 2rem;border-radius:50px;font-weight:600;font-size:1rem;text-decoration:none;transition:all .25s}
+    .btn-outline-w{border:2px solid rgba(255,255,255,.3);color:#fff;padding:.9rem 2rem;border-radius:50px;font-weight:600;font-size:1rem;text-decoration:none;transition:all .25s;backdrop-filter:blur(6px);background:rgba(255,255,255,0.06)}
     .btn-outline-w:hover{border-color:var(--primary);color:var(--primary)}
     .countdown-row{display:flex;gap:1.25rem;justify-content:center;margin-top:2.5rem;flex-wrap:wrap}
     .cd-box{text-align:center}
-    .cd-num{font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:900;color:var(--primary);line-height:1}
-    .cd-lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#64748b;margin-top:.25rem}
+    .cd-num{font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:900;color:var(--primary);line-height:1;text-shadow:0 0 30px rgba(245,158,11,0.5)}
+    .cd-lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-top:.25rem}
 
     /* Section helpers */
     .t-sec{padding:5rem 5%}
@@ -160,6 +177,99 @@
 
     /* Responsive */
     @media(max-width:900px){.cat-grid,.prizes-grid{grid-template-columns:1fr}.concess-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* ─── Mobile Hero: Modern split-screen layout ─── */
+    @media(max-width:640px){
+      /* Convert hero from full-bleed bg to stacked image + dark card */
+      .t-hero{
+        min-height:100dvh;
+        padding:0;
+        background-image:none;
+        background-color:var(--dark);
+        display:block;
+        align-items:unset;
+        justify-content:unset;
+      }
+      /* Remove the big overlay since we're using the image as a visible photo */
+      .t-hero::after{ display:none; }
+
+      /* Top image strip */
+      .t-hero-img-mobile{
+        display:block;
+        width:100%;
+        height:52vw;
+        min-height:210px;
+        max-height:280px;
+        background:url('/gallery/tournament_hero.webp') center center / cover no-repeat;
+        position:relative;
+      }
+      .t-hero-img-mobile::after{
+        content:'';
+        position:absolute;inset:0;
+        background:linear-gradient(
+          to bottom,
+          rgba(10,16,35,0.1) 0%,
+          rgba(10,16,35,0.0) 30%,
+          rgba(10,16,35,0.9) 90%,
+          rgba(10,16,35,1)   100%
+        );
+      }
+
+      /* Dark glass content card that slides up over the image */
+      .t-hero-inner{
+        max-width:100%;
+        margin:-2.5rem 0 0 0;
+        padding:2rem 1.25rem 2.5rem;
+        background:linear-gradient(180deg, var(--dark) 0%, #111827 100%);
+        border-radius:28px 28px 0 0;
+        position:relative;
+        z-index:3;
+      }
+
+      .t-eyebrow{
+        font-size:.72rem;
+        padding:.35rem 1rem;
+        margin-bottom:1rem;
+      }
+      .t-hero h1{ font-size:clamp(1.7rem,8vw,2.4rem); margin-bottom:.6rem; text-shadow:none; }
+      .t-hero-sub{ font-size:.95rem; margin-bottom:1.5rem; color:#94a3b8; text-shadow:none; }
+
+      /* Horizontal scroll pills on mobile */
+      .t-meta-row{
+        display:flex;
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        gap:.55rem;
+        justify-content:flex-start;
+        padding-bottom:.5rem;
+        margin-bottom:1.5rem;
+        scrollbar-width:none;
+      }
+      .t-meta-row::-webkit-scrollbar{display:none}
+      .t-meta-pill{
+        flex-shrink:0;
+        font-size:.78rem;
+        padding:.45rem .9rem;
+        white-space:nowrap;
+        background:rgba(255,255,255,0.07);
+        backdrop-filter:blur(6px);
+      }
+
+      /* Stack buttons vertically, full width */
+      .t-hero-btns{ flex-direction:column; gap:.75rem; }
+      .btn-amber,.btn-outline-w{ padding:.9rem 1rem; font-size:.97rem; text-align:center; border-radius:14px; }
+
+      /* Compact countdown */
+      .countdown-row{ gap:.6rem; margin-top:1.5rem; }
+      .cd-num{ font-size:2rem; }
+      .cd-box{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:.6rem .9rem; min-width:58px; }
+    }
+
+    @media(max-width:400px){
+      .t-hero-inner{ padding:1.5rem 1rem 2rem; }
+    }
+
     @media(max-width:600px){.fg-row{grid-template-columns:1fr}.concess-grid{grid-template-columns:1fr}.t-meta-row{gap:.6rem}}
   </style>
 
@@ -223,6 +333,8 @@
   <!-- Hero -->
   <header class="t-hero">
     <div class="t-chess-bg"></div>
+    <!-- Mobile-only image strip (hidden on desktop via CSS) -->
+    <div class="t-hero-img-mobile" role="img" aria-label="Chess tournament in progress" style="display:none"></div>
     <div class="t-hero-inner">
       <div class="t-eyebrow">&#x264B; 31st October 2026 &middot; Mega Chess Showdown</div>
       <h1>
