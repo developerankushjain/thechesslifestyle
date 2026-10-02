@@ -178,99 +178,102 @@
     /* Responsive */
     @media(max-width:900px){.cat-grid,.prizes-grid{grid-template-columns:1fr}.concess-grid{grid-template-columns:repeat(2,1fr)}}
 
-    /* ─── Mobile Hero: Modern split-screen layout ─── */
+    /* ─── Mobile Hero: Full-bleed image with strong overlay (same vibe as desktop) ─── */
     @media(max-width:640px){
-      /* Convert hero from full-bleed bg to stacked image + dark card */
       .t-hero{
         min-height:100dvh;
-        padding:0;
-        background-image:none;
-        background-color:var(--dark);
+        padding:5rem 1.25rem 3rem;
+        /* Keep the background image — just show it on mobile too */
+        background-image:url('/gallery/tournament_hero.webp');
+        background-size:cover;
+        background-position:center center;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+      /* Much stronger overlay on mobile for readability */
+      .t-hero::after{
         display:block;
-        align-items:unset;
-        justify-content:unset;
+        background:
+          linear-gradient(to bottom,
+            rgba(5,10,25,0.92) 0%,
+            rgba(5,10,25,0.72) 35%,
+            rgba(5,10,25,0.75) 65%,
+            rgba(5,10,25,0.98) 100%
+          ),
+          radial-gradient(ellipse 90% 60% at 50% 45%, rgba(245,158,11,0.15) 0%, transparent 65%);
       }
-      /* Remove the big overlay since we're using the image as a visible photo */
-      .t-hero::after{ display:none; }
+      /* Hide the separate mobile image strip — not needed anymore */
+      .t-hero-img-mobile{ display:none !important; }
 
-      /* Top image strip */
-      .t-hero-img-mobile{
-        display:block;
-        width:100%;
-        height:52vw;
-        min-height:210px;
-        max-height:280px;
-        background:url('/gallery/tournament_hero.webp') center center / cover no-repeat;
-        position:relative;
-      }
-      .t-hero-img-mobile::after{
-        content:'';
-        position:absolute;inset:0;
-        background:linear-gradient(
-          to bottom,
-          rgba(10,16,35,0.1) 0%,
-          rgba(10,16,35,0.0) 30%,
-          rgba(10,16,35,0.9) 90%,
-          rgba(10,16,35,1)   100%
-        );
-      }
-
-      /* Dark glass content card that slides up over the image */
       .t-hero-inner{
         max-width:100%;
-        margin:-2.5rem 0 0 0;
-        padding:2rem 1.25rem 2.5rem;
-        background:linear-gradient(180deg, var(--dark) 0%, #111827 100%);
-        border-radius:28px 28px 0 0;
-        position:relative;
-        z-index:3;
+        margin:0 auto;
+        padding:0;
+        background:transparent;
+        border-radius:0;
       }
 
-      .t-eyebrow{
-        font-size:.72rem;
-        padding:.35rem 1rem;
-        margin-bottom:1rem;
-      }
-      .t-hero h1{ font-size:clamp(1.7rem,8vw,2.4rem); margin-bottom:.6rem; text-shadow:none; }
-      .t-hero-sub{ font-size:.95rem; margin-bottom:1.5rem; color:#94a3b8; text-shadow:none; }
+      .t-eyebrow{ font-size:.72rem; padding:.35rem 1rem; margin-bottom:1rem; }
+      .t-hero h1{ font-size:clamp(1.8rem,9vw,2.6rem); margin-bottom:.6rem; text-shadow:0 2px 20px rgba(0,0,0,0.9); }
+      .t-hero-sub{ font-size:.93rem; margin-bottom:1.5rem; color:#cbd5e1; text-shadow:0 1px 8px rgba(0,0,0,0.8); }
 
-      /* Horizontal scroll pills on mobile */
+      /* Horizontal scroll pills on mobile — great UX pattern */
       .t-meta-row{
         display:flex;
         flex-wrap:nowrap;
         overflow-x:auto;
         -webkit-overflow-scrolling:touch;
-        gap:.55rem;
+        gap:.5rem;
         justify-content:flex-start;
         padding-bottom:.5rem;
         margin-bottom:1.5rem;
         scrollbar-width:none;
       }
-      .t-meta-row::-webkit-scrollbar{display:none}
+      .t-meta-row::-webkit-scrollbar{ display:none; }
       .t-meta-pill{
         flex-shrink:0;
-        font-size:.78rem;
-        padding:.45rem .9rem;
+        font-size:.77rem;
+        padding:.4rem .85rem;
         white-space:nowrap;
-        background:rgba(255,255,255,0.07);
-        backdrop-filter:blur(6px);
+        background:rgba(10,16,35,0.65);
+        backdrop-filter:blur(10px);
+        -webkit-backdrop-filter:blur(10px);
+        border:1px solid rgba(255,255,255,0.2);
       }
 
-      /* Stack buttons vertically, full width */
-      .t-hero-btns{ flex-direction:column; gap:.75rem; }
-      .btn-amber,.btn-outline-w{ padding:.9rem 1rem; font-size:.97rem; text-align:center; border-radius:14px; }
+      /* Stack buttons vertically, full-width, easy to tap */
+      .t-hero-btns{ flex-direction:column; gap:.65rem; }
+      .btn-amber,.btn-outline-w{
+        padding:.95rem 1rem;
+        font-size:1rem;
+        text-align:center;
+        border-radius:14px;
+        width:100%;
+        display:block;
+      }
 
-      /* Compact countdown */
-      .countdown-row{ gap:.6rem; margin-top:1.5rem; }
-      .cd-num{ font-size:2rem; }
-      .cd-box{ background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:.6rem .9rem; min-width:58px; }
+      /* Countdown styled as individual boxed chips */
+      .countdown-row{ gap:.5rem; margin-top:1.5rem; }
+      .cd-num{ font-size:1.9rem; }
+      .cd-box{
+        background:rgba(10,16,35,0.6);
+        backdrop-filter:blur(8px);
+        -webkit-backdrop-filter:blur(8px);
+        border:1px solid rgba(255,255,255,0.15);
+        border-radius:12px;
+        padding:.55rem .75rem;
+        min-width:56px;
+      }
+      .cd-lbl{ color:#94a3b8; }
     }
 
     @media(max-width:400px){
-      .t-hero-inner{ padding:1.5rem 1rem 2rem; }
+      .t-hero{ padding:4.5rem 1rem 2.5rem; }
+      .t-hero h1{ font-size:clamp(1.65rem,9vw,2.2rem); }
     }
 
-    @media(max-width:600px){.fg-row{grid-template-columns:1fr}.concess-grid{grid-template-columns:1fr}.t-meta-row{gap:.6rem}}
+    @media(max-width:600px){.fg-row{grid-template-columns:1fr}.concess-grid{grid-template-columns:1fr}}
   </style>
 
   <script type="application/ld+json">
@@ -352,10 +355,11 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           10:00 AM &ndash; 5:30 PM
         </div>
-        <div class="t-meta-pill" style="border:1.5px solid var(--primary);background:rgba(245,158,11,.15);color:#fff;font-weight:700;">
+        <a href="https://www.google.com/maps/place/RAGHAV+GLOBAL+SCHOOL,+Sector+122+First+Entrance,+Block+A,+Sector+122,+Noida,+Uttar+Pradesh+201316/@28.5922233,77.3895765,17z/data=!3m1!4b1!4m6!3m5!1s0x390cef7818d0daf1:0x8b96cc2597c834ce!8m2!3d28.592179!4d77.3896808!16s%2Fg%2F11bw4h2_8d?entry=ttu&g_ep=EgoyMDI2MDkyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="t-meta-pill" style="border:1.5px solid var(--primary);background:rgba(245,158,11,.15);color:#fff;font-weight:700;text-decoration:none;cursor:pointer;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
           Raghav Global School, Sector 122, Noida
-        </div>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:0.7"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
         <div class="t-meta-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           2 Categories
