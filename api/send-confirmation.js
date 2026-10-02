@@ -59,7 +59,9 @@ export default async function handler(req, res) {
           <!-- HEADER -->
           <tr>
             <td style="background:#0f172a; border-radius:16px 16px 0 0; padding: 28px 40px; text-align:center;">
-              <img src="https://www.thechesslifestyle.com/favicon.png" alt="TheChessLifestyle Logo" width="52" height="52" style="display:inline-block; margin-bottom:12px; border-radius:10px;">
+              <div style="display:inline-block; background:#ffffff; border-radius:12px; padding:8px; margin-bottom:12px;">
+                <img src="https://www.thechesslifestyle.com/favicon.png" alt="TheChessLifestyle Logo" width="48" height="48" style="display:block; border-radius:6px;">
+              </div>
               <h1 style="margin:0; color:#f8fafc; font-size:22px; font-weight:700; letter-spacing:0.5px;">TheChessLifestyle</h1>
               <p style="margin:5px 0 0; color:#94a3b8; font-size:13px; letter-spacing:1px; text-transform:uppercase;">Official Tournament Confirmation</p>
             </td>
@@ -173,9 +175,11 @@ export default async function handler(req, res) {
           <!-- FOOTER -->
           <tr>
             <td style="background:#0f172a; border-radius:0 0 16px 16px; padding:24px 40px; text-align:center;">
-              <img src="https://www.thechesslifestyle.com/favicon.png" alt="TCL Logo" width="32" height="32" style="margin-bottom:10px; border-radius:6px;">
+              <div style="display:inline-block; background:#ffffff; border-radius:8px; padding:6px; margin-bottom:10px;">
+                <img src="https://www.thechesslifestyle.com/favicon.png" alt="TCL Logo" width="30" height="30" style="display:block; border-radius:4px;">
+              </div>
               <p style="margin:0 0 6px; color:#f8fafc; font-size:14px; font-weight:600;">TheChessLifestyle</p>
-              <p style="margin:0 0 10px; color:#64748b; font-size:12px;">Nurturing Champions, One Move at a Time.</p>
+              <p style="margin:0 0 10px; color:#64748b; font-size:12px; font-style:italic;">Life is a chess game, learn to checkmate.</p>
               <a href="https://www.thechesslifestyle.com" style="color:#60a5fa; font-size:12px; text-decoration:none;">www.thechesslifestyle.com</a>
             </td>
           </tr>
