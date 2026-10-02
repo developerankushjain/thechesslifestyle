@@ -685,7 +685,21 @@
               </div>
               <div class="fg-row">
                 <div class="fg"><label>Chess.com Username</label><input type="text" name="Chess.com Username" placeholder="Username (if any)"></div>
-                <div class="fg"><label>Chess.com Rating</label><input type="text" name="Chess Rating" placeholder="e.g. 850 (if any)"></div>
+                <div class="fg"><label>Chess.com / FIDE Rating</label><input type="text" name="Chess Rating" placeholder="e.g. 850 (if any)"></div>
+              </div>
+              <div class="fg"><label>FIDE ID (if applicable)</label><input type="text" name="FIDE ID" placeholder="FIDE ID (for titled players - free entry)"></div>
+              <div class="fg"><label>FIDE Title (if any)</label>
+                <select name="FIDE Title">
+                  <option value="None">None / No Title</option>
+                  <option value="CM">CM - Candidate Master</option>
+                  <option value="FM">FM - FIDE Master</option>
+                  <option value="IM">IM - International Master</option>
+                  <option value="GM">GM - Grandmaster</option>
+                  <option value="WCM">WCM - Woman Candidate Master</option>
+                  <option value="WFM">WFM - Woman FIDE Master</option>
+                  <option value="WIM">WIM - Woman International Master</option>
+                  <option value="WGM">WGM - Woman Grandmaster</option>
+                </select>
               </div>
               <div class="fg"><label>Parent / Guardian Name *</label><input type="text" name="Parent Name" required placeholder="Parent/guardian full name"></div>
               <div class="fg"><label>Parent WhatsApp Number *</label>
