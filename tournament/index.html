@@ -176,7 +176,7 @@
     .sr.visible{opacity:1;transform:none}
 
     /* Responsive */
-    @media(max-width:900px){.cat-grid,.prizes-grid{grid-template-columns:1fr}.concess-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:900px){.cat-grid,.prizes-grid{grid-template-columns:1fr}.concess-grid{grid-template-columns:repeat(2,1fr)}#experience [style*="repeat(3"]{grid-template-columns:1fr!important}}
 
     /* ─── Mobile Hero: Full-bleed image with strong overlay (same vibe as desktop) ─── */
     @media(max-width:640px){
@@ -480,6 +480,104 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Beyond the Board: Lounge, Merch & Player Experience -->
+    <section class="t-sec sr" id="experience" style="background:var(--dark);padding:5rem 5%;overflow:hidden;position:relative;">
+      <!-- subtle chess pattern overlay -->
+      <div style="position:absolute;inset:0;opacity:.03;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.5) 59px,rgba(255,255,255,.5) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.5) 59px,rgba(255,255,255,.5) 60px);pointer-events:none"></div>
+      <div class="t-container" style="position:relative;z-index:2">
+        <div style="text-align:center;margin-bottom:3.5rem">
+          <span class="t-sec-label" style="color:var(--primary)">The Full Experience</span>
+          <h2 class="t-sec-title" style="color:#fff">Beyond <span style="color:var(--primary)">the Board</span></h2>
+          <p class="t-sec-sub" style="color:#94a3b8;margin:0 auto">An unforgettable day for the whole family — not just the players.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem">
+
+          <!-- Card 1: Parent & Guardian Lounge -->
+          <div style="background:linear-gradient(145deg,rgba(245,158,11,0.08),rgba(245,158,11,0.03));border:1px solid rgba(245,158,11,0.25);border-radius:24px;padding:2rem;transition:transform .3s,box-shadow .3s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(245,158,11,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="width:52px;height:52px;background:rgba(245,158,11,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.25rem">🛋️</div>
+            <h3 style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.4rem">Parent &amp; Guardian Lounge</h3>
+            <p style="font-size:.85rem;color:#64748b;margin-bottom:1.25rem;line-height:1.6">While players battle on the board, parents can relax, win prizes, and enjoy a dedicated resting area!</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem">
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(245,158,11,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">🎓</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Expert Career Counselling</strong> — Free guidance sessions throughout the event</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(245,158,11,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">💌</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">"Letter to My Champion"</strong> — Write a heartfelt note to your child; we hand it to them at the closing ceremony &amp; record their priceless reactions</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(245,158,11,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">🎲</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Classic Games &amp; Prizes</strong> — Musical Chairs, Dumb Charades, Bingo &amp; Event Lucky Draw</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(245,158,11,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">♟️</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Chess-Themed Challenges</strong> — Blind Knight Challenge, Guess the Piece Count, Chess Word Scramble, Spoon Race with a Pawn &amp; Pawn-on-a-Lemon Water Balance</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(245,158,11,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">🧠</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Parent Trivia</strong> — Play "How well do you know your kids?" to win exclusive gear</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Exclusive Merch & Memories -->
+          <div style="background:linear-gradient(145deg,rgba(139,92,246,0.08),rgba(139,92,246,0.03));border:1px solid rgba(139,92,246,0.25);border-radius:24px;padding:2rem;transition:transform .3s,box-shadow .3s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(139,92,246,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.25rem">🎁</div>
+            <h3 style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.4rem">Exclusive Merch &amp; Memories</h3>
+            <p style="font-size:.85rem;color:#64748b;margin-bottom:1.25rem;line-height:1.6">Walk away with premium event gear and memories that will last a lifetime.</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem">
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(139,92,246,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">🏆</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Massive Prize Pool &amp; Giveaways</strong> — Our gift tables are loaded with professional chess clocks, chess bags, personalised t-shirts, caps, mugs, phone covers, water bottles, notepads, pens &amp; stickers</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(139,92,246,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">🤳</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Selfie Zone</strong> — Celebrate your victories and capture tournament memories at our custom photo station</span>
+              </li>
+            </ul>
+            <!-- Merch highlight pills -->
+            <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem">
+              <span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#a78bfa;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:100px">Chess Clocks</span>
+              <span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#a78bfa;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:100px">T-Shirts</span>
+              <span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#a78bfa;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:100px">Caps</span>
+              <span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#a78bfa;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:100px">Mugs</span>
+              <span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#a78bfa;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:100px">Phone Covers</span>
+              <span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#a78bfa;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:100px">Stickers</span>
+              <span style="background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#a78bfa;font-size:.75rem;font-weight:600;padding:.3rem .7rem;border-radius:100px">Chess Bags</span>
+            </div>
+          </div>
+
+          <!-- Card 3: The Player Experience -->
+          <div style="background:linear-gradient(145deg,rgba(34,197,94,0.08),rgba(34,197,94,0.03));border:1px solid rgba(34,197,94,0.25);border-radius:24px;padding:2rem;transition:transform .3s,box-shadow .3s" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 40px rgba(34,197,94,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="width:52px;height:52px;background:rgba(34,197,94,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.25rem">⚡</div>
+            <h3 style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.4rem">The Player Experience</h3>
+            <p style="font-size:.85rem;color:#64748b;margin-bottom:1.25rem;line-height:1.6">Compete in a professional atmosphere designed to bring out your best game.</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem">
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(34,197,94,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">♟️</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Pro-Level Equipment</strong> — Compete on premium international-standard chess boards and sets</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(34,197,94,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">🌐</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Global Tracking</strong> — Official pairings and standings published live on chess-results.com</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(34,197,94,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">📸</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">In the Spotlight</strong> — Event coverage and media presence by prominent chess influencers</span>
+              </li>
+              <li style="display:flex;gap:.75rem;align-items:flex-start">
+                <span style="flex-shrink:0;width:22px;height:22px;background:rgba(34,197,94,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:.05rem">🥤</span>
+                <span style="font-size:.85rem;color:#94a3b8;line-height:1.55"><strong style="color:#e2e8f0">Stay Fuelled</strong> — Complimentary refreshments provided for every participating player</span>
+              </li>
+            </ul>
+          </div>
+
+        </div><!-- /grid -->
       </div>
     </section>
 
