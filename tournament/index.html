@@ -1035,6 +1035,20 @@
           });
           
           modal.style.display = 'none';
+
+          // Send confirmation email via Vercel backend (fire and forget)
+          fetch('https://thechesslifestyle.vercel.app/api/send-confirmation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              playerName: currentFormData['Player Name'],
+              parentName: currentFormData['Parent Name'] || '',
+              email: currentFormData['Email'],
+              category: currentFormData['Category'],
+              paymentId: 'FREE_ENTRY'
+            })
+          }).catch(err => console.warn('Email notification failed silently:', err));
+
           document.getElementById('success-modal').style.display = 'flex';
           return;
         }
@@ -1079,6 +1093,20 @@
               });
               
               modal.style.display = 'none';
+
+              // Send confirmation email via Vercel backend (fire and forget)
+              fetch('https://thechesslifestyle.vercel.app/api/send-confirmation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  playerName: currentFormData['Player Name'],
+                  parentName: currentFormData['Parent Name'] || '',
+                  email: currentFormData['Email'],
+                  category: currentFormData['Category'],
+                  paymentId: response.razorpay_payment_id
+                })
+              }).catch(err => console.warn('Email notification failed silently:', err));
+
               document.getElementById('success-modal').style.display = 'flex';
             } catch (err) {
               console.error(err);
