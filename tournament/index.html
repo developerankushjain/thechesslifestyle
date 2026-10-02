@@ -445,10 +445,9 @@
                 <div class="fg"><label>Date of Birth *</label><input type="date" name="Date of Birth" required></div>
               </div>
               <div class="fg-row">
-                <div class="fg"><label>Age (Years) *</label><input type="number" name="Age" required placeholder="e.g. 9" min="4" max="12"></div>
                 <div class="fg"><label>Class / Grade *</label><input type="text" name="Class" required placeholder="e.g. Class 5"></div>
+                <div class="fg"><label>School Name</label><input type="text" name="School" placeholder="Student's school name"></div>
               </div>
-              <div class="fg"><label>School Name</label><input type="text" name="School" placeholder="Student's school name"></div>
               <div class="fg-row">
                 <div class="fg"><label>Chess.com Username</label><input type="text" name="Chess.com Username" placeholder="Username (if any)"></div>
                 <div class="fg"><label>Chess.com Rating</label><input type="text" name="Chess Rating" placeholder="e.g. 850 (if any)"></div>
@@ -471,17 +470,19 @@
               <div class="fg"><label>Parent Email *</label><input type="email" name="Email" required placeholder="Parent email address"></div>
               <div class="fg">
                 <label>Fee Concession (if applicable)</label>
-                <select name="Concession Applied">
+                <select name="Concession Applied" class="concession-select">
                   <option value="None">None</option>
                   <option value="Raghav Global Student">Student of Raghav Global (25% off)</option>
-                  <option value="Early Bird">Early Bird — before 20 Oct 2026 (25% off)</option>
                   <option value="Female Participant">Female Participant (25% off)</option>
-                  <option value="FIDE Titled">FIDE Titled Player (Free Entry)</option>
                   <option value="Divyang">Divyang Participant (25% off)</option>
                 </select>
               </div>
               <div class="concession-note">
                 &#x26A0;&#xFE0F; Please carry valid proof of concession eligibility on the day of the tournament. Concessions are non-cumulative &mdash; only the best applicable discount will be applied.
+              </div>
+              <div class="early-bird-highlight" style="padding: 1rem; background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; color: #b45309; margin-bottom: 1rem; font-weight: 500; display:flex; align-items:center; gap:0.75rem;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Register before 20th October to automatically receive the 25% Early Bird discount!
               </div>
               <div class="fg"><label>Any special requirements?</label><textarea name="Special Requirements" rows="2" placeholder="Dietary needs, accessibility, etc."></textarea></div>
               <button type="submit" class="t-sub-btn kids-sub">Register for Under 12 Category &rarr;</button>
@@ -540,18 +541,20 @@
               <div class="fg"><label>Email Address *</label><input type="email" name="Email" required placeholder="Your email address"></div>
               <div class="fg">
                 <label>Fee Concession (if applicable)</label>
-                <select name="Concession Applied">
+                <select name="Concession Applied" class="concession-select">
                   <option value="None">None</option>
                   <option value="Raghav Global Student">Student of Raghav Global (25% off)</option>
                   <option value="Senior Citizen">Senior Citizen (25% off)</option>
-                  <option value="Early Bird">Early Bird — before 20 Oct 2026 (25% off)</option>
                   <option value="Female Participant">Female Participant (25% off)</option>
-                  <option value="FIDE Titled">FIDE Titled Player (Free Entry)</option>
                   <option value="Divyang">Divyang Participant (25% off)</option>
                 </select>
               </div>
               <div class="concession-note" style="border-color:rgba(59,130,246,.25);background:rgba(59,130,246,.05);color:#1d4ed8">
                 &#x26A0;&#xFE0F; Please carry valid proof of concession or FIDE title at the venue. FIDE Titled players enter free of charge. Concessions are non-cumulative.
+              </div>
+              <div class="early-bird-highlight" style="padding: 1rem; background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; color: #b45309; margin-bottom: 1rem; font-weight: 500; display:flex; align-items:center; gap:0.75rem;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Register before 20th October to automatically receive the 25% Early Bird discount!
               </div>
               <div class="fg"><label>Any special requirements?</label><textarea name="Special Requirements" rows="2" placeholder="Dietary needs, accessibility, etc."></textarea></div>
               <button type="submit" class="t-sub-btn open-sub">Register for Open Category &rarr;</button>
@@ -669,7 +672,14 @@
         let msg = '';
         currentAmount = baseFee;
         
-        if (today < earlyBirdDeadline) {
+        if (data['FIDE Title'] && data['FIDE Title'] !== 'None') {
+           currentAmount = 0;
+           msg = `<div style="background:#ecfdf5; color:#065f46; padding:1rem; border-radius:8px; border:1px solid #a7f3d0; margin-bottom:1rem;">
+                    <strong>✨ FIDE Titled Player</strong><br>
+                    You receive complimentary entry. Please carry your FIDE ID proof.
+                  </div>
+                  <div style="font-size:1.2rem; font-weight:bold;">Total to Pay: ₹0</div>`;
+        } else if (today < earlyBirdDeadline) {
            currentAmount = baseFee * 0.75;
            msg = `<div style="background:#ecfdf5; color:#065f46; padding:1rem; border-radius:8px; border:1px solid #a7f3d0; margin-bottom:1rem;">
                     <strong>✨ Early Bird Discount Auto-Applied!</strong><br>
@@ -687,8 +697,22 @@
         
         summaryContent.innerHTML = msg;
         modal.style.display = 'flex';
+        
+        if (currentAmount === 0) {
+          proceedBtn.innerText = 'Complete Registration \u2192';
+        } else {
+          proceedBtn.innerText = 'Proceed to Pay \u2192';
+        }
       });
     });
+
+    // Disable concession selects if early bird is active
+    if (new Date() < new Date('2026-10-20T00:00:00+05:30')) {
+      document.querySelectorAll('.concession-select').forEach(sel => {
+        sel.disabled = true;
+        sel.title = 'Concessions will activate after Oct 20. You are already receiving the maximum 25% Early Bird discount!';
+      });
+    }
 
     cancelBtn.addEventListener('click', () => { modal.style.display = 'none'; });
 
@@ -697,6 +721,28 @@
       proceedBtn.disabled = true;
       
       try {
+        if (currentAmount === 0) {
+          // Free entry - skip Razorpay
+          currentFormData['Razorpay Payment ID'] = 'FREE_ENTRY';
+          currentFormData['Amount Paid'] = 'Rs. 0';
+          
+          const formBody = new URLSearchParams();
+          for (const [key, val] of Object.entries(currentFormData)) {
+            formBody.append(key, val);
+          }
+          
+          await fetch('https://script.google.com/macros/s/AKfycbwo_s7qWo-20Bw6PKItIPomJbiUlbUzc1_zaEW_aMhtu1rSOrRGvCdsBUMoax6N3njBmA/exec', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formBody.toString()
+          });
+          
+          modal.style.display = 'none';
+          alert("Registration confirmed! We will email you shortly.");
+          window.location.reload();
+          return;
+        }
+
         // Call Vercel backend
         const res = await fetch('https://thechesslifestyle.vercel.app/api/create-order', {
           method: 'POST',

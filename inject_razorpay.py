@@ -56,7 +56,14 @@ js_logic = """
         let msg = '';
         currentAmount = baseFee;
         
-        if (today < earlyBirdDeadline) {
+        if (data['FIDE Title'] && data['FIDE Title'] !== 'None') {
+           currentAmount = 0;
+           msg = `<div style="background:#ecfdf5; color:#065f46; padding:1rem; border-radius:8px; border:1px solid #a7f3d0; margin-bottom:1rem;">
+                    <strong>✨ FIDE Titled Player</strong><br>
+                    You receive complimentary entry. Please carry your FIDE ID proof.
+                  </div>
+                  <div style="font-size:1.2rem; font-weight:bold;">Total to Pay: ₹0</div>`;
+        } else if (today < earlyBirdDeadline) {
            currentAmount = baseFee * 0.75;
            msg = `<div style="background:#ecfdf5; color:#065f46; padding:1rem; border-radius:8px; border:1px solid #a7f3d0; margin-bottom:1rem;">
                     <strong>✨ Early Bird Discount Auto-Applied!</strong><br>
@@ -74,8 +81,22 @@ js_logic = """
         
         summaryContent.innerHTML = msg;
         modal.style.display = 'flex';
+        
+        if (currentAmount === 0) {
+          proceedBtn.innerText = 'Complete Registration \u2192';
+        } else {
+          proceedBtn.innerText = 'Proceed to Pay \u2192';
+        }
       });
     });
+
+    // Disable concession selects if early bird is active
+    if (new Date() < new Date('2026-10-20T00:00:00+05:30')) {
+      document.querySelectorAll('.concession-select').forEach(sel => {
+        sel.disabled = true;
+        sel.title = 'Concessions will activate after Oct 20. You are already receiving the maximum 25% Early Bird discount!';
+      });
+    }
 
     cancelBtn.addEventListener('click', () => { modal.style.display = 'none'; });
 
@@ -84,8 +105,30 @@ js_logic = """
       proceedBtn.disabled = true;
       
       try {
+        if (currentAmount === 0) {
+          // Free entry - skip Razorpay
+          currentFormData['Razorpay Payment ID'] = 'FREE_ENTRY';
+          currentFormData['Amount Paid'] = 'Rs. 0';
+          
+          const formBody = new URLSearchParams();
+          for (const [key, val] of Object.entries(currentFormData)) {
+            formBody.append(key, val);
+          }
+          
+          await fetch('https://script.google.com/macros/s/AKfycbwo_s7qWo-20Bw6PKItIPomJbiUlbUzc1_zaEW_aMhtu1rSOrRGvCdsBUMoax6N3njBmA/exec', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formBody.toString()
+          });
+          
+          modal.style.display = 'none';
+          alert("Registration confirmed! We will email you shortly.");
+          window.location.reload();
+          return;
+        }
+
         // Call Vercel backend
-        const res = await fetch('https://thechesslifestyle-hh3q0qqod-the-chess-lifestyle.vercel.app/api/create-order', {
+        const res = await fetch('https://thechesslifestyle.vercel.app/api/create-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
