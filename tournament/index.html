@@ -19,10 +19,11 @@
     :root{--primary:#f59e0b;--dark:#0f172a;--mid:#1e293b;--text:#475569;--border:#e2e8f0;--bg:#f8fafc}
 
     /* Hero */
-    .t-hero{position:relative;background:var(--dark);overflow:hidden;padding:7rem 5% 5rem;text-align:center;min-height:90vh;display:flex;align-items:center;justify-content:center}
+    .t-hero{position:relative;overflow:hidden;padding:7rem 5% 5rem;text-align:center;min-height:95vh;display:flex;align-items:center;justify-content:center;background-color:var(--dark);background-image:url('/gallery/tournament_hero.webp');background-size:cover;background-position:center top;background-repeat:no-repeat}
     .t-hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto}
-    .t-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(245,158,11,.18) 0%,transparent 70%);pointer-events:none}
-    .t-chess-bg{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.5) 59px,rgba(255,255,255,.5) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.5) 59px,rgba(255,255,255,.5) 60px);z-index:1}
+    /* Multi-layer gradient overlay: bottom fade + top dark scrim + warm orange glow at center */
+    .t-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0.2) 30%, rgba(15,23,42,0.3) 60%, rgba(15,23,42,0.97) 100%),radial-gradient(ellipse 70% 50% at 50% 40%, rgba(245,158,11,0.25) 0%, transparent 70%);pointer-events:none;z-index:1}
+    .t-chess-bg{display:none}
     .t-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:var(--primary);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem}
     .t-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.03em;margin-bottom:.75rem}
     .t-hero h1 .hl{color:var(--primary)}
@@ -261,10 +262,6 @@
         <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hours</div></div>
         <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Minutes</div></div>
         <div class="cd-box"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Seconds</div></div>
-      </div>
-      <div class="hero-image-wrapper" style="margin-top: 4rem; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); position: relative; max-width: 1000px; margin-left: auto; margin-right: auto;">
-        <img src="/gallery/tournament_hero.webp" alt="Cinematic view of a professional chess tournament" loading="eager" decoding="async" style="width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 21/9;">
-        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 1), transparent 70%); pointer-events: none;"></div>
       </div>
     </div>
   </header>
