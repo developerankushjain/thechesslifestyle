@@ -898,6 +898,16 @@
         
         const fd = new FormData(this);
         const data = Object.fromEntries(fd.entries());
+
+        if (data.Category === 'Under 12' && data['Date of Birth']) {
+          const dob = new Date(data['Date of Birth']);
+          const cutoff = new Date('2013-11-01');
+          if (dob < cutoff) {
+            alert('Sorry! Participants whose age is more than 12 years on 31st October 2026 cannot participate in the Under 12 category. Please participate in the Open category instead.');
+            return;
+          }
+        }
+        
         currentFormData = data;
         
         const baseFee = data.Category === 'Open' ? 500 : 300;
