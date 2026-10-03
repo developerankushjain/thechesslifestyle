@@ -25,6 +25,9 @@ export default async function handler(req, res) {
   }
 
   const isUnder12 = category === 'Under 12';
+  const chesscircuitUrl = isUnder12
+    ? 'https://www.chesscircuit.in/tournaments/6'
+    : 'https://www.chesscircuit.in/tournaments/7';
   const greeting = isUnder12 && parentName
     ? `Hi <strong>${parentName}</strong>, <span style="color:#64748b;">(parent/guardian of ${playerName})</span>`
     : `Hi <strong>${playerName}</strong>,`;
@@ -123,7 +126,7 @@ export default async function handler(req, res) {
                     <p style="margin:0 0 10px; font-size:14px; color:#475569; line-height:1.6;">Official pairings, standings, and live results will be published on the following platforms during the event:</p>
                     <p style="margin:0;">
                       <a href="https://chess-results.com" style="display:inline-block; background:#10b981; color:#fff; text-decoration:none; padding:7px 16px; border-radius:6px; font-size:13px; font-weight:600; margin-right:8px; margin-bottom:6px;">chess-results.com &#8594;</a>
-                      <a href="https://chesscircuit.in" style="display:inline-block; background:#0f766e; color:#fff; text-decoration:none; padding:7px 16px; border-radius:6px; font-size:13px; font-weight:600; margin-bottom:6px;">chesscircuit.in &#8594;</a>
+                      <a href="${chesscircuitUrl}" style="display:inline-block; background:#0f766e; color:#fff; text-decoration:none; padding:7px 16px; border-radius:6px; font-size:13px; font-weight:600; margin-bottom:6px;">chesscircuit.in &#8594;</a>
                     </p>
                   </td>
                 </tr>
