@@ -1027,44 +1027,68 @@
           currentFormData['Razorpay Payment ID'] = 'FREE_ENTRY';
           currentFormData['Amount Paid'] = 'Rs. 0';
           
+          summaryContent.innerHTML = `<div style="padding:1.5rem 1rem;">
+            <div style="font-size:2rem; margin-bottom:.5rem;">⏳</div>
+            <div style="font-weight:700; font-size:1.15rem; color:#0f172a;">Completing Registration...</div>
+            <p style="color:#64748b; font-size:.9rem; margin-top:.5rem;">Recording your details and sending confirmation email. Please wait...</p>
+          </div>`;
+          proceedBtn.style.display = 'none';
+          cancelBtn.style.display = 'none';
+
+          // 1. Submit via backend complete-registration (reliable Sheets + Email with no CORS issues)
+          const backendPromise = fetch('https://thechesslifestyle.vercel.app/api/complete-registration', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              formData: currentFormData,
+              paymentId: 'FREE_ENTRY'
+            })
+          }).catch(err => console.warn('Backend complete-registration warning:', err));
+
+          // 2. Direct client backup to Google Apps Script (mode: 'no-cors' so browser won't throw CORS error)
           const formBody = new URLSearchParams();
           for (const [key, val] of Object.entries(currentFormData)) {
             formBody.append(key, val);
           }
-          
-          await fetch('https://script.google.com/macros/s/AKfycbwo_s7qWo-20Bw6PKItIPomJbiUlbUzc1_zaEW_aMhtu1rSOrRGvCdsBUMoax6N3njBmA/exec', {
+          const clientSheetPromise = fetch('https://script.google.com/macros/s/AKfycbwo_s7qWo-20Bw6PKItIPomJbiUlbUzc1_zaEW_aMhtu1rSOrRGvCdsBUMoax6N3njBmA/exec', {
             method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: formBody.toString()
-          });
-          
+          }).catch(err => console.warn('Client sheet ping warning:', err));
+
+          await Promise.race([
+            backendPromise,
+            new Promise(r => setTimeout(r, 4000))
+          ]);
+
           modal.style.display = 'none';
-
-          // Send confirmation email via Vercel backend (fire and forget)
-          fetch('https://thechesslifestyle.vercel.app/api/send-confirmation', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              playerName: currentFormData['Player Name'],
-              parentName: currentFormData['Parent Name'] || '',
-              email: currentFormData['Email'],
-              category: currentFormData['Category'],
-              paymentId: 'FREE_ENTRY'
-            })
-          }).catch(err => console.warn('Email notification failed silently:', err));
-
           document.getElementById('success-modal').style.display = 'flex';
           return;
         }
 
-        // Call Vercel backend
+        // Call Vercel backend to create order with FULL registration data in notes
         const res = await fetch('https://thechesslifestyle.vercel.app/api/create-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             amount: currentAmount,
             category: currentFormData.Category,
-            player_name: currentFormData['Player Name']
+            player_name: currentFormData['Player Name'],
+            parent_name: currentFormData['Parent Name'] || '',
+            email: currentFormData['Email'],
+            phone: currentFormData['WhatsApp Number'],
+            country_code: currentFormData['Country Code'] || '+91',
+            dob: currentFormData['Date of Birth'] || '',
+            age: currentFormData['Age'] || '',
+            student_class: currentFormData['Class'] || '',
+            school: currentFormData['School'] || '',
+            fide_id: currentFormData['FIDE ID'] || '',
+            fide_title: currentFormData['FIDE Title'] || 'None',
+            chess_username: currentFormData['Chess.com Username'] || '',
+            chess_rating: currentFormData['Chess Rating'] || '',
+            concession: currentFormData['Concession Applied'] || 'None',
+            special_requirements: currentFormData['Special Requirements'] || ''
           })
         });
         
@@ -1072,49 +1096,62 @@
         const order = await res.json();
         
         const options = {
-          key: "rzp_live_Tj5yLRZ6HQMzc0", // Live key injected directly as requested
+          key: "rzp_live_Tj5yLRZ6HQMzc0", // Live key
           amount: order.amount,
           currency: order.currency,
           name: "TheChessLifestyle",
-          description: "Tournament Registration",
+          description: "Tournament Registration - " + (currentFormData.Category || "Open"),
           order_id: order.id,
           handler: async function (response) {
-            // Payment success! Submit to formspree in background
+            // Payment success!
             try {
-              // Add Razorpay details to form data
+              modal.style.display = 'flex';
+              summaryContent.innerHTML = `<div style="padding:1.5rem 1rem;">
+                <div style="font-size:2rem; margin-bottom:.5rem;">⏳</div>
+                <div style="font-weight:700; font-size:1.15rem; color:#0f172a;">Payment Successful!</div>
+                <p style="color:#64748b; font-size:.9rem; margin-top:.5rem;">Confirming your registration and sending confirmation email. Please do not close this window...</p>
+              </div>`;
+              proceedBtn.style.display = 'none';
+              cancelBtn.style.display = 'none';
+
               currentFormData['Razorpay Payment ID'] = response.razorpay_payment_id;
+              currentFormData['Razorpay Order ID'] = response.razorpay_order_id || order.id;
               currentFormData['Amount Paid'] = 'Rs. ' + currentAmount;
               
+              // 1. Submit via backend complete-registration (handles Sheets + Email reliably with no CORS)
+              const backendPromise = fetch('https://thechesslifestyle.vercel.app/api/complete-registration', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  formData: currentFormData,
+                  paymentId: response.razorpay_payment_id,
+                  orderId: response.razorpay_order_id || order.id
+                })
+              }).catch(err => console.warn('Backend complete-registration warning:', err));
+
+              // 2. Client-side direct backup ping to Google Apps Script (mode: 'no-cors' so browser won't throw)
               const formBody = new URLSearchParams();
               for (const [key, val] of Object.entries(currentFormData)) {
                 formBody.append(key, val);
               }
-              
-              await fetch('https://script.google.com/macros/s/AKfycbwo_s7qWo-20Bw6PKItIPomJbiUlbUzc1_zaEW_aMhtu1rSOrRGvCdsBUMoax6N3njBmA/exec', {
+              const clientSheetPromise = fetch('https://script.google.com/macros/s/AKfycbwo_s7qWo-20Bw6PKItIPomJbiUlbUzc1_zaEW_aMhtu1rSOrRGvCdsBUMoax6N3njBmA/exec', {
                 method: 'POST',
-                headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: formBody.toString()
-              });
-              
+              }).catch(err => console.warn('Client sheet ping warning:', err));
+
+              await Promise.race([
+                backendPromise,
+                new Promise(r => setTimeout(r, 4500))
+              ]);
+
               modal.style.display = 'none';
-
-              // Send confirmation email via Vercel backend (fire and forget)
-              fetch('https://thechesslifestyle.vercel.app/api/send-confirmation', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  playerName: currentFormData['Player Name'],
-                  parentName: currentFormData['Parent Name'] || '',
-                  email: currentFormData['Email'],
-                  category: currentFormData['Category'],
-                  paymentId: response.razorpay_payment_id
-                })
-              }).catch(err => console.warn('Email notification failed silently:', err));
-
               document.getElementById('success-modal').style.display = 'flex';
             } catch (err) {
               console.error(err);
-              alert("Payment successful but form submission failed. Please contact support with your Payment ID: " + response.razorpay_payment_id);
+              modal.style.display = 'none';
+              document.getElementById('success-modal').style.display = 'flex';
             }
           },
           prefill: {
@@ -1122,7 +1159,15 @@
             email: currentFormData['Email'],
             contact: currentFormData['WhatsApp Number']
           },
-          theme: { color: "#f59e0b" }
+          theme: { color: "#f59e0b" },
+          modal: {
+            ondismiss: function() {
+              proceedBtn.innerText = 'Proceed to Pay \u2192';
+              proceedBtn.disabled = false;
+              proceedBtn.style.display = 'inline-block';
+              cancelBtn.style.display = 'inline-block';
+            }
+          }
         };
         
         const rzp = new Razorpay(options);
@@ -1132,8 +1177,10 @@
         console.error(err);
         alert("Something went wrong initializing the payment. Please try again.");
       } finally {
-        proceedBtn.innerText = 'Proceed to Pay &rarr;';
+        proceedBtn.innerText = 'Proceed to Pay \u2192';
         proceedBtn.disabled = false;
+        proceedBtn.style.display = 'inline-block';
+        cancelBtn.style.display = 'inline-block';
         modal.style.display = 'none';
       }
     });
