@@ -41,7 +41,7 @@ pages = [
     ("chess-home-tutor-noida/", "0.6", "monthly"),
 
     # Blog posts
-    ("blog/how-to-improve-chess-rating-fast/", "0.7", "monthly"),
+    ("blog/how-to-improve-chess-rating-fast/", "0.9", "weekly"),
     ("blog/best-chess-openings-for-beginners/", "0.7", "monthly"),
     ("blog/how-to-teach-chess-to-a-child/", "0.7", "monthly"),
     ("blog/chess-improves-academic-performance/", "0.7", "monthly"),
