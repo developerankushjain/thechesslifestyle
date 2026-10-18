@@ -763,15 +763,16 @@
           <div class="footer-brand">
             <img src="/favicon.svg" alt="TheChessLifestyle Logo" class="footer-logo" width="40" height="40" style="margin-bottom: 0.5rem;" loading="eager">
             <h2>TheChessLifestyle</h2>
-            <p>Premium online chess coaching by elite FIDE Rated instructors. Helping players improve chess ratings worldwide.</p>
+            <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
           </div>
           <div class="footer-links">
-            <h4>Quick Links</h4>
+            <h4>Services</h4>
             <ul>
-              <li><a href="/#benefits">Benefits of Chess</a></li>
-              <li><a href="/#coaches">Our Coaches</a></li>
-              <li><a href="/#gallery">Gallery</a></li>
-              <li><a href="/#trial">Book Trial</a></li>
+              <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
+              <li><a href="/online-chess-classes-for-kids/">Chess Coaching for Kids</a></li>
+              <li><a href="/chess-classes-noida/">Offline Chess Classes (Noida)</a></li>
+              <li><a href="/chess-home-tutor-noida/">Home Tutors (Noida)</a></li>
+              <li><a href="/pricing/">Pricing &amp; Plans</a></li>
             </ul>
           </div>
           <div class="footer-links">
@@ -784,7 +785,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          &copy; 2026 TheChessLifestyle. All rights reserved. Providing chess rating improvement coaching globally.
+          &copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.
         </div>
       </div>
     </footer>
@@ -803,23 +804,10 @@
           if(navLinks) navLinks.classList.remove('active');
         });
       });
-
-      // FAQ Accordion
-      document.querySelectorAll('.faq-item').forEach(item => {
-        const btn = item.querySelector('.faq-q');
-        btn.addEventListener('click', () => {
-          const isOpen = item.classList.contains('open');
-          document.querySelectorAll('.faq-item').forEach(i => {
-            i.classList.remove('open');
-            i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-          });
-          if (!isOpen) {
-            item.classList.add('open');
-            btn.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
     </script>
+
+
+    
 
   <script src="../../main.js" type="module"></script>
 </body>

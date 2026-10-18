@@ -42,6 +42,8 @@ pages = [
 
     # Blog posts
     ("blog/how-to-improve-chess-rating-fast/", "0.9", "weekly"),
+    ("blog/best-online-chess-classes-for-kids/", "0.8", "weekly"),
+    ("blog/online-chess-classes-for-kids-fees/", "0.8", "weekly"),
     ("blog/best-chess-openings-for-beginners/", "0.7", "monthly"),
     ("blog/how-to-teach-chess-to-a-child/", "0.7", "monthly"),
     ("blog/chess-improves-academic-performance/", "0.7", "monthly"),
@@ -76,5 +78,12 @@ sitemap.append('</urlset>')
 
 with open('sitemap.xml', 'w') as f:
     f.write('\n'.join(sitemap))
+
+import os
+if os.path.exists('public'):
+    with open('public/sitemap.xml', 'w') as f:
+        f.write('\n'.join(sitemap))
+
+print("Sitemap generated successfully in sitemap.xml and public/sitemap.xml")
 
 print(f"sitemap.xml created with {len(pages)} URLs")

@@ -411,7 +411,7 @@
       <strong>📍 Also Explore:</strong>
       <a href="/pricing/" style="color:var(--primary);font-weight:600;">View our full pricing page</a> ·
       <a href="/blog/best-online-chess-classes-for-kids/" style="color:var(--primary);font-weight:600;">Best online chess classes for kids</a> ·
-      <a href="/online-chess-classes-for-kids/" style="color:var(--primary);font-weight:600;">Online chess classes for kids</a> ·
+      <a href="/online-chess-classes-for-kids/" style="color:var(--primary);font-weight:600;">Chess coaching for kids</a> ·
       <a href="/blog/chess-classes-for-kids-near-me/" style="color:var(--primary);font-weight:600;">What to look for in a chess class</a>
     </div>
 
@@ -432,12 +432,13 @@
             <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
           </div>
           <div class="footer-links">
-            <h4>Quick Links</h4>
+            <h4>Services</h4>
             <ul>
-              <li><a href="/#benefits">Benefits of Chess</a></li>
-              <li><a href="/#coaches">Our Coaches</a></li>
-              <li><a href="/pricing/">Pricing</a></li>
-              <li><a href="/#trial">Book Trial</a></li>
+              <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
+              <li><a href="/online-chess-classes-for-kids/">Chess Coaching for Kids</a></li>
+              <li><a href="/chess-classes-noida/">Offline Chess Classes (Noida)</a></li>
+              <li><a href="/chess-home-tutor-noida/">Home Tutors (Noida)</a></li>
+              <li><a href="/pricing/">Pricing &amp; Plans</a></li>
             </ul>
           </div>
           <div class="footer-links">
@@ -450,10 +451,27 @@
           </div>
         </div>
         <div class="footer-bottom">
-          &copy; 2026 TheChessLifestyle. All rights reserved. Providing online chess coaching all over the globe.
+          &copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.
         </div>
       </div>
     </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          document.getElementById('nav-links').classList.toggle('active');
+        });
+      }
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          const navLinks = document.getElementById('nav-links');
+          if(navLinks) navLinks.classList.remove('active');
+        });
+      });
+    </script>
+
 
     <script>
       const toggle = document.getElementById('mobile-menu-toggle');

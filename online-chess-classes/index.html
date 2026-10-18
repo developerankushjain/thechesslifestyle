@@ -340,21 +340,21 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar">
-    <a href="/" class="logo">
-      <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
-      TheChessLifestyle
-    </a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="/#benefits">Benefits</a></li>
-      <li><a href="/#why-us">Why Choose Us</a></li>
-      <li><a href="/#coaches">Coaches</a></li>
-      <li><a href="/#gallery">Gallery</a></li>
-      <li><a href="/#testimonials">Testimonies</a></li>
-      <li><a href="/#blog">Blog</a></li>
-      <li><a href="#enrol" class="btn-trial">Book Trial</a></li>
-    </ul>
-    <div class="mobile-menu-toggle" id="mobile-menu-toggle">&#9776;</div>
-  </nav>
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
+        TheChessLifestyle
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#benefits">Benefits</a></li>
+        <li><a href="/#why-us">Why Choose Us</a></li>
+        <li><a href="/#coaches">Coaches</a></li>
+        <li><a href="/#gallery">Gallery</a></li>
+        <li><a href="/#testimonials">Testimonies</a></li>
+        <li><a href="/#blog">Blog</a></li>
+        <li><a href="/#trial" class="btn-trial">Book Trial</a></li>
+      </ul>
+      <div class="mobile-menu-toggle" id="mobile-menu-toggle">&#9776;</div>
+    </nav>
 
   <!-- ── HERO ── -->
   <header class="occ-hero">
@@ -512,6 +512,20 @@
               <span class="rtag">FIDE rated students</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── KIDS DEDICATED BANNER ── -->
+    <section class="sec sr" style="padding-top:0;padding-bottom:2rem;">
+      <div class="sec-inner">
+        <div style="background: linear-gradient(135deg, rgba(245,158,11,.12), rgba(245,158,11,.04)); border: 1.5px solid rgba(245,158,11,.3); border-radius: 20px; padding: 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+          <div style="max-width: 680px;">
+            <span style="font-size: .8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .08em; display: inline-block; margin-bottom: .5rem;">Specialized Track for Ages 5–16</span>
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; color: #0f172a; margin-bottom: .6rem;">Looking for Dedicated Chess Coaching for Kids?</h3>
+            <p style="font-size: .95rem; color: #475569; line-height: 1.65; margin: 0;">Our specialized <a href="/online-chess-classes-for-kids/" style="color:var(--primary);font-weight:700;text-decoration:underline;">chess coaching for kids</a> features story-based learning for young learners, scholastic tournament prep, and in-depth parent progress tracking.</p>
+          </div>
+          <a href="/online-chess-classes-for-kids/" class="btn-primary" style="white-space: nowrap;">Explore Kids Coaching &rarr;</a>
         </div>
       </div>
     </section>
@@ -794,36 +808,54 @@
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="/favicon.svg" alt="TheChessLifestyle Logo" class="footer-logo" width="40" height="40" style="margin-bottom:.5rem;" loading="eager">
-          <h2>TheChessLifestyle</h2>
-          <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/favicon.svg" alt="TheChessLifestyle Logo" class="footer-logo" width="40" height="40" style="margin-bottom: 0.5rem;" loading="eager">
+            <h2>TheChessLifestyle</h2>
+            <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
+              <li><a href="/online-chess-classes-for-kids/">Chess Coaching for Kids</a></li>
+              <li><a href="/chess-classes-noida/">Offline Chess Classes (Noida)</a></li>
+              <li><a href="/chess-home-tutor-noida/">Home Tutors (Noida)</a></li>
+              <li><a href="/pricing/">Pricing &amp; Plans</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms of Service</a></li>
+              <li><a href="/refund.html">Refund Policy</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-links">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
-            <li><a href="/online-chess-classes-for-kids/">Classes for Kids</a></li>
-            <li><a href="/pricing/">Pricing &amp; Plans</a></li>
-            <li><a href="/blog/">Chess Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms of Service</a></li>
-            <li><a href="/refund.html">Refund Policy</a></li>
-          </ul>
+        <div class="footer-bottom">
+          &copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.
-      </div>
-    </div>
-  </footer>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          document.getElementById('nav-links').classList.toggle('active');
+        });
+      }
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          const navLinks = document.getElementById('nav-links');
+          if(navLinks) navLinks.classList.remove('active');
+        });
+      });
+    </script>
+
 
   <script>
     // Mobile menu
