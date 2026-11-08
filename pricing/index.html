@@ -24,7 +24,72 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Course","name":"Chess Training Packages","description":"Expert chess coaching from beginners to master level.","provider":{"@type":"Organization","name":"TheChessLifestyle","url":"https://www.thechesslifestyle.com"},"offers":[{"@type":"Offer","name":"0-Level Plan","priceSpecification":{"@type":"PriceSpecification","price":"4999","priceCurrency":"INR"},"availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Foundational","priceSpecification":{"@type":"PriceSpecification","price":"3999","priceCurrency":"INR"},"availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Intermediate Level","priceSpecification":{"@type":"PriceSpecification","price":"5999","priceCurrency":"INR"},"availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Expert Level","priceSpecification":{"@type":"PriceSpecification","price":"6999","priceCurrency":"INR"},"availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Master Level","priceSpecification":{"@type":"PriceSpecification","price":"9999","priceCurrency":"INR"},"availability":"https://schema.org/InStock"}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Online Chess Coaching Packages for Kids & Adults",
+    "description": "Structured, level-based online chess coaching packages by International FIDE Rated coaches. Flexible timezone slots for USA, UK, Canada, Australia, and UAE.",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "TheChessLifestyle",
+      "url": "https://www.thechesslifestyle.com"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Foundational Plan (USD)",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "50",
+          "priceCurrency": "USD"
+        },
+        "availability": "https://schema.org/InStock",
+        "category": "Monthly Online Group Chess Coaching"
+      },
+      {
+        "@type": "Offer",
+        "name": "Beginner Level Plan (USD)",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "60",
+          "priceCurrency": "USD"
+        },
+        "availability": "https://schema.org/InStock",
+        "category": "Monthly Online Group Chess Coaching"
+      },
+      {
+        "@type": "Offer",
+        "name": "Intermediate Scholastic Plan (USD)",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "75",
+          "priceCurrency": "USD"
+        },
+        "availability": "https://schema.org/InStock",
+        "category": "Monthly Online Group Chess Coaching"
+      },
+      {
+        "@type": "Offer",
+        "name": "Foundational Plan (GBP)",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "40",
+          "priceCurrency": "GBP"
+        },
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Foundational Plan (INR)",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "3999",
+          "priceCurrency": "INR"
+        },
+        "availability": "https://schema.org/InStock"
+      }
+    ]
+  }
   </script>
   <style>
     .pricing-hero{position:relative;background:#fff;padding:8rem 5% 5rem;text-align:center;overflow:hidden}
@@ -128,21 +193,21 @@
 </head>
 <body>
   <nav class="navbar">
-    <a href="/" class="logo">
-      <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
-      TheChessLifestyle
-    </a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="/#benefits">Benefits</a></li>
-      <li><a href="/#why-us">Why Choose Us</a></li>
-      <li><a href="/#coaches">Coaches</a></li>
-      <li><a href="/#gallery">Gallery</a></li>
-      <li><a href="/#testimonials">Testimonies</a></li>
-      <li><a href="/#blog">Blog</a></li>
-      <li><a href="/#trial" class="btn-trial">Book Trial</a></li>
-    </ul>
-    <div class="mobile-menu-toggle" id="mobile-menu-toggle">&#9776;</div>
-  </nav>
+      <a href="/" class="logo">
+        <img src="/favicon.svg" alt="TheChessLifestyle Chess King Logo" class="logo-icon" width="32" height="35" loading="eager"/>
+        TheChessLifestyle
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#benefits">Benefits</a></li>
+        <li><a href="/#why-us">Why Choose Us</a></li>
+        <li><a href="/#coaches">Coaches</a></li>
+        <li><a href="/#gallery">Gallery</a></li>
+        <li><a href="/#testimonials">Testimonies</a></li>
+        <li><a href="/#blog">Blog</a></li>
+        <li><a href="/#trial" class="btn-trial">Book Trial</a></li>
+      </ul>
+      <div class="mobile-menu-toggle" id="mobile-menu-toggle">&#9776;</div>
+    </nav>
 
   <header class="pricing-hero sr">
     <div class="ph-eyebrow">Transparent Pricing &middot; No Hidden Fees</div>
@@ -160,12 +225,12 @@
   <div class="currency-bar sr">
     <span>Show prices in:</span>
     <div class="currency-tabs">
-      <button class="cur-btn active" data-cur="INR">&#x1F1EE;&#x1F1F3; INR &#x20B9;</button>
-      <button class="cur-btn" data-cur="USD">&#x1F1FA;&#x1F1F8; USD $</button>
+      <button class="cur-btn active" data-cur="USD">&#x1F1FA;&#x1F1F8; USD $</button>
       <button class="cur-btn" data-cur="GBP">&#x1F1EC;&#x1F1E7; GBP &pound;</button>
       <button class="cur-btn" data-cur="EUR">&#x1F1EA;&#x1F1FA; EUR &euro;</button>
-      <button class="cur-btn" data-cur="AUD">&#x1F1E6;&#x1F1FA; AUD A$</button>
       <button class="cur-btn" data-cur="CAD">&#x1F1E8;&#x1F1E6; CAD C$</button>
+      <button class="cur-btn" data-cur="AUD">&#x1F1E6;&#x1F1FA; AUD A$</button>
+      <button class="cur-btn" data-cur="INR">&#x1F1EE;&#x1F1F3; INR &#x20B9;</button>
     </div>
   </div>
 
@@ -194,7 +259,7 @@
           <div class="plan-card">
             <div class="plan-level">0-Level Plan</div>
             <div class="plan-target">Absolute Beginners &middot; Age &lt; 7</div>
-            <div class="plan-price"><span class="amt" data-inr="&#x20B9;4,999" data-usd="$60" data-gbp="&pound;45" data-eur="&euro;55" data-aud="A$80" data-cad="C$80">&#x20B9;4,999</span><span class="per"> / month</span></div>
+            <div class="plan-price"><span class="amt" data-inr="&#x20B9;4,999" data-usd="$60" data-gbp="&pound;45" data-eur="&euro;55" data-aud="A$80" data-cad="C$80">$60</span><span class="per"> / month</span></div>
             <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 8 Group Classes / month</div>
             <ul class="plan-feats">
               <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>For students who don't know pieces yet</li>
@@ -209,7 +274,7 @@
             <div class="plan-badge">&#9733; Most Popular</div>
             <div class="plan-level">Foundational</div>
             <div class="plan-target">Chess.com Rating: 0 &ndash; 800</div>
-            <div class="plan-price"><span class="amt" data-inr="&#x20B9;3,999" data-usd="$50" data-gbp="&pound;40" data-eur="&euro;45" data-aud="A$65" data-cad="C$65">&#x20B9;3,999</span><span class="per"> / month</span></div>
+            <div class="plan-price"><span class="amt" data-inr="&#x20B9;3,999" data-usd="$50" data-gbp="&pound;40" data-eur="&euro;45" data-aud="A$65" data-cad="C$65">$50</span><span class="per"> / month</span></div>
             <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 8 Group Classes / month</div>
             <ul class="plan-feats">
               <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>In-depth Tactics training</li>
@@ -223,7 +288,7 @@
           <div class="plan-card">
             <div class="plan-level">Beginner Level</div>
             <div class="plan-target">Chess.com Rating: 800 &ndash; 1200</div>
-            <div class="plan-price"><span class="amt" data-inr="&#x20B9;4,999" data-usd="$60" data-gbp="&pound;45" data-eur="&euro;55" data-aud="A$80" data-cad="C$80">&#x20B9;4,999</span><span class="per"> / month</span></div>
+            <div class="plan-price"><span class="amt" data-inr="&#x20B9;4,999" data-usd="$60" data-gbp="&pound;45" data-eur="&euro;55" data-aud="A$80" data-cad="C$80">$60</span><span class="per"> / month</span></div>
             <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 8 Group Classes / month</div>
             <ul class="plan-feats">
               <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modern chess openings</li>
@@ -238,7 +303,7 @@
           <div class="plan-card">
             <div class="plan-level">Intermediate Level</div>
             <div class="plan-target">Chess.com Rating: 1200 &ndash; 1500</div>
-            <div class="plan-price"><span class="amt" data-inr="&#x20B9;5,999" data-usd="$75" data-gbp="&pound;55" data-eur="&euro;65" data-aud="A$100" data-cad="C$100">&#x20B9;5,999</span><span class="per"> / month</span></div>
+            <div class="plan-price"><span class="amt" data-inr="&#x20B9;5,999" data-usd="$75" data-gbp="&pound;55" data-eur="&euro;65" data-aud="A$100" data-cad="C$100">$75</span><span class="per"> / month</span></div>
             <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 8 Group Classes / month</div>
             <ul class="plan-feats">
               <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Deep Positional Play &amp; Long Term Planning</li>
@@ -255,7 +320,7 @@
           <div class="plan-card">
             <div class="plan-level">Expert Level</div>
             <div class="plan-target">Chess.com Rating: 1500 &ndash; 1800</div>
-            <div class="plan-price"><span class="amt" data-inr="&#x20B9;6,999" data-usd="$85" data-gbp="&pound;65" data-eur="&euro;75" data-aud="A$115" data-cad="C$115">&#x20B9;6,999</span><span class="per"> / month</span></div>
+            <div class="plan-price"><span class="amt" data-inr="&#x20B9;6,999" data-usd="$85" data-gbp="&pound;65" data-eur="&euro;75" data-aud="A$115" data-cad="C$115">$85</span><span class="per"> / month</span></div>
             <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 8 Group + <strong>1 Private 1:1</strong> Session</div>
             <ul class="plan-feats">
               <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Full deep game analysis</li>
@@ -272,7 +337,7 @@
             <div class="plan-badge elite">&#9733; Elite Track</div>
             <div class="plan-level">Master Level</div>
             <div class="plan-target">Chess.com Rating: 1800+</div>
-            <div class="plan-price"><span class="amt" data-inr="&#x20B9;9,999" data-usd="$120" data-gbp="&pound;90" data-eur="&euro;110" data-aud="A$160" data-cad="C$160">&#x20B9;9,999</span><span class="per"> / month</span></div>
+            <div class="plan-price"><span class="amt" data-inr="&#x20B9;9,999" data-usd="$120" data-gbp="&pound;90" data-eur="&euro;110" data-aud="A$160" data-cad="C$160">$120</span><span class="per"> / month</span></div>
             <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Specialised Mentorship Programme</div>
             <ul class="plan-feats">
               <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Personal Chess Buddy treatment</li>
@@ -294,7 +359,7 @@
                 <div class="plan-badge" style="background:#ea580c;color:#fff;">&#10024; Premium Choice</div>
                 <div class="plan-level">Dedicated 1-on-1 Classes</div>
                 <div class="plan-target">Individual Attention &middot; 0-Level, Foundational &amp; Beginner</div>
-                <div class="plan-price"><span class="amt" data-inr="&#x20B9;8,000" data-usd="$100" data-gbp="&pound;75" data-eur="&euro;90" data-aud="A$130" data-cad="C$130">&#x20B9;8,000</span><span class="per"> / month</span></div>
+                <div class="plan-price"><span class="amt" data-inr="&#x20B9;8,000" data-usd="$100" data-gbp="&pound;75" data-eur="&euro;90" data-aud="A$130" data-cad="C$130">$100</span><span class="per"> / month</span></div>
                 <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 8 Private 1:1 Classes / month</div>
              </div>
              <div style="flex: 2 1 400px;">
@@ -316,7 +381,7 @@
                 <div class="plan-badge" style="background:#2563eb;color:#fff;">&#x265A; Elite Mentorship</div>
                 <div class="plan-level">Advanced 1-on-1 Classes</div>
                 <div class="plan-target">Intermediate, Expert &amp; Master</div>
-                <div class="plan-price"><span class="amt" data-inr="&#x20B9;1,500" data-usd="$20" data-gbp="&pound;15" data-eur="&euro;18" data-aud="A$25" data-cad="C$25">&#x20B9;1,500</span><span class="per"> / class</span></div>
+                <div class="plan-price"><span class="amt" data-inr="&#x20B9;1,500" data-usd="$20" data-gbp="&pound;15" data-eur="&euro;18" data-aud="A$25" data-cad="C$25">$20</span><span class="per"> / class</span></div>
                 <div class="plan-classes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Pay-per-class / Custom Schedule</div>
              </div>
              <div style="flex: 2 1 400px;">
@@ -452,34 +517,66 @@
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="/favicon.svg" alt="TheChessLifestyle Logo" class="footer-logo" width="40" height="40" style="margin-bottom:.5rem;" loading="eager">
-          <h2>TheChessLifestyle</h2>
-          <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/favicon.svg" alt="TheChessLifestyle Logo" class="footer-logo" width="40" height="40" style="margin-bottom: 0.5rem;" loading="eager">
+            <h2>TheChessLifestyle</h2>
+            <p>Premium online chess coaching provided by elite FIDE Rated instructors for students all over the globe.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Online Programs</h4>
+            <ul>
+              <li><a href="/online-chess-classes-for-kids/">Chess Coaching for Kids</a></li>
+              <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
+              <li><a href="/learn-to-play-chess-online/">Learn to Play Chess Online</a></li>
+              <li><a href="/chess-for-beginners-online/">Chess for Beginners Online</a></li>
+              <li><a href="/pricing/">Pricing &amp; Plans</a></li>
+              <li><a href="/blog/">Chess Guides &amp; Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Global &amp; Local</h4>
+            <ul>
+              <li><a href="/online-chess-classes-usa/">Chess Classes USA</a></li>
+              <li><a href="/online-chess-classes-uk/">Chess Classes UK</a></li>
+              <li><a href="/online-chess-classes-canada/">Chess Classes Canada</a></li>
+              <li><a href="/online-chess-classes-australia/">Chess Classes Australia</a></li>
+              <li><a href="/online-chess-classes-dubai/">Chess Classes UAE / Dubai</a></li>
+              <li><a href="/chess-classes-noida/">Offline Academy (Noida)</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms of Service</a></li>
+              <li><a href="/refund.html">Refund Policy</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-links">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="/online-chess-classes/">Online Chess Classes</a></li>
-            <li><a href="/online-chess-classes-for-kids/">Classes for Kids</a></li>
-            <li><a href="/pricing/">Pricing &amp; Plans</a></li>
-            <li><a href="/blog/">Chess Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms of Service</a></li>
-            <li><a href="/refund.html">Refund Policy</a></li>
-          </ul>
+        <div class="footer-bottom">
+          &copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.
         </div>
       </div>
-      <div class="footer-bottom">&copy; 2026 TheChessLifestyle. All rights reserved. Providing online coaches all over the globe.</div>
-    </div>
-  </footer>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          document.getElementById('nav-links').classList.toggle('active');
+        });
+      }
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          const navLinks = document.getElementById('nav-links');
+          if(navLinks) navLinks.classList.remove('active');
+        });
+      });
+    </script>
+
 
   <script>
     const tog = document.getElementById('mobile-menu-toggle');
@@ -500,13 +597,13 @@
     });
     fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
       const cc=d.country_code;
-      let cur='INR';
-      if(cc==='US') cur='USD';
+      let cur='USD';
+      if(cc==='IN') cur='INR';
       else if(cc==='GB') cur='GBP';
       else if(['AU','NZ'].includes(cc)) cur='AUD';
       else if(cc==='CA') cur='CAD';
       else if(['FR','DE','IT','ES','NL','BE','IE','AT','GR','PT','FI'].includes(cc)) cur='EUR';
-      if(cur!=='INR') updatePrices(cur);
+      if(cur!=='USD') updatePrices(cur);
     }).catch(()=>{});
 
     document.querySelectorAll('.pfaq-item').forEach(item=>{

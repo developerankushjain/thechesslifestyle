@@ -7,8 +7,11 @@ base = "https://www.thechesslifestyle.com"
 pages = [
     # (path, priority, changefreq)
     ("", "1.0", "weekly"),               # Home
+    # Core Programs
     ("online-chess-classes/", "0.9", "monthly"),
     ("online-chess-classes-for-kids/", "0.9", "monthly"),
+    ("learn-to-play-chess-online/", "0.9", "monthly"),
+    ("chess-for-beginners-online/", "0.9", "monthly"),
     ("pricing/", "0.9", "monthly"),
     ("blog/", "0.8", "weekly"),
 
@@ -41,6 +44,7 @@ pages = [
     ("chess-home-tutor-noida/", "0.6", "monthly"),
 
     # Blog posts
+    ("blog/uscf-fide-ratings-scholastic-chess-guide/", "0.9", "weekly"),
     ("blog/how-to-improve-chess-rating-fast/", "0.9", "weekly"),
     ("blog/best-online-chess-classes-for-kids/", "0.8", "weekly"),
     ("blog/online-chess-classes-for-kids-fees/", "0.8", "weekly"),
@@ -50,16 +54,12 @@ pages = [
     ("blog/does-chess-help-with-adhd-in-kids/", "0.7", "monthly"),
     ("blog/online-chess-coach-vs-self-study/", "0.7", "monthly"),
     ("blog/chess-classes-for-kids-near-me/", "0.7", "monthly"),
+    ("blog/chess-coaching-near-me-vs-online/", "0.7", "monthly"),
     ("blog/local-us-chess-club-vs-online-fide-coach/", "0.7", "monthly"),
     ("blog/chess-com-lessons-vs-thechesslifestyle/", "0.7", "monthly"),
     ("blog/best-online-chess-classes-kids-usa/", "0.7", "monthly"),
     ("blog/chess-classes-dubai-expat-families/", "0.7", "monthly"),
     ("blog/chess-saudi-arabia-vision-2030/", "0.6", "monthly"),
-
-    # Legal
-    ("terms.html", "0.3", "yearly"),
-    ("privacy.html", "0.3", "yearly"),
-    ("refund.html", "0.3", "yearly"),
 ]
 
 sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']

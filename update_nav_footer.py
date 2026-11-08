@@ -36,7 +36,7 @@ mobile_menu_script = """
 
 new_footer += "\n" + mobile_menu_script
 
-directories = ["blog", "usa"]
+directories = ["blog", "usa", "pricing", "learn-to-play-chess-online"]
 for item in os.listdir("."):
     if item.startswith("online-chess-classes") and os.path.isdir(item):
         directories.append(item)
