@@ -135,64 +135,157 @@
   <link rel="stylesheet" href="../../style-blog.css">
 
   <style>
+    /* =====================================================
+       PAGE LAYOUT
+    ===================================================== */
     .blog-post-wrap {
-      max-width: 900px;
+      max-width: 940px;
       margin: 0 auto;
-      padding: 120px 5% 5rem;
+      padding: 110px 5% 5rem;
     }
     .blog-breadcrumb {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .blog-breadcrumb a { color: var(--primary); text-decoration: none; }
+    .blog-breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .blog-breadcrumb a:hover { text-decoration: underline; }
+
     .blog-meta {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
       margin: 1.25rem 0 2rem;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
+    .blog-meta .sep { opacity: 0.3; }
     .blog-tag {
       background: rgba(245,158,11,.12);
       color: var(--primary);
-      padding: 0.2rem 0.75rem;
+      padding: 0.22rem 0.8rem;
       border-radius: 2rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    /* =====================================================
+       HERO IMAGE
+    ===================================================== */
+    .hero-wrap {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.14);
     }
     .blog-hero-img {
       width: 100%;
-      border-radius: 1.25rem;
-      margin-bottom: 2.5rem;
-      max-height: 480px;
+      max-height: 500px;
       object-fit: cover;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+      display: block;
     }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,23,42,0.72) 0%, transparent 55%);
+      display: flex;
+      align-items: flex-end;
+      padding: 2.5rem;
+    }
+    .hero-overlay-text {
+      color: #fff;
+    }
+    .hero-overlay-text .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2rem;
+      margin-bottom: 0.65rem;
+    }
+    .hero-overlay-text h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .hero-overlay-text p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 0.4rem;
+    }
+
+    /* =====================================================
+       ARTICLE BODY
+    ===================================================== */
     .blog-body h2 {
-      font-size: 1.85rem;
-      margin: 2.75rem 0 1rem;
+      font-size: 1.75rem;
+      margin: 3rem 0 0.9rem;
       color: var(--text-main);
       font-family: 'Outfit', sans-serif;
+      position: relative;
+      padding-left: 1rem;
+    }
+    .blog-body h2::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 4px; height: 65%;
+      background: var(--primary);
+      border-radius: 4px;
     }
     .blog-body h3 {
-      font-size: 1.35rem;
-      margin: 2rem 0 0.75rem;
+      font-size: 1.25rem;
+      margin: 2rem 0 0.65rem;
       color: var(--primary);
       font-family: 'Outfit', sans-serif;
     }
     .blog-body p {
       font-size: 1.05rem;
-      line-height: 1.85;
+      line-height: 1.9;
       color: var(--text-muted);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.2rem;
     }
     .blog-body strong { color: var(--text-main); }
     .blog-body a { color: var(--primary); text-decoration: underline; }
+    .blog-body ul { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .blog-body li { margin-bottom: 0.6rem; line-height: 1.75; color: var(--text-muted); font-size: 1.03rem; }
 
-    /* Tournament Highlights Stats Grid */
+    /* Decorative section divider */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0 2rem;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+    }
+    .section-divider-icon {
+      font-size: 1.3rem;
+      opacity: 0.5;
+    }
+
+    /* =====================================================
+       STAT CARDS
+    ===================================================== */
     .tourn-stat-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -200,29 +293,33 @@
       margin: 2rem 0 3rem;
     }
     .ts-stat-card {
-      background: #f8fafc;
+      background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
       border: 1.5px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 1.25rem;
+      border-radius: 16px;
+      padding: 1.4rem 1rem;
       text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+    .ts-stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
     .ts-stat-num {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 900;
       color: var(--primary);
       line-height: 1;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
     .ts-stat-lbl {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #64748b;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
-    /* Podium Winners Cards */
+    /* =====================================================
+       PODIUM WINNER CARDS
+    ===================================================== */
     .podium-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -230,18 +327,20 @@
       margin: 2rem 0 3rem;
     }
     .podium-card {
-      background: #ffffff;
+      background: #fff;
       border: 1.5px solid #e2e8f0;
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 1.75rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+    .podium-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.09); }
     .podium-card.u12-card { border-top: 5px solid #2563eb; }
     .podium-card.open-card { border-top: 5px solid var(--primary); }
     .podium-card h3 {
       margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
+      margin-bottom: 1.1rem;
+      font-size: 1.25rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -250,70 +349,74 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 0;
+      padding: 0.8rem 0;
       border-bottom: 1px solid #f1f5f9;
       font-size: 0.95rem;
     }
     .winner-row:last-child { border-bottom: none; }
-    .winner-rank {
-      font-weight: 800;
-      font-size: 1.1rem;
-      margin-right: 0.5rem;
-    }
+    .winner-rank { font-weight: 800; font-size: 1.15rem; margin-right: 0.5rem; }
     .winner-name { font-weight: 700; color: #0f172a; }
     .winner-badge {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 0.2rem 0.6rem;
+      padding: 0.22rem 0.65rem;
       border-radius: 50px;
+      white-space: nowrap;
     }
     .gold-badge { background: #fef3c7; color: #92400e; }
     .silver-badge { background: #f1f5f9; color: #475569; }
     .bronze-badge { background: #ffedd5; color: #9a3412; }
 
-    /* Feedback Poll Feature Box */
+    /* =====================================================
+       FEEDBACK POLL BOX
+    ===================================================== */
     .poll-feature-box {
-      background: linear-gradient(135deg, rgba(22,101,52,0.06) 0%, rgba(22,101,52,0.02) 100%);
-      border: 1.5px solid rgba(22,101,52,0.25);
-      border-radius: 20px;
-      padding: 2.25rem;
+      background: linear-gradient(135deg, rgba(22,101,52,0.07) 0%, rgba(22,101,52,0.02) 100%);
+      border: 1.5px solid rgba(22,101,52,0.22);
+      border-radius: 24px;
+      padding: 2.5rem;
       margin: 3rem 0;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 2rem;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2.5rem;
       align-items: center;
+    }
+    .poll-img-wrap {
+      display: flex;
+      justify-content: center;
     }
     .poll-img-wrap img {
       width: 100%;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-      border: 2px solid #ffffff;
-      max-width: 320px;
-      margin: 0 auto;
-      display: block;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+      border: 3px solid #fff;
+      max-width: 240px;
     }
     .poll-stats-bars { margin-top: 1.25rem; }
-    .ps-bar-row { margin-bottom: 0.75rem; }
+    .ps-bar-row { margin-bottom: 0.9rem; }
     .ps-label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: #1e293b;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
     }
     .ps-track {
       background: #e2e8f0;
-      height: 10px;
-      border-radius: 5px;
+      height: 12px;
+      border-radius: 6px;
       overflow: hidden;
     }
     .ps-fill {
       height: 100%;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: width 1.2s ease;
     }
 
-    /* Video Embed Grid */
+    /* =====================================================
+       VIDEO SECTION
+    ===================================================== */
     .video-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -322,56 +425,226 @@
     }
     .video-card {
       background: #0f172a;
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-      color: #ffffff;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+      color: #fff;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
+    .video-card:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(0,0,0,0.3); }
     .video-card video {
       width: 100%;
       display: block;
       background: #000;
-      max-height: 480px;
+      max-height: 300px;
       object-fit: contain;
     }
     .video-caption {
-      padding: 1rem 1.25rem;
-      font-size: 0.88rem;
-      color: #cbd5e1;
-      line-height: 1.5;
+      padding: 1rem 1.25rem 1.25rem;
+      font-size: 0.87rem;
+      color: #94a3b8;
+      line-height: 1.55;
     }
-    .video-caption strong { color: #ffffff; display: block; margin-bottom: 0.2rem; }
-
-    /* Photo Gallery Grid */
-    .gallery-masonry {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin: 2.5rem 0 3.5rem;
-    }
-    .gallery-item {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #f1f5f9;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .gallery-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .video-caption strong {
+      color: #fff;
       display: block;
-      aspect-ratio: 4/3;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
     }
-    .gallery-item.portrait img { aspect-ratio: 3/4; }
-    .gallery-item.span-2 { grid-column: span 2; }
-    .gallery-item.span-2 img { aspect-ratio: 16/9; }
 
+    /* =====================================================
+       GALLERY — FILTER TABS + MASONRY COLUMNS + LIGHTBOX
+    ===================================================== */
+
+    /* Filter tab strip */
+    .gallery-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .gtab {
+      padding: 0.42rem 1.1rem;
+      border-radius: 2rem;
+      border: 1.5px solid #e2e8f0;
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #64748b;
+      transition: all 0.18s;
+      user-select: none;
+    }
+    .gtab:hover { border-color: var(--primary); color: var(--primary); }
+    .gtab.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+    }
+
+    /* Photo count badge */
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .gallery-count-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* CSS columns masonry — natural image heights */
+    .gallery-columns {
+      columns: 3;
+      column-gap: 0.85rem;
+      margin: 0 0 3.5rem;
+    }
+    .gallery-columns .g-item {
+      break-inside: avoid;
+      margin-bottom: 0.85rem;
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: zoom-in;
+      display: block;
+    }
+    .gallery-columns .g-item img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      transition: transform 0.35s cubic-bezier(.25,.46,.45,.94), filter 0.3s;
+      filter: brightness(0.97);
+    }
+    .gallery-columns .g-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.03);
+    }
+    .gallery-columns .g-item .g-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,23,42,0);
+      transition: background 0.3s;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gallery-columns .g-item:hover .g-overlay {
+      background: rgba(15,23,42,0.28);
+    }
+    .g-overlay-icon {
+      color: #fff;
+      font-size: 1.8rem;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity 0.25s, transform 0.25s;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .gallery-columns .g-item:hover .g-overlay-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* hidden class for filtering */
+    .g-item.hidden { display: none; }
+
+    /* ---- LIGHTBOX ---- */
+    #tcl-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5,10,20,0.95);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #tcl-lightbox.open { display: flex; }
+
+    .lb-img-wrap {
+      position: relative;
+      max-width: min(90vw, 1000px);
+      max-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-img-wrap img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      transition: opacity 0.2s;
+    }
+
+    .lb-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      color: #fff;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      backdrop-filter: blur(4px);
+      z-index: 10001;
+    }
+    .lb-btn:hover { background: rgba(245,158,11,0.5); }
+    #lb-prev { left: max(1.5rem, calc(50% - 540px)); }
+    #lb-next { right: max(1.5rem, calc(50% - 540px)); }
+
+    .lb-close {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      backdrop-filter: blur(4px);
+      z-index: 10002;
+    }
+    .lb-close:hover { background: rgba(239,68,68,0.6); }
+
+    .lb-caption {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.88rem;
+      margin-top: 1.1rem;
+      text-align: center;
+      max-width: 600px;
+      padding: 0 1rem;
+    }
+    .lb-counter {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.78rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ---- AUTHOR ---- */
     .author-card {
       display: flex;
       align-items: center;
@@ -388,27 +661,35 @@
       border-radius: 50%;
       object-fit: cover;
       object-position: center 10%;
-      border: 2px solid var(--primary);
+      border: 2.5px solid var(--primary);
+      flex-shrink: 0;
     }
     .blog-cta {
       background: linear-gradient(135deg, rgba(245,158,11,.12), rgba(245,158,11,.04));
-      border: 1px solid rgba(245,158,11,.25);
-      border-radius: 1rem;
-      padding: 2.5rem;
+      border: 1px solid rgba(245,158,11,.3);
+      border-radius: 1.25rem;
+      padding: 2.75rem;
       text-align: center;
       margin: 3rem 0 0;
     }
 
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
     @media (max-width: 860px) {
       .tourn-stat-grid { grid-template-columns: 1fr 1fr; }
       .podium-container { grid-template-columns: 1fr; }
       .poll-feature-box { grid-template-columns: 1fr; }
       .video-grid { grid-template-columns: 1fr; }
-      .gallery-masonry { grid-template-columns: 1fr 1fr; }
-      .gallery-item.span-2 { grid-column: span 1; }
+      .gallery-columns { columns: 2; }
+      #lb-prev { left: 0.75rem; }
+      #lb-next { right: 0.75rem; }
     }
     @media (max-width: 540px) {
-      .gallery-masonry { grid-template-columns: 1fr; }
+      .gallery-columns { columns: 2; column-gap: 0.5rem; }
+      .gallery-columns .g-item { margin-bottom: 0.5rem; }
+      .hero-overlay-text h2 { font-size: 1.2rem; }
+      .blog-body h2 { font-size: 1.45rem; }
     }
   </style>
 </head>
@@ -434,24 +715,40 @@
 
   <main class="blog-post-wrap">
     <nav class="blog-breadcrumb">
-      <a href="/">Home</a> › <a href="/blog/">Blog</a> › 1st TCL Noida Chess Premier League Highlights
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/blog/">Blog</a>
+      <span>›</span>
+      <span>1st TCL Noida Chess Premier League Highlights</span>
     </nav>
 
     <h1>1st TCL Noida Chess Premier League: Highlights, Winners &amp; Full Tournament Gallery</h1>
 
     <div class="blog-meta">
       <span>📅 2026-11-02</span>
+      <span class="sep">·</span>
       <span>✍️ Chirag Soni</span>
+      <span class="sep">·</span>
       <span>⏱ 6 min read</span>
+      <span class="sep">·</span>
       <span class="blog-tag">Tournament Highlights</span>
       <span class="blog-tag" style="background:rgba(37,99,235,0.1); color:#1d4ed8;">Raghav Global School</span>
     </div>
 
-    <!-- Featured Hero Image -->
-    <picture>
-      <source srcset="/gallery/tournament_20261031_photo_04.webp" type="image/webp">
-      <img src="/gallery/tournament_20261031_photo_04.jpg" alt="1st TCL Noida Chess Premier League at Raghav Global School" class="blog-hero-img" width="900" height="480" loading="eager">
-    </picture>
+    <!-- Featured Hero Image with Overlay -->
+    <div class="hero-wrap">
+      <picture>
+        <source srcset="/gallery/tournament_20261031_photo_04.webp" type="image/webp">
+        <img src="/gallery/tournament_20261031_photo_04.jpg" alt="1st TCL Noida Chess Premier League at Raghav Global School" class="blog-hero-img" width="900" height="480" loading="eager">
+      </picture>
+      <div class="hero-overlay">
+        <div class="hero-overlay-text">
+          <span class="badge">🏆 Official Recap</span>
+          <h2>1st TCL Noida Chess Premier League</h2>
+          <p>31st October 2026 · Raghav Global School, Sector 122, Noida · 89 Participants</p>
+        </div>
+      </div>
+    </div>
 
     <article class="blog-body">
       <h2>A Celebration of Scholastic Strategy &amp; Sportsmanship</h2>
@@ -639,169 +936,168 @@
 
       <hr />
 
-      <!-- Full Photo Gallery -->
-      <h2>Tournament Photo Gallery (26 Captures)</h2>
+      <!-- Full Photo Gallery — Masonry + Filter Tabs + Lightbox -->
+      <h2>Tournament Photo Gallery — 26 Captured Moments</h2>
       <p>
-        From intense pre-game handshake moments to focused clock slams and joyous trophy lifts, browse through our complete collection of 26 curated high-resolution tournament photos:
+        From pre-game handshake rituals to nail-biting endgames and joyous trophy lifts — browse every high-resolution moment from the day. <strong>Click any photo</strong> to open the full-screen viewer, or use the filter tabs to jump to your favourite section.
       </p>
 
-      <div class="gallery-masonry">
-        <div class="gallery-item span-2">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_01.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_01.jpg" alt="Raghav Global School tournament hall overview" loading="lazy">
-          </picture>
+      <div class="gallery-header">
+        <div class="gallery-tabs" id="galleryTabs">
+          <button class="gtab active" data-filter="all">📸 All Photos <span style="opacity:0.6">(26)</span></button>
+          <button class="gtab" data-filter="action">♟ In-Play Action</button>
+          <button class="gtab" data-filter="ceremony">🏆 Prize Ceremony</button>
+          <button class="gtab" data-filter="venue">🏫 Venue &amp; Crowd</button>
         </div>
-        <div class="gallery-item span-2">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_02.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_02.jpg" alt="Players seated across rows of digital clocks" loading="lazy">
-          </picture>
+        <span class="gallery-count-badge" id="galleryCountLabel">26 of 26 photos</span>
+      </div>
+
+      <!-- CSS Columns Masonry Gallery -->
+      <div class="gallery-columns" id="galleryGrid">
+
+        <!-- VENUE photos -->
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_01.webp" data-alt="Raghav Global School tournament hall overview">
+          <picture><source srcset="/gallery/tournament_20261031_photo_01.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_01.jpg" alt="Raghav Global School tournament hall overview" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item portrait">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_03.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_03.jpg" alt="Young junior player contemplating candidate move" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_02.webp" data-alt="Players seated across rows of digital clocks">
+          <picture><source srcset="/gallery/tournament_20261031_photo_02.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_02.jpg" alt="Players seated across rows of digital clocks" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_04.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_04.jpg" alt="Full tournament hall in action at Raghav Global School" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="action" data-src="/gallery/tournament_20261031_photo_03.webp" data-alt="Young junior player contemplating candidate move">
+          <picture><source srcset="/gallery/tournament_20261031_photo_03.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_03.jpg" alt="Young junior player contemplating candidate move" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_05.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_05.jpg" alt="Clash of the boards - intense concentration" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_04.webp" data-alt="Full tournament hall in action at Raghav Global School">
+          <picture><source srcset="/gallery/tournament_20261031_photo_04.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_04.jpg" alt="Full tournament hall in action at Raghav Global School" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_06.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_06.jpg" alt="Arbiter team and coaches monitoring live games" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="action" data-src="/gallery/tournament_20261031_photo_05.webp" data-alt="Clash of the boards – intense concentration">
+          <picture><source srcset="/gallery/tournament_20261031_photo_05.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_05.jpg" alt="Clash of the boards – intense concentration" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item portrait">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_07.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_07.jpg" alt="Junior player analyzing the chessboard" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_06.webp" data-alt="Arbiter team and coaches monitoring live games">
+          <picture><source srcset="/gallery/tournament_20261031_photo_06.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_06.jpg" alt="Arbiter team and coaches monitoring live games" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_08.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_08.jpg" alt="Auditorium hall filled with 89 participants" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="action" data-src="/gallery/tournament_20261031_photo_07.webp" data-alt="Junior player analyzing the chessboard">
+          <picture><source srcset="/gallery/tournament_20261031_photo_07.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_07.jpg" alt="Junior player analyzing the chessboard" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_09.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_09.jpg" alt="Tactical endgame battle in the Open category" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_08.webp" data-alt="Auditorium hall filled with 89 participants">
+          <picture><source srcset="/gallery/tournament_20261031_photo_08.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_08.jpg" alt="Auditorium hall filled with 89 participants" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_10.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_10.jpg" alt="Fierce middle-game clash between top contenders" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="action" data-src="/gallery/tournament_20261031_photo_09.webp" data-alt="Tactical endgame battle in the Open category">
+          <picture><source srcset="/gallery/tournament_20261031_photo_09.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_09.jpg" alt="Tactical endgame battle in the Open category" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_11.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_11.jpg" alt="Young chess enthusiasts playing under tournament conditions" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="action" data-src="/gallery/tournament_20261031_photo_10.webp" data-alt="Fierce middle-game clash between top contenders">
+          <picture><source srcset="/gallery/tournament_20261031_photo_10.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_10.jpg" alt="Fierce middle-game clash between top contenders" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_12.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_12.jpg" alt="Coaches analyzing post-round positions" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="action" data-src="/gallery/tournament_20261031_photo_11.webp" data-alt="Young chess enthusiasts under tournament conditions">
+          <picture><source srcset="/gallery/tournament_20261031_photo_11.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_11.jpg" alt="Young chess enthusiasts under tournament conditions" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_13.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_13.jpg" alt="Prize presentation on stage with trophies" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="action" data-src="/gallery/tournament_20261031_photo_12.webp" data-alt="Coaches analyzing post-round positions">
+          <picture><source srcset="/gallery/tournament_20261031_photo_12.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_12.jpg" alt="Coaches analyzing post-round positions" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_14.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_14.jpg" alt="Under-12 winners receiving their accolades" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_13.webp" data-alt="Prize presentation on stage with trophies">
+          <picture><source srcset="/gallery/tournament_20261031_photo_13.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_13.jpg" alt="Prize presentation on stage with trophies" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_15.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_15.jpg" alt="Championship trophy distribution ceremony" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_14.webp" data-alt="Under-12 winners receiving their accolades">
+          <picture><source srcset="/gallery/tournament_20261031_photo_14.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_14.jpg" alt="Under-12 winners receiving their accolades" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item portrait">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_16.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_16.jpg" alt="Proud champion holding the winning trophy" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_15.webp" data-alt="Championship trophy distribution ceremony">
+          <picture><source srcset="/gallery/tournament_20261031_photo_15.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_15.jpg" alt="Championship trophy distribution ceremony" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item portrait">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_17.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_17.jpg" alt="Podium finisher smiling with their certificate and medal" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_16.webp" data-alt="Proud champion holding the winning trophy">
+          <picture><source srcset="/gallery/tournament_20261031_photo_16.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_16.jpg" alt="Proud champion holding the winning trophy" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item portrait">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_18.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_18.jpg" alt="Special category award winner presentation" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_17.webp" data-alt="Podium finisher smiling with certificate and medal">
+          <picture><source srcset="/gallery/tournament_20261031_photo_17.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_17.jpg" alt="Podium finisher smiling with certificate and medal" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item span-2">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_19.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_19.jpg" alt="Group photo with all tournament arbiters and organizers" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_18.webp" data-alt="Special category award winner presentation">
+          <picture><source srcset="/gallery/tournament_20261031_photo_18.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_18.jpg" alt="Special category award winner presentation" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_20.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_20.jpg" alt="Parents and players gathered for closing ceremony" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_19.webp" data-alt="Group photo with all tournament arbiters and organizers">
+          <picture><source srcset="/gallery/tournament_20261031_photo_19.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_19.jpg" alt="Group photo with all tournament arbiters and organizers" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item portrait">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_21.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_21.jpg" alt="Young participant celebrating with medal" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_20.webp" data-alt="Parents and players gathered for closing ceremony">
+          <picture><source srcset="/gallery/tournament_20261031_photo_20.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_20.jpg" alt="Parents and players gathered for closing ceremony" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item portrait">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_22.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_22.jpg" alt="Medal award ceremony for junior achievers" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_21.webp" data-alt="Young participant celebrating with medal">
+          <picture><source srcset="/gallery/tournament_20261031_photo_21.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_21.jpg" alt="Young participant celebrating with medal" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item span-2">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_23.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_23.jpg" alt="Panorama of tournament hall during final round" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_22.webp" data-alt="Medal award ceremony for junior achievers">
+          <picture><source srcset="/gallery/tournament_20261031_photo_22.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_22.jpg" alt="Medal award ceremony for junior achievers" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_24.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_24.jpg" alt="Open category champion Deepak Poonia with trophy" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_23.webp" data-alt="Panorama of tournament hall during final round">
+          <picture><source srcset="/gallery/tournament_20261031_photo_23.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_23.jpg" alt="Panorama of tournament hall during final round" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_25.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_25.jpg" alt="Runner up and 2nd runner up on the podium" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_24.webp" data-alt="Open category champion Deepak Poonia with trophy">
+          <picture><source srcset="/gallery/tournament_20261031_photo_24.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_24.jpg" alt="Open category champion Deepak Poonia with trophy" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
-        <div class="gallery-item">
-          <picture>
-            <source srcset="/gallery/tournament_20261031_photo_26.webp" type="image/webp">
-            <img src="/gallery/tournament_20261031_photo_26.jpg" alt="The organizing team and FIDE coaches at Raghav Global School" loading="lazy">
-          </picture>
+
+        <div class="g-item" data-cat="ceremony" data-src="/gallery/tournament_20261031_photo_25.webp" data-alt="Runner-up and 2nd runner-up on the podium">
+          <picture><source srcset="/gallery/tournament_20261031_photo_25.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_25.jpg" alt="Runner-up and 2nd runner-up on the podium" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
         </div>
+
+        <div class="g-item" data-cat="venue" data-src="/gallery/tournament_20261031_photo_26.webp" data-alt="The organizing team and FIDE coaches at Raghav Global School">
+          <picture><source srcset="/gallery/tournament_20261031_photo_26.webp" type="image/webp"><img src="/gallery/tournament_20261031_photo_26.jpg" alt="The organizing team and FIDE coaches at Raghav Global School" loading="lazy"></picture>
+          <div class="g-overlay"><span class="g-overlay-icon">⤢</span></div>
+        </div>
+
+      </div><!-- end gallery-columns -->
+
+      <!-- ======= LIGHTBOX ======= -->
+      <div id="tcl-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+        <button class="lb-btn" id="lb-prev" aria-label="Previous photo">‹</button>
+        <div class="lb-img-wrap">
+          <img id="lbImg" src="" alt="" draggable="false">
+        </div>
+        <button class="lb-btn" id="lb-next" aria-label="Next photo">›</button>
+        <p class="lb-caption" id="lbCaption"></p>
+        <p class="lb-counter" id="lbCounter"></p>
       </div>
 
       <hr />
@@ -899,8 +1195,9 @@
     </div>
   </footer>
 
-  <!-- Mobile Menu Script -->
+  <!-- Mobile Menu + Gallery Filter + Lightbox Scripts -->
   <script>
+    /* ---- Mobile nav ---- */
     const toggle = document.getElementById('mobile-menu-toggle');
     if (toggle) {
       toggle.addEventListener('click', function() {
@@ -912,6 +1209,92 @@
         const navLinks = document.getElementById('nav-links');
         if(navLinks) navLinks.classList.remove('active');
       });
+    });
+
+    /* ---- Gallery filter tabs ---- */
+    const tabs = document.querySelectorAll('.gtab');
+    const items = document.querySelectorAll('#galleryGrid .g-item');
+    const countLabel = document.getElementById('galleryCountLabel');
+
+    function applyFilter(filter) {
+      let visible = 0;
+      items.forEach(item => {
+        const cat = item.dataset.cat;
+        const show = filter === 'all' || cat === filter;
+        item.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      countLabel.textContent = visible + ' of ' + items.length + ' photos';
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        applyFilter(tab.dataset.filter);
+      });
+    });
+
+    /* ---- Lightbox ---- */
+    const lb = document.getElementById('tcl-lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    const lbCounter = document.getElementById('lbCounter');
+    let currentItems = [];
+    let currentIdx = 0;
+
+    function getVisibleItems() {
+      return Array.from(items).filter(i => !i.classList.contains('hidden'));
+    }
+
+    function openLightbox(item) {
+      currentItems = getVisibleItems();
+      currentIdx = currentItems.indexOf(item);
+      showSlide(currentIdx);
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showSlide(idx) {
+      if (!currentItems.length) return;
+      idx = (idx + currentItems.length) % currentItems.length;
+      currentIdx = idx;
+      const item = currentItems[idx];
+      lbImg.style.opacity = '0';
+      lbImg.src = item.dataset.src || item.querySelector('img').src;
+      lbImg.alt = item.dataset.alt || '';
+      lbCaption.textContent = item.dataset.alt || '';
+      lbCounter.textContent = (idx + 1) + ' / ' + currentItems.length;
+      lbImg.onload = () => { lbImg.style.opacity = '1'; };
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach(item => {
+      item.addEventListener('click', () => openLightbox(item));
+    });
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', e => { e.stopPropagation(); showSlide(currentIdx - 1); });
+    document.getElementById('lb-next').addEventListener('click', e => { e.stopPropagation(); showSlide(currentIdx + 1); });
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'ArrowRight') showSlide(currentIdx + 1);
+      if (e.key === 'ArrowLeft')  showSlide(currentIdx - 1);
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    /* Touch swipe on lightbox */
+    let lbTouchStartX = 0;
+    lb.addEventListener('touchstart', e => { lbTouchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - lbTouchStartX;
+      if (Math.abs(dx) > 50) dx < 0 ? showSlide(currentIdx + 1) : showSlide(currentIdx - 1);
     });
   </script>
 </body>
