@@ -13,6 +13,7 @@ pages = [
     ("learn-to-play-chess-online/", "0.9", "monthly"),
     ("chess-for-beginners-online/", "0.9", "monthly"),
     ("chess-com-vs-thechesslifestyle/", "0.9", "weekly"),
+    ("group-vs-private-coaching/", "0.9", "weekly"),
     ("pricing/", "0.9", "monthly"),
     ("blog/", "0.8", "weekly"),
 
