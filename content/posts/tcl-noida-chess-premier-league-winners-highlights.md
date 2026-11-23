@@ -63,9 +63,9 @@ Parents and students praised the punctuality of pairing rounds, digital clock ar
 
 ---
 
-## Complete Photo Gallery (26 Curated Captures)
+## Complete Photo Gallery (25 Curated Captures)
 
-Explore our full 26-image gallery documenting the opening moves, intense tactical battles, junior triumphs, arbiter team, and stage prize presentations.
+Explore our full 25-image gallery documenting the opening moves, intense tactical battles, junior triumphs, arbiter team, and stage prize presentations.
 
 ---
 
