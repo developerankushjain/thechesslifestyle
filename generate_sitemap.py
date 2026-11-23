@@ -7,11 +7,12 @@ base = "https://www.thechesslifestyle.com"
 pages = [
     # (path, priority, changefreq)
     ("", "1.0", "weekly"),               # Home
-    # Core Programs
+    # Core Programs & Comparisons
     ("online-chess-classes/", "0.9", "monthly"),
     ("online-chess-classes-for-kids/", "0.9", "monthly"),
     ("learn-to-play-chess-online/", "0.9", "monthly"),
     ("chess-for-beginners-online/", "0.9", "monthly"),
+    ("chess-com-vs-thechesslifestyle/", "0.9", "weekly"),
     ("pricing/", "0.9", "monthly"),
     ("blog/", "0.8", "weekly"),
 
