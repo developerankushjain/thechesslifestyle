@@ -10,6 +10,10 @@ pages = [
     # Core Programs & Comparisons
     ("online-chess-classes/", "0.9", "monthly"),
     ("online-chess-classes-for-kids/", "0.9", "monthly"),
+    ("level-0-beginners/", "0.9", "monthly"),
+    ("level-1-tacticians/", "0.9", "monthly"),
+    ("level-2-strategists/", "0.9", "monthly"),
+    ("level-3-champions/", "0.9", "monthly"),
     ("learn-to-play-chess-online/", "0.9", "monthly"),
     ("chess-for-beginners-online/", "0.9", "monthly"),
     ("chess-com-vs-thechesslifestyle/", "0.9", "weekly"),
